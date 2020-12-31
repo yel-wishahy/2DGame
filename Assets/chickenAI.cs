@@ -44,14 +44,18 @@ public class chickenAI : MonoBehaviour
         Move();
         Jump();
         Attack();
+        renderDirection();
+    }
+
+    void renderDirection()
+    {
+        if (body.velocity.x < 0) image.flipX = false;
+        else image.flipX = true;
     }
 
     void Move()
     {
         body.velocity = new Vector2(dir * speed, body.velocity.y);
-
-        if (dir == -1) image.flipX = false;
-        else image.flipX = true;
     }
 
     void changeDir()
@@ -140,9 +144,6 @@ public class chickenAI : MonoBehaviour
         }
 
         body.velocity = new Vector2(dir * chargeSpeed, body.velocity.y);
-
-        if (dir == -1) image.flipX = false;
-        else image.flipX = true;
     }
 
     //for testing
