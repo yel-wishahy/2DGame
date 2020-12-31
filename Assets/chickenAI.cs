@@ -10,12 +10,15 @@ public class chickenAI : MonoBehaviour
     private new Collider2D collider;
     private float moveCount;
     private float jumpCount;
+    private float attackCount;
     private float dir;
 
     //puvblic stuff
     public LayerMask playerLayer;
-    public float speed, chargeSpeed, attackDamage, seekRadius, attackDistance, turnTimer, jumpTimer, jumpSpeed;
+    public Transform attack;
+    public float speed, chargeSpeed, attackDamage, seekRadius, turnTimer, jumpTimer, jumpSpeed, attackSpeed;
     public chickenState state = chickenState.idle;
+    public Vector3 attackRange;
 
     public enum chickenState
     {
@@ -45,7 +48,7 @@ public class chickenAI : MonoBehaviour
         {
                 enemy = pe;
 
-            if (enemy.Distance(collider).distance <= attackDistance)
+            if (DetectAttackCollision()) 
             {
                 state = chickenState.attack;
             }
@@ -91,7 +94,29 @@ public class chickenAI : MonoBehaviour
 
     void Attack(Collider2D enemy)
     {
-        enemy.GetComponent<Health>().takeDamage(attackDamage);
+        if (attackCount > attackSpeed)
+        {
+            enemy.GetComponent<Health>().takeDamage(attackDamage);
+            attackCount = 0;
+        }
+
+        attackCount++;
+       
+    }
+
+    private bool DetectAttackCollision()
+    {
+
+        Collider2D attackCollide = Physics2D.OverlapBox(attack.position, attackRange, 0, playerLayer);
+
+        if (attackCollide != null)
+        {
+
+            return true;
+
+        }
+        else return false;
+
     }
 
 
@@ -119,5 +144,14 @@ public class chickenAI : MonoBehaviour
         else image.flipX = false;
 
         body.velocity = new Vector2(dir * chargeSpeed, body.velocity.y);
+    }
+
+    //for testing
+    //to draw hitbox on the scene screen
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireCube(attack.position, attackRange);
+
     }
 }
