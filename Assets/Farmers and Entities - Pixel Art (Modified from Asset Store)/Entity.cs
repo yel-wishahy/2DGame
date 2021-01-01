@@ -28,8 +28,7 @@ public class Entity : MonoBehaviour {
     public bool AddDamage;
     [HideInInspector]
     public bool Hurt;
-    [HideInInspector]
-    public int HurtPhase;
+    int HurtPhase;
 
     // Use this for initialization
 
