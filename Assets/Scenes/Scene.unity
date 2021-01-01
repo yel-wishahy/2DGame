@@ -121,6 +121,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &47765970
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.9942536
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.06613761
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642230137515109326, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645217862117921932, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_Name
+      value: DarkJason
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747855873067364114, guid: 66bb9308ec5520544a2fdc5e011194b9,
+        type: 3}
+      propertyPath: m_jumpForce
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 66bb9308ec5520544a2fdc5e011194b9, type: 3}
 --- !u!1 &261796900
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,7 +1038,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &801271044
 MonoBehaviour:
@@ -978,7 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc4ebc33b0332b4d90c84b6873d873f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1970275372}
+  player: {fileID: 1980648287}
   offset: {x: 0, y: 0, z: -5}
 --- !u!1 &960318278
 GameObject:
@@ -1325,8 +1399,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1420989791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1432,87 @@ Transform:
   m_Father: {fileID: 1970275372}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+--- !u!1001 &1711512297
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5206049012927967441, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_jumpForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305843600640183119, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_Name
+      value: Jason
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307235246065884578, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.2110763
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0049022
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90b2761db5ed2d94d8080406b8c4e5ee, type: 3}
+>>>>>>> Added Possessed farmer, Dark Jason (can be used as basis for a boss), and custom AI scripts and classes to handle them. Planning to merge with current Player classes and also construct new data structures.
 --- !u!1 &1954338138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,7 +1616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!70 &1970275368
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1575,7 +1731,7 @@ RectTransform:
   - {fileID: 559975257}
   - {fileID: 1420989792}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1635,6 +1791,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!4 &1980648287 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5311815211090834445, guid: 90b2761db5ed2d94d8080406b8c4e5ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 1711512297}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2007360028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,5 +2008,5 @@ Transform:
   m_Children:
   - {fileID: 2007360030}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
