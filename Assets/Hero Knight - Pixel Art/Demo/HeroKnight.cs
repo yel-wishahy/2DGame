@@ -154,7 +154,7 @@ public class HeroKnight : MonoBehaviour {
         //Idle
         else
         {
-            // Prevents flickering transitions to idle
+            // Prevents flickering transitions to moving
             m_delayToIdle -= Time.deltaTime;
                 if(m_delayToIdle < 0)
                     m_animator.SetInteger("AnimState", 0);
