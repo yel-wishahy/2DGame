@@ -21,13 +21,13 @@ public class Sensor_Entity : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag != "GameController")
+        if (!other.isTrigger)
             m_ColCount++;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag != "GameController")
+        if (!other.isTrigger)
             m_ColCount--;
     }
 

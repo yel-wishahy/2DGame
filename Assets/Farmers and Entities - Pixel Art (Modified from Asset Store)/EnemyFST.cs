@@ -14,7 +14,7 @@ public class EnemyFST : MonoBehaviour
 
     public Vector2 enemyVector;
 
-    Entity enemyEntity;
+    public Entity enemyEntity;
 
     public Vector2 currentVtr;
 
@@ -26,7 +26,7 @@ public class EnemyFST : MonoBehaviour
     void OnTriggerStay2D(Collider2D enemy)
     {
         print(enemy.tag);
-        if (enemy.tag == "Player")
+        if (enemy.tag == "Player" && enemy.GetComponent<Entity>() != null)
         {
             enemyEntity = enemy.GetComponent<Entity>();
 
@@ -81,6 +81,7 @@ public class EnemyFST : MonoBehaviour
             }
             else if (CurrentState == States.Attack)
             {
+                print((enemyVector.x - currentEntity.transform.position.x).ToString() + ", " + (enemyVector.y - currentEntity.transform.position.y).ToString());
                 if (enemyVector.x - currentEntity.transform.position.x > 1.1f)
                 {
                     currentEntity.alternativeX = 1;

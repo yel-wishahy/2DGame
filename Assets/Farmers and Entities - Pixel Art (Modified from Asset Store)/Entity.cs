@@ -108,7 +108,7 @@ public class Entity : MonoBehaviour {
                 m_animator.SetTrigger("Death");
             }
 
-            Collider2D collider = GetComponent<BoxCollider2D>();
+            Collider2D collider = GetComponent<CapsuleCollider2D>();
 
             collider.enabled = false;
             Destroy(m_body2d);

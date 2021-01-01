@@ -72,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   enemyVector: {x: 0, y: 0}
+  enemyEntity: {fileID: 0}
   currentVtr: {x: 0, y: 0}
   currentEntity: {fileID: 0}
   Direction: -1
@@ -89,7 +90,7 @@ GameObject:
   - component: {fileID: 9008740071028371156}
   - component: {fileID: 9124885088457209322}
   - component: {fileID: 8999440097028331010}
-  - component: {fileID: 8973588075375937912}
+  - component: {fileID: 3069156460933499841}
   m_Layer: 0
   m_Name: RiceFarmer
   m_TagString: GameController
@@ -226,8 +227,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &8973588075375937912
-BoxCollider2D:
+--- !u!70 &3069156460933499841
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -239,19 +240,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02, y: 0.662}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.28, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.8, y: 1.2}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.014991045, y: 0.68403804}
+  m_Size: {x: 0.7011442, y: 1.2545199}
+  m_Direction: 0
 --- !u!1 &8959337647575909314
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8959337647575909314}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0.044, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8953482851832806734}
