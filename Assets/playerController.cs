@@ -12,8 +12,10 @@ public class playerController : MonoBehaviour
 
     public Vector3 range;
     public Transform groundCheck;
+    public Transform attack;
     public LayerMask groundLayer;
-    public float speed, jumpVelocity, jumpHeight;
+    public LayerMask enemyLayer;
+    public float speed, jumpVelocity, jumpHeight, attackRadius, attackDamage;
     
     
 
@@ -34,9 +36,27 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Attack();
         Move();
         checkJumpCollision();
+        
+    }
+
+    void Attack()
+    {
+        Collider2D[] possibleHits = Physics2D.OverlapCircleAll(attack.position, attackRadius, enemyLayer);
+
+        foreach (Collider2D hit in possibleHits)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                anim.SetBool("Attack1", true);
+                hit.GetComponent<Health>().takeDamage(attackDamage);
+
+            }
+
+        }
+        
         
     }
 
@@ -95,6 +115,7 @@ public class playerController : MonoBehaviour
     {
         Gizmos.color = Color.black;
         Gizmos.DrawWireCube(groundCheck.position, range);
+        Gizmos.DrawWireSphere(attack.position, attackRadius);
     }
 
 
