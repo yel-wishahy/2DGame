@@ -14,8 +14,7 @@ public class chickenAI : MonoBehaviour
     //puvblic stuff
     public LayerMask playerLayer;
     public Transform attack;
-    public float speed, chargeSpeed, attackDamage, seekRadius, jumpSpeed, attackSpeed;
-    public int timer;
+    public float speed, chargeSpeed, attackDamage, seekRadius, jumpSpeed, attackSpeed, turnTime, jumpTime;
     public chickenState state = chickenState.idle;
     public Vector3 attackRange;
     public float stunTime;
@@ -33,9 +32,9 @@ public class chickenAI : MonoBehaviour
         collider = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
 
-        attackTimer = 0;
-        jumpTimer = 0;
-        turnTimer = 0;
+        attackTimer = Time.time + attackSpeed;
+        jumpTimer = Time.time + jumpTime;
+        turnTimer = Time.time + turnTime;
         stunTimer = 0;
 
         dir = 1;
@@ -86,25 +85,20 @@ public class chickenAI : MonoBehaviour
 
     void changeDir()
     {
-        if (turnTimer > timer)
+        if (Time.time > turnTimer)
         {
-            turnTimer = 0;
+            turnTimer = Time.time + turnTime;
             dir *= -1;
         }
-
-        turnTimer++;
     }
 
     void Jump()
     {
-        if (jumpTimer > timer * 3 && body.velocity.y == 0)
+        if (Time.time > jumpTimer && body.velocity.y == 0)
         {
-            jumpTimer = 0;
+            jumpTimer = Time.time + jumpTime;
             body.velocity = new Vector2(body.velocity.x, jumpSpeed);
         }
-
-        jumpTimer++;
-
     }
 
     void Attack()
@@ -132,13 +126,12 @@ public class chickenAI : MonoBehaviour
 
         if (state == chickenState.attack)
         {
-            if (attackTimer > attackSpeed)
+            if (Time.time > attackTimer)
             {
                 enemy.GetComponent<Health>().takeDamage(attackDamage);
-                attackTimer = 0;
+                attackTimer = Time.time + attackSpeed;
             }
 
-            attackTimer++;
             state = chickenState.moving;
         } else if (state == chickenState.charge || state == chickenState.charging)
         {
