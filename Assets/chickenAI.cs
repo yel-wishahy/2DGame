@@ -90,7 +90,7 @@ public class chickenAI : MonoBehaviour
     void Move()
     {
         //  body.velocity = new Vector2(dir * speed, body.velocity.y);
-        currentEntity.m_speed = Mathf.Abs(speed);
+        currentEntity.m_speed = speed;
     }
 
     void changeDir()
@@ -112,7 +112,7 @@ public class chickenAI : MonoBehaviour
         {
             jumpTimer = 0;
             currentEntity.alternativeY = 1;
-            currentEntity.m_jumpForce = Mathf.Abs(jumpSpeed);
+            currentEntity.m_jumpForce = jumpSpeed;
             // body.velocity = new Vector2(body.velocity.x, jumpSpeed);
         }
 
@@ -184,6 +184,7 @@ public class chickenAI : MonoBehaviour
         {
             dir *= -1;
             currentEntity.alternativeX = dir;
+            currentEntity.m_speed = chargeSpeed;
         }
 
        // body.velocity = new Vector2(dir * chargeSpeed, body.velocity.y);
