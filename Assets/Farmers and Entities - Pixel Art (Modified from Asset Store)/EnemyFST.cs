@@ -12,13 +12,13 @@ public class EnemyFST : MonoBehaviour
 
     public States CurrentState = States.Seeking;
 
-    public Vector2 enemyVector;
+    Vector2 enemyVector;
 
-    public Entity enemyEntity;
+    Entity enemyEntity;
 
-    public Vector2 currentVtr;
+    Vector2 currentVtr;
 
-    public Entity currentEntity;
+    Entity currentEntity;
 
     public int Direction = 1;
     public int DamageDealt = 6;

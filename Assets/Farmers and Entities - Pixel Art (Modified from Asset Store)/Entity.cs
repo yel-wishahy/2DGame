@@ -9,10 +9,10 @@ public class Entity : MonoBehaviour {
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
     private Sensor_Entity       m_groundSensor;
-    private bool                m_grounded = false;
+    public bool                m_grounded = false;
     private bool                m_combatIdle = false;
     private bool                m_isDead = false;
-    private bool ContactNotGround = false;
+    public bool ContactNotGround = false;
 
     public int Health = 69;
 
@@ -40,14 +40,6 @@ public class Entity : MonoBehaviour {
             ContactNotGround = true;
         }
     }
-
-    void OnCollisionExit2D(Collision2D object2D)
-    {
-        if (!object2D.collider.isTrigger && !m_grounded)
-        {
-            ContactNotGround = false;
-        }
-    }
     void Start () {
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
@@ -68,6 +60,7 @@ public class Entity : MonoBehaviour {
         //Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State()) {
             m_grounded = true;
+            ContactNotGround = false; // If contact on ground, disable ContactNotGround (side collision)
             m_animator.SetBool("Grounded", m_grounded);
         }
 
