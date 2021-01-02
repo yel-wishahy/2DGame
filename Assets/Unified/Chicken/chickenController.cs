@@ -19,8 +19,7 @@ public class chickenController : Controller
     private chickenState state;
 
     //counters and directions
-    private float
-        attackTimer, turnTimer, jumpTimer, stunTimer, dir;
+    private float attackTimer, turnTimer, jumpTimer, stunTimer, dir;
     
 
 

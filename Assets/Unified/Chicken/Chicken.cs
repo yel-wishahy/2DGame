@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Chicken :UEntity
 { 
-
-    public bool AIControl;
     //public stuff
     public LayerMask playerLayer;
     public Transform attack;
@@ -18,7 +16,6 @@ public class Chicken :UEntity
     public float stunTime = 1.5f;
 
     public override Controller AltController => new chickenController(this);
-    public override bool AlterativeControl => AIControl;
 
 
     private void OnDrawGizmosSelected()

@@ -19,9 +19,8 @@ public class UEntity : MonoBehaviour
     //abstract properties that all entities have (override when extending this abstract class)
     [SerializeField]
     private float Health, Speed, JumpForce, AttackDamage;
-    
     [SerializeField]
-    public virtual bool AlterativeControl { get; }
+    public bool AlterativeControl;
 
     //controllers that are specieifed as properties.
     public virtual Controller AltController { get; }
@@ -90,6 +89,16 @@ public class UEntity : MonoBehaviour
     public float getJumpForce()
     {
         return JumpForce;
+    }
+
+    public float getHealth()
+    {
+        return Health;
+    }
+
+    public void setHealth(float hlth)
+    {
+        Health = hlth;
     }
 
     public float getTime()
