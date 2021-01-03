@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2574049993453749198}
   - component: {fileID: 2574049993453749192}
-  - component: {fileID: 2574049993453749193}
+  - component: {fileID: 6786709295814072458}
   m_Layer: 10
   m_Name: EnemySensor
   m_TagString: GameController
@@ -58,7 +58,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.188822, y: 4.883629}
   m_EdgeRadius: 0
---- !u!114 &2574049993453749193
+--- !u!114 &6786709295814072458
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,17 +67,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2574049993453749199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a39e516a85c17a49b07b07dd0d5e753, type: 3}
+  m_Script: {fileID: 11500000, guid: 4beb47d3f52622a4db6bba0f8809ce39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentState: 0
-  enemyVector: {x: 0, y: 0}
-  enemyEntity: {fileID: 0}
-  currentVtr: {x: 0, y: 0}
-  currentEntity: {fileID: 0}
-  Direction: 1
-  DamageDealt: 6
-  AttackInterval: 1.5
 --- !u!1 &2575019262260143874
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2569463326447606158}
   - component: {fileID: 2516598644862290452}
-  - component: {fileID: -7157174642044388293}
+  - component: {fileID: 3656037162042020772}
   - component: {fileID: 2399190288448229674}
   - component: {fileID: 2525911812575195842}
   - component: {fileID: 9188856538626227746}
@@ -204,7 +196,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-7157174642044388293
+--- !u!114 &3656037162042020772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,21 +205,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2575476409374369484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1199829b6efa476449efacb9490ff8e5, type: 3}
+  m_Script: {fileID: 11500000, guid: dd209bec70ccebb4cbe254523a8b5c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 50
+  Health: 100
   Speed: 5
   JumpForce: 6
   AttackDamage: 2
   AlterativeControl: 1
-  alternativeX: 0
-  alternativeY: 0
-  AttackMode: 0
-  Attacking: 0
-  AddDamage: 0
-  Hurt: 0
-  HurtPhase: 0
 --- !u!212 &2399190288448229674
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -10,33 +10,31 @@ public class UEnemyFST : Controller
         Attack
     }
 
-    public States CurrentState = States.Seeking;
+    States CurrentState = States.Seeking;
 
-    public Vector2 enemyVector;
+    DarkJason entity;
+    Vector2 currentVtr;
 
-    public Jason enemyEntity;
+    Jason enemyEntity;
+    Vector2 enemyVector;
 
-    public Vector2 currentVtr;
-
-    public Jason entity;
 
     public int Direction = 1;
     public int DamageDealt = 6;
-
+    public float searchRadius = 4;
     float TimeUnit = 0;
-
     public float AttackInterval = 1.5f;
 
     private Animator m_animator;
     private Rigidbody2D m_body2d;
     private Sensor_Entity m_groundSensor;
+    private Sensor_Entity m_enemySensor;
 
     private bool m_grounded = false;
     private bool m_combatIdle = false;
     private bool m_isDead = false;
-    private bool ContactNotGround = false;
 
-    public UEnemyFST(Jason entity)
+    public UEnemyFST(DarkJason entity)
     {
         this.entity = entity;
         Init();
@@ -54,7 +52,9 @@ public class UEnemyFST : Controller
         entity.alternativeX = Direction;
         m_animator = entity.GetComponent<Animator>();
         m_body2d = entity.GetComponent<Rigidbody2D>();
-        m_groundSensor = entity.transform.Find("GroundSensor").GetComponent<Sensor_Entity>();
+        m_groundSensor = entity.GroundSensor;
+        m_enemySensor = entity.EnemySensor;
+
     }
 
     public void Jump()
@@ -71,6 +71,7 @@ public class UEnemyFST : Controller
     {
         if (entity.getHealth() > 0)
         {
+
             if (TimeUnit < AttackInterval)
                 TimeUnit += Time.deltaTime;
 
@@ -203,6 +204,7 @@ public class UEnemyFST : Controller
             }
         }
     }
+
 
     void OnTriggerExit2D(Collider2D enemy)
     {

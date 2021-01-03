@@ -35,7 +35,6 @@ public class playerController : Controller
         Attack();
         Move();
         checkJumpCollision();
-        
     }
 
     public void Attack()

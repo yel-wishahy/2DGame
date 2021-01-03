@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jason : UEntity
+public class DarkJason : UEntity
 {
+    [SerializeField]
+    public Sensor_Entity GroundSensor;
+    public Sensor_Entity EnemySensor;
+
     [HideInInspector]
     public float alternativeX;
     [HideInInspector]
@@ -18,7 +22,5 @@ public class Jason : UEntity
     public bool Hurt;
     public int HurtPhase;
 
-    public override Controller UserController => new UJasonController(this);
-    
-
+    public override Controller AltController => new UEnemyFST(this);
 }

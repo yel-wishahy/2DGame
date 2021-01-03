@@ -4,7 +4,7 @@ using UnityEngine;
 
 //An Entity class that is the base class for all entities.
 //The defined behaviour for an entity is as follows:
-//*An entity has health, speed, jumoForce, and AttackDamage
+//*An entity has health, speed, jumpForce, and AttackDamage
 //
 //To implement a new entity simply extend this class.
 //All entities have the potential for a userController
@@ -13,7 +13,7 @@ using UnityEngine;
 //
 //The Update() behaviour is defined by the controller class.
 //
-//The start behaviour initializes the controller class
+//Start behaviour is defined in the controller class's constructor
 public class UEntity : MonoBehaviour
 {
     //abstract properties that all entities have (override when extending this abstract class)
@@ -38,13 +38,6 @@ public class UEntity : MonoBehaviour
         }
 
     }
-
-    void Start()
-    {
-        if (AltController != null) AltController.Init();
-        if (UserController != null) UserController.Init();
-    }
-
 
     //Entity takes damage and health is reduced by dmg.
     public void takeDamage(float dmg)
