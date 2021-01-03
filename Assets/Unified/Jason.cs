@@ -18,7 +18,14 @@ public class Jason : UEntity
     public bool Hurt;
     public int HurtPhase;
 
-    public override Controller UserController => new UJasonController(this);
+    private Controller userController;
+
+    private void Awake()
+    {
+        userController = new UJasonController(this);
+    }
+
+    public override Controller UserController => userController);
     
 
 }

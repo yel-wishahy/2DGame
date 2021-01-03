@@ -9,10 +9,22 @@ public class Player : UEntity
     public Vector3 range = new Vector3(1, 0.2f, 0);
     public Transform groundCheck, attack;
     public LayerMask groundLayer, enemyLayer;
+    public Controller userController;
+
+    private void Awake()
+    {
+         userController = new playerController(this);
+    }
+    
+
+ 
+
+
+    
 
     //override controller property with player controller class
 
-    public override Controller UserController => new playerController(this);
+    public override Controller UserController => userController;
 
     private void OnDrawGizmosSelected()
     {

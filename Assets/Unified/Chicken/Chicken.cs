@@ -14,8 +14,14 @@ public class Chicken :UEntity
     public float turnTime = 3;
     public float jumpTime = 6;
     public float stunTime = 1.5f;
+    private Controller AIController;
 
-    public override Controller AltController => new chickenController(this);
+    private void Awake()
+    {
+        AIController = new chickenController(this);
+    }
+
+    public override Controller AltController => AIController;
 
 
     private void OnDrawGizmosSelected()

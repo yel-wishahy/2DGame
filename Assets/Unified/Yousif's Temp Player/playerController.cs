@@ -24,6 +24,7 @@ public class playerController : Controller
     // Start is called before the first frame update
     public void Init()
     {
+        Debug.Log("init");
         body = entity.GetComponent<Rigidbody2D>();
         anim = entity.GetComponent<Animator>();
         render = entity.GetComponent<SpriteRenderer>();
@@ -32,6 +33,7 @@ public class playerController : Controller
     // Update is called once per frame
     public void Update()
     {
+        Debug.Log("update");
         Attack();
         Move();
         checkJumpCollision();

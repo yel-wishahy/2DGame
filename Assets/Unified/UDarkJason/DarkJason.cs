@@ -6,7 +6,7 @@ public class DarkJason : UEntity
 {
     [SerializeField]
     public Sensor_Entity GroundSensor;
-    public Sensor_Entity EnemySensor;
+    public Vector2 EnemySenseRange;
 
     [HideInInspector]
     public float alternativeX;
@@ -22,5 +22,12 @@ public class DarkJason : UEntity
     public bool Hurt;
     public int HurtPhase;
 
-    public override Controller AltController => new UEnemyFST(this);
+    private Controller AIController;
+
+    private void Awake()
+    {
+        AIController = new UEnemyFST(this);
+    }
+
+    public override Controller AltController => AIController;
 }
