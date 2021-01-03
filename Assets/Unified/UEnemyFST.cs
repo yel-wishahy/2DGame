@@ -41,14 +41,16 @@ public class UEnemyFST : Controller
 
     float TimeUnit = 0;
 
-    public float AttackInterval = 1.5f;
+    public float AttackInterval = 0.25f;
 
     void searchSurroundings()
     {
-        Collider2D[] possibleEnemies = Physics2D.OverlapBoxAll(currentVtr, m_enemySenseRange, 0);
+        Collider2D[] possibleEnemies = Physics2D.OverlapBoxAll(currentVtr, m_enemySenseRange*3, 0);
 
+        int size = 0;
         foreach(Collider2D enemy in possibleEnemies)
         {
+            MonoBehaviour.print("ENEMY: " + enemy);
             if (enemy.tag == "Player" && enemy.GetComponent<Jason>() != null)
             {
                 enemyEntity = enemy.GetComponent<Jason>();
@@ -59,8 +61,17 @@ public class UEnemyFST : Controller
                     enemyVector = enemy.transform.position;
                     entity.AttackMode = true;
                 }
-            }
 
+                size++;
+            }
+        }
+
+        MonoBehaviour.print("SZ: " + size);
+        if (size <= 0 && CurrentState == States.Attack)
+        {
+            ResetControls();
+            currentVtr = entity.transform.position;
+            CurrentState = States.Seeking;
         }
     }
 
@@ -74,6 +85,7 @@ public class UEnemyFST : Controller
         m_body2d = entity.GetComponent<Rigidbody2D>();
         m_animator = entity.GetComponent<Animator>();
         m_renderer2d = entity.GetComponent<SpriteRenderer>();
+        MonoBehaviour.print(currentVtr);
     }
 
     // Update is called once per frame
@@ -82,7 +94,8 @@ public class UEnemyFST : Controller
         if (entity.getHealth() > 0)
         {
             searchSurroundings();
-           
+            Move();
+
             if (TimeUnit < AttackInterval)
                 TimeUnit += Time.deltaTime;
 
@@ -91,11 +104,11 @@ public class UEnemyFST : Controller
                 if (entity.alternativeX == 0)
                     entity.alternativeX = Direction;
 
-                if (entity.transform.position.x > currentVtr.x + 4)
+                if (entity.transform.position.x > currentVtr.x + m_enemySenseRange.x)
                 {
                     entity.alternativeX = -1;
                 }
-                else if (entity.transform.position.x < currentVtr.x - 4)
+                else if (entity.transform.position.x < currentVtr.x - m_enemySenseRange.x)
                 {
                     entity.alternativeX = 1;
                 }
@@ -135,18 +148,39 @@ public class UEnemyFST : Controller
                 }
             }
         }
+    }
+
+    public void Move()
+    {
+        //Check if character just landed on the ground
+        if (!m_grounded && m_groundSensor.State())
+        {
+            m_grounded = true;
+            m_animator.SetBool("Grounded", m_grounded);
+        }
+
+        //Check if character just started falling
+        if (m_grounded && !m_groundSensor.State())
+        {
+            m_grounded = false;
+            m_animator.SetBool("Grounded", m_grounded);
+        }
+
+        // -- Handle input and movement --
+        float inputX = 0;
+
+        inputX = entity.alternativeX;
 
         if (entity.getHealth() > 0 && !ContactNotGround)
         {
             // Swap direction of sprite depending on walk direction
-            if (m_body2d.velocity.x > 0)
-            {
-                m_renderer2d.flipX = false;
-            }
-            else m_renderer2d.flipX = true;
+            if (inputX > 0)
+                entity.transform.localScale = new Vector3(-Mathf.Abs(entity.transform.localScale.x), entity.transform.localScale.y, entity.transform.localScale.z);
+            else if (inputX < 0)
+                entity.transform.localScale = new Vector3(Mathf.Abs(entity.transform.localScale.x), entity.transform.localScale.y, entity.transform.localScale.z);
 
             // Move
-            m_body2d.velocity = new Vector2(entity.alternativeX * entity.getSpeed(), m_body2d.velocity.y);
+            m_body2d.velocity = new Vector2(inputX * entity.getSpeed(), m_body2d.velocity.y);
 
             //Set AirSpeed in animator
             m_animator.SetFloat("AirSpeed", m_body2d.velocity.y);
@@ -219,7 +253,7 @@ public class UEnemyFST : Controller
         }
 
         //Run
-        else if (Mathf.Abs(entity.alternativeX) > Mathf.Epsilon)
+        else if (Mathf.Abs(inputX) > Mathf.Epsilon)
             m_animator.SetInteger("AnimState", 2);
 
         //Combat Idle
@@ -229,11 +263,6 @@ public class UEnemyFST : Controller
         //Idle
         else
             m_animator.SetInteger("AnimState", 0);
-    }
-
-    public void Move()
-    {
-        throw new System.NotImplementedException();
     }
 
     public void Jump()

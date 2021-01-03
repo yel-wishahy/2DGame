@@ -570,6 +570,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2950935334211152972, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
+        type: 3}
+      propertyPath: Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950935334211152972, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
+        type: 3}
+      propertyPath: JumpForce
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950935334211152972, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
+        type: 3}
+      propertyPath: EnemySenseRange.x
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4604725548733603017, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
         type: 3}
       propertyPath: m_Name
@@ -655,6 +670,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UJason
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495244363520273235, guid: 3bffb8cde22bea542a682cca4c623cf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3496104788063387056, guid: 3bffb8cde22bea542a682cca4c623cf0,
         type: 3}
