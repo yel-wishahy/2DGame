@@ -16,7 +16,16 @@ public class Jason : UEntity
     public bool AddDamage;
     [HideInInspector]
     public bool Hurt;
+    [HideInInspector]
     public int HurtPhase;
+    [HideInInspector]
+    public bool m_grounded = false;
+    [HideInInspector]
+    public bool m_combatIdle = false;
+    [HideInInspector]
+    public bool m_isDead = false;
+    [HideInInspector]
+    public bool ContactNotGround = false;
 
     private Controller userController;
 
@@ -26,6 +35,22 @@ public class Jason : UEntity
     }
 
     public override Controller UserController => userController;
-    
+
+    void OnCollisionStay2D(Collision2D object2D)
+    {
+        if (!object2D.collider.isTrigger && !m_grounded)
+        {
+            ContactNotGround = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D object2D)
+    {
+        if (!object2D.collider.isTrigger && !m_grounded)
+        {
+            ContactNotGround = false;
+        }
+    }
+
 
 }
