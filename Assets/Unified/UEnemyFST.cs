@@ -41,8 +41,6 @@ public class UEnemyFST : Controller
 
     float TimeUnit = 0;
 
-    public float AttackInterval = 0.25f;
-
     void searchSurroundings()
     {
         Collider2D[] possibleEnemies = Physics2D.OverlapBoxAll(currentVtr, m_enemySenseRange * 3, 0);
@@ -57,9 +55,11 @@ public class UEnemyFST : Controller
 
                 if (enemyEntity != null && enemyEntity.getHealth() > 0)
                 {
-                    CurrentState = States.Attack;
-                    enemyVector = enemy.transform.position;
-                    entity.AttackMode = true;
+
+                   CurrentState = States.Attack;
+                   entity.AttackMode = true;
+                   enemyVector = enemy.transform.position;
+                    
                 }
 
                 size++;
@@ -96,7 +96,7 @@ public class UEnemyFST : Controller
             searchSurroundings();
             Move();
 
-            if (TimeUnit < AttackInterval)
+            if (TimeUnit < entity.AttackInterval)
                 TimeUnit += Time.deltaTime;
 
             if (CurrentState == States.Seeking)
@@ -133,7 +133,7 @@ public class UEnemyFST : Controller
 
                     entity.Attacking = true;
 
-                    if (entity.AddDamage && TimeUnit > AttackInterval)
+                    if (entity.AddDamage && TimeUnit > entity.AttackInterval)
                     {
                         enemyEntity.Hurt = true;
 

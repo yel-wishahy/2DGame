@@ -17,11 +17,6 @@ public class UJasonController : Controller
         Init();
     }
 
-    public void Attack()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public void Init()
     {
         m_animator = entity.GetComponent<Animator>();
@@ -38,6 +33,20 @@ public class UJasonController : Controller
     public void Move()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void Attack()
+    {
+        Collider2D[] possibleHits = Physics2D.OverlapBoxAll(entity.attackOrigin.position, entity.attackBox, entity.enemyLayer);
+
+        foreach (Collider2D hit in possibleHits)
+        {
+            if (entity.Attacking && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            {
+                hit.GetComponent<UEntity>().takeDamage(entity.getAttackDamage());
+            }
+
+        }
     }
 
     public void Update()
@@ -130,6 +139,7 @@ public class UJasonController : Controller
         {
             entity.m_combatIdle = true;
             m_animator.SetTrigger("Attack");
+            Attack();
 
             entity.Attacking = false;
         }

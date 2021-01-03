@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Jason : UEntity
 {
+    [SerializeField]
+    public Transform attackOrigin;
+    public Vector2 attackBox;
+    public LayerMask enemyLayer;
+
     [HideInInspector]
     public float alternativeX;
     [HideInInspector]
@@ -50,6 +55,12 @@ public class Jason : UEntity
         {
             ContactNotGround = false;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireCube(attackOrigin.position, attackBox);
     }
 
 
