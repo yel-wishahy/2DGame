@@ -10,11 +10,21 @@ public class UEnemyFST : Controller
         Init();
     }
 
-    DarkJason entity;
-    Vector2 currentVtr;
-    Jason enemyEntity;
+    public enum States
+    {
+        Seeking,
+        Attack
+    }
+
+    public States CurrentState = States.Seeking;
+
     Vector2 enemyVector;
-    bool m_grounded = false;
+
+    Jason enemyEntity;
+
+    Vector2 currentVtr;
+
+    DarkJason entity;
 
     private Sensor_Entity m_groundSensor;
     private Vector2 m_enemySenseRange;
@@ -22,26 +32,23 @@ public class UEnemyFST : Controller
     private Rigidbody2D m_body2d;
     private SpriteRenderer m_renderer2d;
 
+    private bool m_grounded = false;
+    private bool m_combatIdle = false;
+    private bool m_isDead = false;
+    private bool ContactNotGround = false;
+
     public int Direction = 1;
 
     float TimeUnit = 0;
 
     public float AttackInterval = 0.25f;
 
-    public States CurrentState = States.Seeking;
-
-    public enum States
-    {
-        Seeking,
-        Attack
-    }
-
     void searchSurroundings()
     {
-        Collider2D[] possibleEnemies = Physics2D.OverlapBoxAll(currentVtr, m_enemySenseRange*3, 0);
+        Collider2D[] possibleEnemies = Physics2D.OverlapBoxAll(currentVtr, m_enemySenseRange * 3, 0);
 
         int size = 0;
-        foreach(Collider2D enemy in possibleEnemies)
+        foreach (Collider2D enemy in possibleEnemies)
         {
             MonoBehaviour.print("ENEMY: " + enemy);
             if (enemy.tag == "Player" && enemy.GetComponent<Jason>() != null)
@@ -71,7 +78,7 @@ public class UEnemyFST : Controller
     // Use this for initialization
     public void Init()
     {
-        entity.currentVtr = entity.transform.position;
+        currentVtr = entity.transform.position;
         entity.alternativeX = Direction;
         m_groundSensor = entity.GroundSensor;
         m_enemySenseRange = entity.EnemySenseRange;
@@ -108,19 +115,19 @@ public class UEnemyFST : Controller
             }
             else if (CurrentState == States.Attack)
             {
-                if (entity.enemyVector.x - entity.transform.position.x > 1.1f)
+                if (enemyVector.x - entity.transform.position.x > 1.1f)
                 {
                     entity.alternativeX = 1;
                 }
-                else if (entity.enemyVector.x - entity.transform.position.x < -1.1f)
+                else if (enemyVector.x - entity.transform.position.x < -1.1f)
                 {
                     entity.alternativeX = -1;
                 }
-                else if (entity.enemyVector.y - entity.transform.position.y > 1.1f)
+                else if (enemyVector.y - entity.transform.position.y > 1.1f)
                 {
                     entity.alternativeY = 1;
                 }
-                else if (entity.enemyEntity != null && !entity.enemyEntity.Hurt)
+                else if (enemyEntity != null && !enemyEntity.Hurt)
                 {
                     entity.alternativeX = 0;
 
@@ -128,12 +135,12 @@ public class UEnemyFST : Controller
 
                     if (entity.AddDamage && TimeUnit > AttackInterval)
                     {
-                        entity.enemyEntity.Hurt = true;
+                        enemyEntity.Hurt = true;
 
-                        if (entity.enemyEntity.getHealth() > 0)
-                            entity.enemyEntity.takeDamage(entity.getAttackDamage());
+                        if (enemyEntity.getHealth() > 0)
+                            enemyEntity.takeDamage(entity.getAttackDamage());
                         else
-                            entity.enemyEntity.setHealth(0);
+                            enemyEntity.setHealth(0);
 
                         TimeUnit = 0;
                     }
@@ -164,7 +171,7 @@ public class UEnemyFST : Controller
 
         inputX = entity.alternativeX;
 
-        if (entity.getHealth() > 0 && !entity.ContactNotGround)
+        if (entity.getHealth() > 0 && !ContactNotGround)
         {
             // Swap direction of sprite depending on walk direction
             if (inputX > 0)
@@ -181,7 +188,7 @@ public class UEnemyFST : Controller
 
             //Change between idle and combat idle
             if (entity.AttackMode)
-                entity.m_combatIdle = !entity.m_combatIdle;
+                m_combatIdle = !m_combatIdle;
 
         }
 
@@ -200,7 +207,7 @@ public class UEnemyFST : Controller
         {
             if (!m_animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
             {
-                entity.m_isDead = true;
+                m_isDead = true;
                 m_animator.SetTrigger("Death");
             }
 
@@ -213,12 +220,12 @@ public class UEnemyFST : Controller
         }
 
         //Hurt
-        else if (entity.Hurt && entity.HurtPhase == 0 && !entity.m_isDead)
+        else if (entity.Hurt && entity.HurtPhase == 0 && !m_isDead)
         {
             m_animator.SetTrigger("Hurt");
             entity.HurtPhase = 1;
         }
-        else if (entity.Hurt && entity.HurtPhase == 1 && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt") && !entity.m_isDead)
+        else if (entity.Hurt && entity.HurtPhase == 1 && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt") && !m_isDead)
         {
             entity.HurtPhase = 0;
             entity.Hurt = false;
@@ -227,18 +234,18 @@ public class UEnemyFST : Controller
         //Attack
         else if (entity.Attacking && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            entity.m_combatIdle = true;
+            m_combatIdle = true;
             m_animator.SetTrigger("Attack");
 
             entity.Attacking = false;
         }
 
         //Jump
-        else if (entity.alternativeY > 0 && entity.m_grounded)
+        else if (entity.alternativeY > 0 && m_grounded)
         {
             m_animator.SetTrigger("Jump");
-            entity.m_grounded = false;
-            m_animator.SetBool("Grounded", entity.m_grounded);
+            m_grounded = false;
+            m_animator.SetBool("Grounded", m_grounded);
             m_body2d.velocity = new Vector2(m_body2d.velocity.x, entity.getJumpForce());
             m_groundSensor.Disable(0.2f);
 
@@ -250,7 +257,7 @@ public class UEnemyFST : Controller
             m_animator.SetInteger("AnimState", 2);
 
         //Combat Idle
-        else if (entity.m_combatIdle)
+        else if (m_combatIdle)
             m_animator.SetInteger("AnimState", 1);
 
         //Idle
@@ -266,6 +273,22 @@ public class UEnemyFST : Controller
     public void Attack()
     {
         throw new System.NotImplementedException();
+    }
+
+    void OnCollisionStay2D(Collision2D object2D)
+    {
+        if (!object2D.collider.isTrigger && !m_grounded)
+        {
+            ContactNotGround = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D object2D)
+    {
+        if (!object2D.collider.isTrigger && !m_grounded)
+        {
+            ContactNotGround = false;
+        }
     }
 
     public void ResetControls()
