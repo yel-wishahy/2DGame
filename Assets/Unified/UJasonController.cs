@@ -9,6 +9,7 @@ public class UJasonController : Controller
     private Animator m_animator;
     private Rigidbody2D m_body2d;
     private Sensor_Entity m_groundSensor;
+    private SpriteRenderer m_render2d;
 
     public UJasonController(Jason entity)
     {
@@ -26,6 +27,7 @@ public class UJasonController : Controller
         m_animator = entity.GetComponent<Animator>();
         m_body2d = entity.GetComponent<Rigidbody2D>();
         m_groundSensor = entity.transform.Find("GroundSensor").GetComponent<Sensor_Entity>();
+        m_render2d = entity.GetComponent<SpriteRenderer>();
     }
 
     public void Jump()
@@ -68,10 +70,8 @@ public class UJasonController : Controller
         if (entity.getHealth() > 0 && !entity.ContactNotGround)
         {
             // Swap direction of sprite depending on walk direction
-            if (inputX > 0)
-                entity.transform.localScale = new Vector3(-Mathf.Abs(entity.transform.localScale.x), entity.transform.localScale.y, entity.transform.localScale.z);
-            else if (inputX < 0)
-                entity.transform.localScale = new Vector3(Mathf.Abs(entity.transform.localScale.x), entity.transform.localScale.y, entity.transform.localScale.z);
+            if (m_body2d.velocity.x > 0) m_render2d.flipX = false;
+            else m_render2d.flipX = true;
 
             // Move
             m_body2d.velocity = new Vector2(inputX * entity.getSpeed(), m_body2d.velocity.y);
