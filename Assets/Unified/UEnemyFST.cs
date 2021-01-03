@@ -214,22 +214,6 @@ public class UEnemyFST : Controller
         throw new System.NotImplementedException();
     }
 
-    void OnCollisionStay2D(Collision2D object2D)
-    {
-        if (!object2D.collider.isTrigger && !entity.m_grounded)
-        {
-            entity.ContactNotGround = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D object2D)
-    {
-        if (!object2D.collider.isTrigger && !entity.m_grounded)
-        {
-            entity.ContactNotGround = false;
-        }
-    }
-
     public void ResetControls()
     {
         entity.alternativeX = 0;
