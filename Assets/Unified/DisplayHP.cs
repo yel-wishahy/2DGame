@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DisplayHP : MonoBehaviour
 {
-    public Jason MainEntity;
+    public UEntity MainEntity;
     Text text;
     
     void Start()
