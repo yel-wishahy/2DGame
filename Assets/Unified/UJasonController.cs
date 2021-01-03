@@ -10,11 +10,6 @@ public class UJasonController : Controller
     private Rigidbody2D m_body2d;
     private Sensor_Entity m_groundSensor;
 
-    private bool m_grounded = false;
-    private bool m_combatIdle = false;
-    private bool m_isDead = false;
-    private bool ContactNotGround = false;
-
     public UJasonController(Jason entity)
     {
         this.entity = entity;
@@ -46,17 +41,17 @@ public class UJasonController : Controller
     public void Update()
     {
         //Check if character just landed on the ground
-        if (!m_grounded && m_groundSensor.State())
+        if (!entity.m_grounded && m_groundSensor.State())
         {
-            m_grounded = true;
-            m_animator.SetBool("Grounded", m_grounded);
+            entity.m_grounded = true;
+            m_animator.SetBool("Grounded", entity.m_grounded);
         }
 
         //Check if character just started falling
-        if (m_grounded && !m_groundSensor.State())
+        if (entity.m_grounded && !m_groundSensor.State())
         {
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
+            entity.m_grounded = false;
+            m_animator.SetBool("Grounded", entity.m_grounded);
         }
 
         // -- Handle input and movement --
@@ -70,7 +65,7 @@ public class UJasonController : Controller
         
 
 
-        if (entity.getHealth() > 0 && !ContactNotGround)
+        if (entity.getHealth() > 0 && !entity.ContactNotGround)
         {
             // Swap direction of sprite depending on walk direction
             if (inputX > 0)
@@ -87,7 +82,7 @@ public class UJasonController : Controller
 
             //Change between idle and combat idle
             if (entity.AttackMode)
-                m_combatIdle = !m_combatIdle;
+                entity.m_combatIdle = !entity.m_combatIdle;
 
         }
 
@@ -106,7 +101,7 @@ public class UJasonController : Controller
         {
             if (!m_animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
             {
-                m_isDead = true;
+                entity.m_isDead = true;
                 m_animator.SetTrigger("Death");
             }
 
@@ -119,12 +114,12 @@ public class UJasonController : Controller
         }
 
         //Hurt
-        else if (entity.Hurt && entity.HurtPhase == 0 && !m_isDead)
+        else if (entity.Hurt && entity.HurtPhase == 0 && !entity.m_isDead)
         {
             m_animator.SetTrigger("Hurt");
             entity.HurtPhase = 1;
         }
-        else if (entity.Hurt && entity.HurtPhase == 1 && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt") && !m_isDead)
+        else if (entity.Hurt && entity.HurtPhase == 1 && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt") && !entity.m_isDead)
         {
             entity.HurtPhase = 0;
             entity.Hurt = false;
@@ -133,18 +128,18 @@ public class UJasonController : Controller
         //Attack
         else if (entity.Attacking && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            m_combatIdle = true;
+            entity.m_combatIdle = true;
             m_animator.SetTrigger("Attack");
 
             entity.Attacking = false;
         }
 
         //Jump
-        else if (entity.alternativeY > 0 && m_grounded)
+        else if (entity.alternativeY > 0 && entity.m_grounded)
         {
             m_animator.SetTrigger("Jump");
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
+            entity.m_grounded = false;
+            m_animator.SetBool("Grounded", entity.m_grounded);
             m_body2d.velocity = new Vector2(m_body2d.velocity.x, entity.getJumpForce());
             m_groundSensor.Disable(0.2f);
 
@@ -156,28 +151,12 @@ public class UJasonController : Controller
             m_animator.SetInteger("AnimState", 2);
 
         //Combat Idle
-        else if (m_combatIdle)
+        else if (entity.m_combatIdle)
             m_animator.SetInteger("AnimState", 1);
 
         //Idle
         else
             m_animator.SetInteger("AnimState", 0);
-    }
-
-    void OnCollisionStay2D(Collision2D object2D)
-    {
-        if (!object2D.collider.isTrigger && !m_grounded)
-        {
-            ContactNotGround = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D object2D)
-    {
-        if (!object2D.collider.isTrigger && !m_grounded)
-        {
-            ContactNotGround = false;
-        }
     }
 
     public void ResetControls()
