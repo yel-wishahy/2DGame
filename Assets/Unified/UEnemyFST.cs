@@ -73,6 +73,7 @@ public class UEnemyFST : Controller
         m_enemySenseRange = entity.EnemySenseRange;
         m_body2d = entity.GetComponent<Rigidbody2D>();
         m_animator = entity.GetComponent<Animator>();
+        m_renderer2d = entity.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame

@@ -25,7 +25,7 @@ public class Jason : UEntity
         userController = new UJasonController(this);
     }
 
-    public override Controller UserController => userController);
+    public override Controller UserController => userController;
     
 
 }
