@@ -17,6 +17,10 @@ public class UJasonController : Controller
         Init();
     }
 
+    public void Attack()
+    {
+        
+    }
     public void Init()
     {
         m_animator = entity.GetComponent<Animator>();
@@ -27,28 +31,21 @@ public class UJasonController : Controller
 
     public void Jump()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Move()
     {
-        throw new System.NotImplementedException();
+        
     }
 
-    public void Attack()
+    public bool Hurt(bool Damaged)
     {
-        Collider2D[] possibleHits = Physics2D.OverlapBoxAll(entity.attackOrigin.position, entity.attackBox, entity.enemyLayer);
+        if (Damaged)
+            entity.Hurt = true;
 
-        foreach (Collider2D hit in possibleHits)
-        {
-            if (entity.Attacking && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-            {
-                hit.GetComponent<UEntity>().takeDamage(entity.getAttackDamage());
-            }
-
-        }
+        return entity.Hurt;
     }
-
     public void Update()
     {
         //Check if character just landed on the ground
@@ -79,8 +76,10 @@ public class UJasonController : Controller
         if (entity.getHealth() > 0 && !entity.ContactNotGround)
         {
             // Swap direction of sprite depending on walk direction
-            if (m_body2d.velocity.x > 0) m_render2d.flipX = false;
-            else m_render2d.flipX = true;
+            if (inputX > 0)
+                entity.transform.localScale = new Vector3(-Mathf.Abs(entity.transform.localScale.x), entity.transform.localScale.y, entity.transform.localScale.z);
+            else if (inputX < 0)
+                entity.transform.localScale = new Vector3(Mathf.Abs(entity.transform.localScale.x), entity.transform.localScale.y, entity.transform.localScale.z);
 
             // Move
             m_body2d.velocity = new Vector2(inputX * entity.getSpeed(), m_body2d.velocity.y);
@@ -178,8 +177,36 @@ public class UJasonController : Controller
         entity.AddDamage = false;
         entity.Hurt = false;
     }
-    public void HandleAnimations()
+
+    public void OnCollisionStay2D(Collision2D object2D)
     {
-        throw new System.NotImplementedException();
+        if (!object2D.collider.isTrigger && !entity.m_grounded)
+        {
+            entity.ContactNotGround = true;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D object2D)
+    {
+         entity.ContactNotGround = false;
+    }
+    public void OnTriggerStay2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerEnter2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerExit2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionEnter2D(Collision2D object2D)
+    {
+        
     }
 }

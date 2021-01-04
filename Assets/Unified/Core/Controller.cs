@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//An interface that defines the any base controller instance to be used
-//to control a UEntity.
-//
-//Init() should be called in the implementation class's constructor.
  public interface Controller
 {
     void Move();
@@ -18,5 +14,11 @@ using UnityEngine;
 
     void Init();
 
-    void HandleAnimations();
+    bool Hurt(bool Damaged);
+    void OnTriggerStay2D(Collider2D object2D);
+    void OnTriggerEnter2D(Collider2D object2D);
+    void OnCollisionStay2D(Collision2D object2D);
+    void OnTriggerExit2D(Collider2D object2D);
+    void OnCollisionExit2D(Collision2D object2D);
+    void OnCollisionEnter2D(Collision2D object2D);
 }

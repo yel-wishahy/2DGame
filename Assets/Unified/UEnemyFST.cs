@@ -20,7 +20,7 @@ public class UEnemyFST : Controller
 
     Vector2 enemyVector;
 
-    UEntity enemyEntity;
+    Jason enemyEntity;
 
     Vector2 currentVtr;
 
@@ -41,6 +41,8 @@ public class UEnemyFST : Controller
 
     float TimeUnit = 0;
 
+    public float AttackInterval = 0.5f;
+
     void searchSurroundings()
     {
         Collider2D[] possibleEnemies = Physics2D.OverlapBoxAll(currentVtr, m_enemySenseRange * 3, 0);
@@ -48,10 +50,10 @@ public class UEnemyFST : Controller
         int size = 0;
         foreach (Collider2D enemy in possibleEnemies)
         {
-            MonoBehaviour.print("ENEMY: " + enemy);
-            if (enemy.tag == "Player" && enemy.GetComponent<UEntity>() != null)
+            if (enemy.tag == "Player" && enemy.GetComponent<Jason>() != null)
             {
-                enemyEntity = enemy.GetComponent<UEntity>();
+                enemyEntity = enemy.GetComponent<Jason>();
+                MonoBehaviour.print("ENEMY: " + enemy);
 
                 if (enemyEntity != null && enemyEntity.getHealth() > 0)
                 {
@@ -85,16 +87,18 @@ public class UEnemyFST : Controller
         m_body2d = entity.GetComponent<Rigidbody2D>();
         m_animator = entity.GetComponent<Animator>();
         m_renderer2d = entity.GetComponent<SpriteRenderer>();
-        MonoBehaviour.print(currentVtr);
+
+        if (AttackInterval <= 0)
+            AttackInterval = 0.5f;
     }
 
     // Update is called once per frame
     public void Update()
     {
+        Move();
         if (entity.getHealth() > 0)
         {
             searchSurroundings();
-            Move();
 
             if (TimeUnit < entity.AttackInterval)
                 TimeUnit += Time.deltaTime;
@@ -127,16 +131,13 @@ public class UEnemyFST : Controller
                 {
                     entity.alternativeY = 1;
                 }
-                else if (enemyEntity != null /*&& !enemyEntity.Hurt*/)
+                else if (enemyEntity != null && !enemyEntity.isHurt() && TimeUnit > entity.AttackInterval)
                 {
                     entity.alternativeX = 0;
-
                     entity.Attacking = true;
 
-                    if (entity.AddDamage && TimeUnit > entity.AttackInterval)
+                    if (entity.AddDamage)
                     {
-                        /*enemyEntity.Hurt = true;*/
-
                         if (enemyEntity.getHealth() > 0)
                             enemyEntity.takeDamage(entity.getAttackDamage());
                         else
@@ -267,15 +268,15 @@ public class UEnemyFST : Controller
 
     public void Jump()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Attack()
     {
-        throw new System.NotImplementedException();
+        
     }
 
-    void OnCollisionStay2D(Collision2D object2D)
+    public void OnCollisionStay2D(Collision2D object2D)
     {
         if (!object2D.collider.isTrigger && !m_grounded)
         {
@@ -283,12 +284,9 @@ public class UEnemyFST : Controller
         }
     }
 
-    void OnCollisionExit2D(Collision2D object2D)
+    public void OnCollisionExit2D(Collision2D object2D)
     {
-        if (!object2D.collider.isTrigger && !m_grounded)
-        {
-            ContactNotGround = false;
-        }
+         ContactNotGround = false;
     }
 
     public void ResetControls()
@@ -301,8 +299,31 @@ public class UEnemyFST : Controller
         entity.Hurt = false;
     }
 
-    public void HandleAnimations()
+    public bool Hurt(bool Damaged)
     {
-        throw new System.NotImplementedException();
+        if (Damaged)
+            entity.Hurt = true;
+
+        return entity.Hurt;
+    }
+
+    public void OnTriggerStay2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerEnter2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerExit2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionEnter2D(Collision2D object2D)
+    {
+        
     }
 }
