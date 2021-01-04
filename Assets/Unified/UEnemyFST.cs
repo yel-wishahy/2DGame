@@ -95,11 +95,10 @@ public class UEnemyFST : Controller
     // Update is called once per frame
     public void Update()
     {
+        Move();
         if (entity.getHealth() > 0)
         {
             searchSurroundings();
-
-            Move();
 
             if (TimeUnit < entity.AttackInterval)
                 TimeUnit += Time.deltaTime;

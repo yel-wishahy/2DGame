@@ -188,10 +188,7 @@ public class UJasonController : Controller
 
     public void OnCollisionExit2D(Collision2D object2D)
     {
-        if (!object2D.collider.isTrigger && !entity.m_grounded)
-        {
-            entity.ContactNotGround = false;
-        }
+         entity.ContactNotGround = false;
     }
     public void OnTriggerStay2D(Collider2D object2D)
     {
