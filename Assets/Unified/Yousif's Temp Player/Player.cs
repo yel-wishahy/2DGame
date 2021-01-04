@@ -7,19 +7,15 @@ public class Player : UEntity
     [SerializeField]
     public float attackRadius = 0.8f;
     public Vector3 range = new Vector3(1, 0.2f, 0);
-    public Transform groundCheck, attack;
+    public Transform groundCheck, attack, shoot;
     public LayerMask groundLayer, enemyLayer;
     public Controller userController;
+    public GameObject projectilePrefab;
 
     private void Awake()
     {
          userController = new playerController(this);
     }
-    
-
- 
-
-
     
 
     //override controller property with player controller class

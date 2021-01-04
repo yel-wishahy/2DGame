@@ -192,5 +192,11 @@ public class UEntity : MonoBehaviour
     {
         return Time.time;
     }
+
+    public void Die()
+    {
+        Destroy(this);
+        this.enabled = false;
+    }
 }
 

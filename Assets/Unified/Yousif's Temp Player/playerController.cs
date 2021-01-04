@@ -29,6 +29,7 @@ public class playerController : Controller
         anim = entity.GetComponent<Animator>();
         render = entity.GetComponent<SpriteRenderer>();
     }
+
     public bool Hurt(bool Damaged)
     {
         return true;
@@ -39,6 +40,7 @@ public class playerController : Controller
     {
         Debug.Log("update");
         Attack();
+        projectileAttack();
         Move();
         checkJumpCollision();
     }
@@ -53,13 +55,20 @@ public class playerController : Controller
             {
                 anim.SetBool("Attack1", true);
                 hit.GetComponent<UEntity>().takeDamage(entity.getAttackDamage());
-
             }
 
         }
         
         
     }
+
+    void projectileAttack()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        Player.Instantiate(entity.projectilePrefab, entity.attack.position, entity.attack.rotation);
+    }
+
+
 
     //do nothing
     public void Jump() { }
