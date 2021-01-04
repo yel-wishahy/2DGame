@@ -41,21 +41,6 @@ public class Jason : UEntity
 
     public override Controller UserController => userController;
 
-    void OnCollisionStay2D(Collision2D object2D)
-    {
-        if (!object2D.collider.isTrigger && !m_grounded)
-        {
-            ContactNotGround = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D object2D)
-    {
-        if (!object2D.collider.isTrigger && !m_grounded)
-        {
-            ContactNotGround = false;
-        }
-    }
 
     private void OnDrawGizmosSelected()
     {

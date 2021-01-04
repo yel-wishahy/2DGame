@@ -177,6 +177,22 @@ public class UJasonController : Controller
         entity.AddDamage = false;
         entity.Hurt = false;
     }
+
+    public void OnCollisionStay2D(Collision2D object2D)
+    {
+        if (!object2D.collider.isTrigger && !entity.m_grounded)
+        {
+            entity.ContactNotGround = true;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D object2D)
+    {
+        if (!object2D.collider.isTrigger && !entity.m_grounded)
+        {
+            entity.ContactNotGround = false;
+        }
+    }
     public void OnTriggerStay2D(Collider2D object2D)
     {
         
@@ -187,17 +203,7 @@ public class UJasonController : Controller
         
     }
 
-    public void OnCollisionStay2D(Collision2D object2D)
-    {
-        
-    }
-
     public void OnTriggerExit2D(Collider2D object2D)
-    {
-        
-    }
-
-    public void OnCollisionExit2D(Collision2D object2D)
     {
         
     }

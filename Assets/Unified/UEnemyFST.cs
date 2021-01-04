@@ -135,9 +135,7 @@ public class UEnemyFST : Controller
                 else if (enemyEntity != null && !enemyEntity.isHurt() && TimeUnit > entity.AttackInterval)
                 {
                     entity.alternativeX = 0;
-
                     entity.Attacking = true;
-                    MonoBehaviour.print(entity.AddDamage + "S" + enemyEntity);
 
                     if (entity.AddDamage)
                     {
