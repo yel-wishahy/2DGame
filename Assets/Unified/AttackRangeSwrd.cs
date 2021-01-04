@@ -1,0 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AttackRangeSwrd : MonoBehaviour
+{
+    public Jason currentEntity;
+    // Start is called before the first frame update
+    void OnTriggerStay2D(Collider2D enemy)
+    {
+        print(enemy.tag);
+        if (enemy.tag == "Enemy")
+        {
+            UEntity enemyEntity = enemy.GetComponent<UEntity>();
+            print(enemyEntity + "EE");
+            if (enemyEntity != null && enemyEntity.getHealth() > 0 && currentEntity.getHealth() > 0)
+            {
+                if (currentEntity.AddDamage)
+                {
+                    enemyEntity.takeDamage(currentEntity.getAttackDamage());
+                }
+            }
+        }
+    }
+}
