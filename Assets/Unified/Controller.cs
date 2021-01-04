@@ -13,4 +13,12 @@ using UnityEngine;
     void Update();
 
     void Init();
+
+    bool Hurt(bool Damaged);
+    void OnTriggerStay2D(Collider2D object2D);
+    void OnTriggerEnter2D(Collider2D object2D);
+    void OnCollisionStay2D(Collision2D object2D);
+    void OnTriggerExit2D(Collider2D object2D);
+    void OnCollisionExit2D(Collision2D object2D);
+    void OnCollisionEnter2D(Collision2D object2D);
 }

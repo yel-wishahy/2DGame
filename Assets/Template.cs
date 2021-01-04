@@ -9,6 +9,11 @@ class tempControl : Controller
        MonoBehaviour.print("1");
     }
 
+    public bool Hurt(bool Damaged)
+    {
+        return true;
+    }
+
     public void Init()
     {
        MonoBehaviour.print("2");

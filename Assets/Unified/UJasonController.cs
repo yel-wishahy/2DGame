@@ -19,7 +19,7 @@ public class UJasonController : Controller
 
     public void Attack()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Init()
@@ -32,12 +32,20 @@ public class UJasonController : Controller
 
     public void Jump()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Move()
     {
-        throw new System.NotImplementedException();
+        
+    }
+
+    public bool Hurt(bool Damaged)
+    {
+        if (Damaged)
+            entity.Hurt = true;
+
+        return entity.Hurt;
     }
 
     public void Update()
@@ -70,8 +78,10 @@ public class UJasonController : Controller
         if (entity.getHealth() > 0 && !entity.ContactNotGround)
         {
             // Swap direction of sprite depending on walk direction
-            if (m_body2d.velocity.x > 0) m_render2d.flipX = false;
-            else m_render2d.flipX = true;
+            if (inputX > 0)
+                entity.transform.localScale = new Vector3(-Mathf.Abs(entity.transform.localScale.x), entity.transform.localScale.y, entity.transform.localScale.z);
+            else if (inputX < 0)
+                entity.transform.localScale = new Vector3(Mathf.Abs(entity.transform.localScale.x), entity.transform.localScale.y, entity.transform.localScale.z);
 
             // Move
             m_body2d.velocity = new Vector2(inputX * entity.getSpeed(), m_body2d.velocity.y);
@@ -167,5 +177,34 @@ public class UJasonController : Controller
         entity.AttackMode = false;
         entity.AddDamage = false;
         entity.Hurt = false;
+    }
+    public void OnTriggerStay2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerEnter2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionStay2D(Collision2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerExit2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionExit2D(Collision2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionEnter2D(Collision2D object2D)
+    {
+        
     }
 }

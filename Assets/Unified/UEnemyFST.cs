@@ -41,7 +41,7 @@ public class UEnemyFST : Controller
 
     float TimeUnit = 0;
 
-    public float AttackInterval = 0.25f;
+    public float AttackInterval = 0.5f;
 
     void searchSurroundings()
     {
@@ -267,15 +267,15 @@ public class UEnemyFST : Controller
 
     public void Jump()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Attack()
     {
-        throw new System.NotImplementedException();
+        
     }
 
-    void OnCollisionStay2D(Collision2D object2D)
+    public void OnCollisionStay2D(Collision2D object2D)
     {
         if (!object2D.collider.isTrigger && !m_grounded)
         {
@@ -283,7 +283,7 @@ public class UEnemyFST : Controller
         }
     }
 
-    void OnCollisionExit2D(Collision2D object2D)
+    public void OnCollisionExit2D(Collision2D object2D)
     {
         if (!object2D.collider.isTrigger && !m_grounded)
         {
@@ -301,4 +301,31 @@ public class UEnemyFST : Controller
         entity.Hurt = false;
     }
 
+    public bool Hurt(bool Damaged)
+    {
+        if (Damaged)
+            entity.Hurt = true;
+
+        return entity.Hurt;
+    }
+
+    public void OnTriggerStay2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerEnter2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerExit2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionEnter2D(Collision2D object2D)
+    {
+        
+    }
 }

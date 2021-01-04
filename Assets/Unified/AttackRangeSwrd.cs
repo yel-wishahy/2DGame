@@ -11,12 +11,12 @@ public class AttackRangeSwrd : MonoBehaviour
         print(enemy.tag);
         if (enemy.tag == "Enemy")
         {
-            Jason enemyEntity = enemy.GetComponent<Jason>();
-            if (enemyEntity != null && enemyEntity.getHealth() > 0 && currentEntity.getHealth() > 0 && !enemyEntity.Hurt)
+            UEntity enemyEntity = enemy.GetComponent<UEntity>();
+            print(enemyEntity + "EE");
+            if (enemyEntity != null && enemyEntity.getHealth() > 0 && currentEntity.getHealth() > 0)
             {
                 if (currentEntity.AddDamage)
                 {
-                    enemyEntity.Hurt = true;
                     enemyEntity.takeDamage(currentEntity.getAttackDamage());
                 }
             }

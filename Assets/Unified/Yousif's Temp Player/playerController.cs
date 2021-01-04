@@ -29,7 +29,11 @@ public class playerController : Controller
         anim = entity.GetComponent<Animator>();
         render = entity.GetComponent<SpriteRenderer>();
     }
-      
+    public bool Hurt(bool Damaged)
+    {
+        return true;
+    }
+
     // Update is called once per frame
     public void Update()
     {
@@ -108,5 +112,38 @@ public class playerController : Controller
 
     }
 
+    public void Hurt()
+    {
+        
+    }
 
+    public void OnTriggerStay2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerEnter2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionStay2D(Collision2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerExit2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionExit2D(Collision2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionEnter2D(Collision2D object2D)
+    {
+        
+    }
 }

@@ -67,8 +67,11 @@ public class chickenController : Controller
     }
 
     //check
-    private void Hurt()
+    public bool Hurt(bool Damaged)
     {
+        if (Damaged)
+            anim.SetBool("Hurt", true);
+
         if (anim.GetBool("Hurt") && stunTimer == 0)
         {
             state = chickenState.stunned;
@@ -82,6 +85,9 @@ public class chickenController : Controller
             anim.SetBool("Hurt", false);
 
         }
+
+        return anim.GetBool("Hurt");
+
     }
 
     //change the direction of the chicken
@@ -177,5 +183,35 @@ public class chickenController : Controller
     public void Move()
     {
         body.velocity = new Vector2(dir * entity.getSpeed(), body.velocity.y);
+    }
+
+    public void OnTriggerStay2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerEnter2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionStay2D(Collision2D object2D)
+    {
+        
+    }
+
+    public void OnTriggerExit2D(Collider2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionExit2D(Collision2D object2D)
+    {
+        
+    }
+
+    public void OnCollisionEnter2D(Collision2D object2D)
+    {
+        
     }
 }

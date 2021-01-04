@@ -4,7 +4,7 @@ using UnityEngine;
 
 //An Entity class that is the base class for all entities.
 //The defined behaviour for an entity is as follows:
-//*An entity has health, speed, jumpForce, and AttackDamage
+//*An entity has health, speed, jumoForce, and AttackDamage
 //
 //To implement a new entity simply extend this class.
 //All entities have the potential for a userController
@@ -13,7 +13,7 @@ using UnityEngine;
 //
 //The Update() behaviour is defined by the controller class.
 //
-//Start behaviour is defined in the controller class's constructor
+//The start behaviour initializes the controller class
 public class UEntity : MonoBehaviour
 {
     //abstract properties that all entities have (override when extending this abstract class)
@@ -32,23 +32,117 @@ public class UEntity : MonoBehaviour
         if (AlterativeControl)
         {
             AltController.Update();
-        } else
+        }
+        else
         {
             UserController.Update();
         }
 
     }
 
+    void OnCollisionStay2D(Collision2D object2D)
+    {
+        if (AlterativeControl)
+        {
+            AltController.OnCollisionStay2D(object2D);
+        }
+        else
+        {
+            UserController.OnCollisionStay2D(object2D);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D object2D)
+    {
+        if (AlterativeControl)
+        {
+            AltController.OnCollisionEnter2D(object2D);
+        }
+        else
+        {
+            UserController.OnCollisionEnter2D(object2D);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D object2D)
+    {
+        if (AlterativeControl)
+        {
+            AltController.OnCollisionExit2D(object2D);
+        }
+        else
+        {
+            UserController.OnCollisionExit2D(object2D);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D object2D)
+    {
+        if (AlterativeControl)
+        {
+            AltController.OnTriggerStay2D(object2D);
+        }
+        else
+        {
+            UserController.OnTriggerStay2D(object2D);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D object2D)
+    {
+        if (AlterativeControl)
+        {
+            AltController.OnTriggerEnter2D(object2D);
+        }
+        else
+        {
+            UserController.OnTriggerEnter2D(object2D);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D object2D)
+    {
+        if (AlterativeControl)
+        {
+            AltController.OnTriggerExit2D(object2D);
+        }
+        else
+        {
+            UserController.OnTriggerExit2D(object2D);
+        }
+    }
+
     //Entity takes damage and health is reduced by dmg.
     public void takeDamage(float dmg)
     {
         Health -= dmg;
+
+        if (AlterativeControl)
+        {
+            AltController.Hurt(true);
+        }
+        else
+        {
+            UserController.Hurt(true);
+        }
     }
 
     //Returns life state of entity
     public bool isAlive()
     {
         return (Health > 0);
+    }
+
+    public bool isHurt()
+    {
+        if (AlterativeControl)
+        {
+            return AltController.Hurt(false);
+        }
+        else
+        {
+            return UserController.Hurt(false);
+        }
     }
 
     //increments entity health by 1
