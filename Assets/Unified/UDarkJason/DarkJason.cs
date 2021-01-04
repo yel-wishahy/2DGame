@@ -7,6 +7,7 @@ public class DarkJason : UEntity
     [SerializeField]
     public Sensor_Entity GroundSensor;
     public Vector2 EnemySenseRange;
+    public float AttackInterval;
 
     [HideInInspector]
     public float alternativeX;

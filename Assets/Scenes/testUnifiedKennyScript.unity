@@ -570,6 +570,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 312273140866591995, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 312273140866591995, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2950935334211152972, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
         type: 3}
       propertyPath: Speed
@@ -592,8 +602,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3483319568994071410, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
         type: 3}
+      propertyPath: AttackInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3483319568994071410, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
+        type: 3}
       propertyPath: EnemySenseRange.x
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379586675518759540, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379586676036070408, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379586676036070408, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4604725548733603017, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
         type: 3}
@@ -603,7 +633,7 @@ PrefabInstance:
     - target: {fileID: 4604725548733603017, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4607809223710696331, guid: 53cfa5cc0c6effb4eb9321ffd0b3fcfa,
         type: 3}

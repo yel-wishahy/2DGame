@@ -50,16 +50,18 @@ public class UEnemyFST : Controller
         int size = 0;
         foreach (Collider2D enemy in possibleEnemies)
         {
-            MonoBehaviour.print("ENEMY: " + enemy);
             if (enemy.tag == "Player" && enemy.GetComponent<Jason>() != null)
             {
                 enemyEntity = enemy.GetComponent<Jason>();
+                MonoBehaviour.print("ENEMY: " + enemy);
 
                 if (enemyEntity != null && enemyEntity.getHealth() > 0)
                 {
-                    CurrentState = States.Attack;
-                    enemyVector = enemy.transform.position;
-                    entity.AttackMode = true;
+
+                   CurrentState = States.Attack;
+                   entity.AttackMode = true;
+                   enemyVector = enemy.transform.position;
+                    
                 }
 
                 size++;
@@ -85,7 +87,9 @@ public class UEnemyFST : Controller
         m_body2d = entity.GetComponent<Rigidbody2D>();
         m_animator = entity.GetComponent<Animator>();
         m_renderer2d = entity.GetComponent<SpriteRenderer>();
-        MonoBehaviour.print(currentVtr);
+
+        if (AttackInterval <= 0)
+            AttackInterval = 0.5f;
     }
 
     // Update is called once per frame
@@ -94,9 +98,10 @@ public class UEnemyFST : Controller
         if (entity.getHealth() > 0)
         {
             searchSurroundings();
+
             Move();
 
-            if (TimeUnit < AttackInterval)
+            if (TimeUnit < entity.AttackInterval)
                 TimeUnit += Time.deltaTime;
 
             if (CurrentState == States.Seeking)
@@ -127,16 +132,15 @@ public class UEnemyFST : Controller
                 {
                     entity.alternativeY = 1;
                 }
-                else if (enemyEntity != null && !enemyEntity.Hurt)
+                else if (enemyEntity != null && !enemyEntity.isHurt() && TimeUnit > entity.AttackInterval)
                 {
                     entity.alternativeX = 0;
 
                     entity.Attacking = true;
+                    MonoBehaviour.print(entity.AddDamage + "S" + enemyEntity);
 
-                    if (entity.AddDamage && TimeUnit > AttackInterval)
+                    if (entity.AddDamage)
                     {
-                        enemyEntity.Hurt = true;
-
                         if (enemyEntity.getHealth() > 0)
                             enemyEntity.takeDamage(entity.getAttackDamage());
                         else
@@ -285,10 +289,7 @@ public class UEnemyFST : Controller
 
     public void OnCollisionExit2D(Collision2D object2D)
     {
-        if (!object2D.collider.isTrigger && !m_grounded)
-        {
-            ContactNotGround = false;
-        }
+         ContactNotGround = false;
     }
 
     public void ResetControls()

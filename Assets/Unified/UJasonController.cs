@@ -21,7 +21,6 @@ public class UJasonController : Controller
     {
         
     }
-
     public void Init()
     {
         m_animator = entity.GetComponent<Animator>();
@@ -47,7 +46,6 @@ public class UJasonController : Controller
 
         return entity.Hurt;
     }
-
     public void Update()
     {
         //Check if character just landed on the ground
@@ -140,6 +138,7 @@ public class UJasonController : Controller
         {
             entity.m_combatIdle = true;
             m_animator.SetTrigger("Attack");
+            Attack();
 
             entity.Attacking = false;
         }
