@@ -178,4 +178,9 @@ public class chickenController : Controller
     {
         body.velocity = new Vector2(dir * entity.getSpeed(), body.velocity.y);
     }
+
+    public void HandleAnimations()
+    {
+        throw new System.NotImplementedException();
+    }
 }

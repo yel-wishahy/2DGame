@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Class that displays UEntity HP, make sure to assign MainEntity in inspector 
 public class DisplayHP : MonoBehaviour
 {
+    [SerializeField]
     public UEntity MainEntity;
+
     Text text;
     
     void Start()

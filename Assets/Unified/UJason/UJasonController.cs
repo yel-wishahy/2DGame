@@ -178,4 +178,8 @@ public class UJasonController : Controller
         entity.AddDamage = false;
         entity.Hurt = false;
     }
+    public void HandleAnimations()
+    {
+        throw new System.NotImplementedException();
+    }
 }

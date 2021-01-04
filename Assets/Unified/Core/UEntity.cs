@@ -14,6 +14,11 @@ using UnityEngine;
 //The Update() behaviour is defined by the controller class.
 //
 //Start behaviour is defined in the controller class's constructor
+//
+//Any behaviour that is deemed common to all entities can be 
+//added to this class. Ensure that this variable will be intilizaed properly
+//either as a property for the child class to use or a SerializedField
+//to change in unity inspector.
 public class UEntity : MonoBehaviour
 {
     //abstract properties that all entities have (override when extending this abstract class)
@@ -69,31 +74,38 @@ public class UEntity : MonoBehaviour
         Health += hlth;
     }
 
+    //Returns attack damage of entity
     public float getAttackDamage()
     {
         return AttackDamage;
     }
 
+    //Returns speed of entity
     public float getSpeed()
     {
         return Speed;
     }
 
+    //Returns jumpForce of entity
     public float getJumpForce()
     {
         return JumpForce;
     }
 
+    //Return current health of entity
     public float getHealth()
     {
         return Health;
     }
 
+    //Sets health of entity to hlth
+    //PreCondition: hlth >= 0;
     public void setHealth(float hlth)
     {
         Health = hlth;
     }
-
+    
+    //Returns current game time of entity's runtime game instance
     public float getTime()
     {
         return Time.time;

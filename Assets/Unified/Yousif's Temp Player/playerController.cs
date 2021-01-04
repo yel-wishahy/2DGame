@@ -108,5 +108,10 @@ public class playerController : Controller
 
     }
 
+    public void HandleAnimations()
+    {
+        throw new System.NotImplementedException();
+    }
+
 
 }

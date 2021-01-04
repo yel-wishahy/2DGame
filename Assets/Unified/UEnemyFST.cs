@@ -20,7 +20,7 @@ public class UEnemyFST : Controller
 
     Vector2 enemyVector;
 
-    Jason enemyEntity;
+    UEntity enemyEntity;
 
     Vector2 currentVtr;
 
@@ -49,9 +49,9 @@ public class UEnemyFST : Controller
         foreach (Collider2D enemy in possibleEnemies)
         {
             MonoBehaviour.print("ENEMY: " + enemy);
-            if (enemy.tag == "Player" && enemy.GetComponent<Jason>() != null)
+            if (enemy.tag == "Player" && enemy.GetComponent<UEntity>() != null)
             {
-                enemyEntity = enemy.GetComponent<Jason>();
+                enemyEntity = enemy.GetComponent<UEntity>();
 
                 if (enemyEntity != null && enemyEntity.getHealth() > 0)
                 {
@@ -127,7 +127,7 @@ public class UEnemyFST : Controller
                 {
                     entity.alternativeY = 1;
                 }
-                else if (enemyEntity != null && !enemyEntity.Hurt)
+                else if (enemyEntity != null /*&& !enemyEntity.Hurt*/)
                 {
                     entity.alternativeX = 0;
 
@@ -135,7 +135,7 @@ public class UEnemyFST : Controller
 
                     if (entity.AddDamage && TimeUnit > entity.AttackInterval)
                     {
-                        enemyEntity.Hurt = true;
+                        /*enemyEntity.Hurt = true;*/
 
                         if (enemyEntity.getHealth() > 0)
                             enemyEntity.takeDamage(entity.getAttackDamage());
@@ -301,4 +301,8 @@ public class UEnemyFST : Controller
         entity.Hurt = false;
     }
 
+    public void HandleAnimations()
+    {
+        throw new System.NotImplementedException();
+    }
 }
