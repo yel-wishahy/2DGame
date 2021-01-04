@@ -114,7 +114,7 @@ MonoBehaviour:
   attackTime: 1
   turnTime: 2
   jumpTime: 4
-  stunTime: 1.5
+  stunTime: 3
 --- !u!50 &5864342633004099669
 Rigidbody2D:
   serializedVersion: 4

@@ -50,6 +50,8 @@ public class chickenController : Controller
     // Update is called once per frame
     public void Update()
     {
+        updateHurt();
+
         if (state != chickenState.stunned)
         {
             if (state != chickenState.charging) changeDir();
@@ -69,9 +71,18 @@ public class chickenController : Controller
     //check
     public bool Hurt(bool Damaged)
     {
+        Debug.Log("Hurt");
         if (Damaged)
             anim.SetBool("Hurt", true);
 
+        updateHurt();
+
+        return anim.GetBool("Hurt");
+
+    }
+
+    void updateHurt()
+    {
         if (anim.GetBool("Hurt") && stunTimer == 0)
         {
             state = chickenState.stunned;
@@ -83,11 +94,7 @@ public class chickenController : Controller
             stunTimer = 0;
             state = chickenState.moving;
             anim.SetBool("Hurt", false);
-
         }
-
-        return anim.GetBool("Hurt");
-
     }
 
     //change the direction of the chicken
