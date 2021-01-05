@@ -23,21 +23,25 @@ public class ProjectileController : Controller
     {
         // when bullet hits something
         UEntity enemy = object2D.GetComponent<UEntity>();
-        if (enemy != null && enemy.tag != "Player")
+        if (enemy != null && enemy.tag != "Player" && entity.isAlive())
         {
             //hurts enemy
             enemy.takeDamage(entity.getAttackDamage());
 
             //destroys this bullet
             entity.Die();
-            GameObject.Destroy(entity);
+            entity.GetComponent<SpriteRenderer>().enabled = false;
+            
         }
     }
 
     public void Update()
     {
-        Debug.Log("update");
-        body.velocity = entity.transform.right * entity.getSpeed();
+        if (entity.isAlive())
+        {
+            body.velocity = entity.transform.right * entity.getSpeed();
+
+        }
     }
 
 

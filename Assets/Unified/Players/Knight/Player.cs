@@ -12,9 +12,13 @@ public class Player : UEntity
     public Controller userController;
     public GameObject projectilePrefab;
 
+    [HideInInspector]
+    private int coalsCollected;
+
     private void Awake()
     {
          userController = new playerController(this);
+         coalsCollected = 0;
     }
     
 
@@ -27,6 +31,18 @@ public class Player : UEntity
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(attack.position, attackRadius);
     }
+
+    public void collectCoal()
+    {
+        coalsCollected++;
+    }
+
+    public int getCoalsCollected()
+    {
+        return coalsCollected;
+    }
+
+    
 
 
 }
