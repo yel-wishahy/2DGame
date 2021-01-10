@@ -197,6 +197,7 @@ public class UEntity : MonoBehaviour
     {
         Destroy(this);
         this.enabled = false;
+        Health = 0;
     }
 }
 

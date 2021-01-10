@@ -9,11 +9,14 @@ public class DisplayHP : MonoBehaviour
     [SerializeField]
     public UEntity MainEntity;
 
+    Slider slider;
     Text text;
     
     void Start()
     {
         text = GetComponent<Text>();
+        slider = GetComponent<Slider>();
+        slider.maxValue = MainEntity.getHealth();
     }
     // Update is called once per frame
     void Update()
@@ -24,5 +27,10 @@ public class DisplayHP : MonoBehaviour
             text.rectTransform.localScale = new Vector3(-1,1,1);
         else
             text.rectTransform.localScale = new Vector3(1,1,1);
+
+        slider.value = MainEntity.getHealth();
+
+
+
     }
 }
