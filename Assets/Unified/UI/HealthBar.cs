@@ -7,6 +7,7 @@ public class HealthBar : MonoBehaviour
 {
     public Slider slider;
     public UEntity entity;
+    public Text text;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +20,9 @@ public class HealthBar : MonoBehaviour
     {
         slider.value = entity.getHealth();
         
+        if (text != null)
+        {
+            text.text = slider.value + "/" + slider.maxValue;
+        }
     }
 }
