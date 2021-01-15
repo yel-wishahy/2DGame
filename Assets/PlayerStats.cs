@@ -11,7 +11,7 @@ public class PlayerStats
     private int Level = 0;  //4 bytes
     private int Unlocked = 0; // 25+9 = 34 items total  //4 bytes
     private int UID = 0;  //4 bytes
-    private HashSet<int> AchievementHashes = new HashSet<int>();
+    private Hashtable AchievementHashes = new Hashtable();
     private string Message = "This is a user."; // 2bytes*15
     private int Verified = 2; // To comply with "COPPA" // 2 - Initalized // 4 bytes
 
@@ -108,7 +108,7 @@ public class PlayerStats
             hashVal += c;
         }
 
-        AchievementHashes.Add(hashVal);
+        AchievementHashes.Add(hashVal, ach);
     }
 
     public void RemoveAchievement(int hashVal)
@@ -117,7 +117,7 @@ public class PlayerStats
             AchievementHashes.Remove(hashVal);
     }
 
-    public HashSet<int> OutputListAchievement()
+    public Hashtable OutputListAchievement()
     {
         return AchievementHashes;
     }

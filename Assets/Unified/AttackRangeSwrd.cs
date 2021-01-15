@@ -17,6 +17,8 @@ public class AttackRangeSwrd : MonoBehaviour
             {
                 if (currentEntity.AddDamage)
                 {
+                   // UnifiedStorage.WriteToDisk();
+                    print(UnifiedStorage.Sensitivity);
                     enemyEntity.takeDamage(currentEntity.getAttackDamage());
                 }
             }
