@@ -32,6 +32,7 @@ public class playerController : Controller
 
     public bool Hurt(bool Damaged)
     {
+        anim.SetBool("Hurt", true);
         return true;
     }
 
@@ -72,7 +73,6 @@ public class playerController : Controller
 
     //do nothing
     public void Jump() { }
-
 
     public void Move()
     {
