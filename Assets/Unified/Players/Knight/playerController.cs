@@ -92,7 +92,6 @@ public class playerController : Controller
             if (hitSide.collider != null)
             {
                 //these numbers define how close a player should be to a wall to count as a wall slide
-                //as well as how far away they should be from the ground
                 if (hitSide.distance < 0.5 && (hitBottom.distance > 1 || hitBottom.collider == null))
                 {
                     sliding = true;
