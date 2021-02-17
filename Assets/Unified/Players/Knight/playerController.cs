@@ -12,7 +12,7 @@ public class playerController : Controller
     private float jumpHeight = 0.5f;
     private bool sliding = false;
 
-
+    private bool grabbing = false;
 
 
     public playerController(Player entity)
@@ -39,11 +39,6 @@ public class playerController : Controller
     // Update is called once per frame
     public void Update()
     {
-        if (sliding)
-        {
-            body.velocity = new Vector2(body.velocity.x, -1f);
-        }
-        Debug.Log("update");
         Attack();
         projectileAttack();
         Move();
@@ -81,6 +76,11 @@ public class playerController : Controller
 
     public void WallSlide()
     {
+        if (sliding)
+        {
+            body.velocity = new Vector2(body.velocity.x, -1f);
+        }
+
         //how much slower should a player fall if theyre against the wall
         float fallSpeed = -0.5f;
 
@@ -121,8 +121,6 @@ public class playerController : Controller
 
         }
     }
-
-
 
     public void Move()
     {
