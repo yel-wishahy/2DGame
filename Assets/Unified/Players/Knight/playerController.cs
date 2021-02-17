@@ -11,7 +11,7 @@ public class playerController : Controller
 
     private float jumpHeight = 0.5f;
 
-
+    private bool grabbing = false;
 
 
     public playerController(Player entity)
@@ -38,7 +38,7 @@ public class playerController : Controller
     // Update is called once per frame
     public void Update()
     {
-        Debug.Log("update");
+        LedgeGrab();
         Attack();
         projectileAttack();
         Move();
@@ -73,6 +73,30 @@ public class playerController : Controller
     //do nothing
     public void Jump() { }
 
+    public void LedgeGrab()
+    {
+
+        float distanceAbove = 2;
+
+        RaycastHit2D aboveHit = Physics2D.Raycast(new Vector2(body.position.x, body.position.y + distanceAbove), new Vector2(body.velocity.x, 0));
+        RaycastHit2D levelHit = Physics2D.Raycast(new Vector2(body.position.x, body.position.y), new Vector2(body.velocity.x, 0));
+
+        if (Input.GetMouseButton(1) && levelHit.collider != null)
+        {
+            //im not sure if the first or will work, if C# does optimizations: then yes
+            if((aboveHit.collider == null || aboveHit.distance > 1) && levelHit.distance < 0.5)
+            {
+                body.gravityScale = 0.0f;
+                body.velocity = new Vector2(body.velocity.x, 0);
+            } else
+            {
+                body.gravityScale = 1f;
+            }
+        } else
+        {
+            body.gravityScale = 1f;
+        }
+    }
 
     public void Move()
     {
