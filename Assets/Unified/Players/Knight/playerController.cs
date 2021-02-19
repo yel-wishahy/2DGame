@@ -11,6 +11,8 @@ public class playerController : Controller
 
     private float jumpHeight = 0.5f;
 
+    private bool sliding = false;
+
 
 
 
@@ -39,11 +41,11 @@ public class playerController : Controller
     // Update is called once per frame
     public void Update()
     {
-        Debug.Log("update");
         Attack();
         projectileAttack();
         Move();
         checkJumpCollision();
+        WallSlide();
     }
 
     public void Attack()
@@ -73,6 +75,55 @@ public class playerController : Controller
 
     //do nothing
     public void Jump() { }
+    
+    public void WallSlide()
+    {
+        if (sliding)
+        {
+            body.velocity = new Vector2(body.velocity.x, -1f);
+        }
+
+        //how much slower should a player fall if theyre against the wall
+        float fallSpeed = -0.5f;
+
+        if (Input.GetMouseButton(1))
+        {
+            RaycastHit2D hitSide = Physics2D.Raycast(body.position, new Vector2(body.velocity.x, 0));
+            RaycastHit2D hitBottom = Physics2D.Raycast(body.position, new Vector2(0, -1));
+
+            if (hitSide.collider != null)
+            {
+                //these numbers define how close a player should be to a wall to count as a wall slide
+                if (hitSide.distance < 0.5 && (hitBottom.distance > 1 || hitBottom.collider == null))
+                {
+                    sliding = true;
+                    body.velocity = new Vector2(body.velocity.x, fallSpeed);
+                    anim.SetBool("WallSlide", true);
+                    anim.SetFloat("AirSpeedY", body.velocity.y);
+                    anim.SetBool("Run", false);
+                    anim.SetBool("Grounded", false);
+                    Debug.Log("SLIDING!");
+                }
+                else
+                {
+                    sliding = false;
+                    anim.SetBool("WallSlide", false);
+                    anim.SetBool("Grounded", true);
+
+                }
+            }
+            {
+
+            }
+        } else
+        {
+            sliding = false;
+            anim.SetBool("WallSlide", false);
+            anim.SetBool("Grounded", true);
+
+        }
+    }
+
 
     public void Move()
     {
