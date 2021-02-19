@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\you29\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\you29\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_2DGame.-383475072.00" t="ExcludeRecursive" />
+    <e p="G:\GitHub\2DGame" t="IncludeRecursive">
+      <e p="2DGame.sln" t="IncludeFlat" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="External Assets" t="Include">
+          <e p="Hero Knight - Pixel Art" t="Include">
+            <e p="ColorSwap" t="Include">
+              <e p="ColorSwap_HeroKnight.cs" t="Include" />
+              <e p="Sprites-ColorSwap.shader" t="Include" />
+            </e>
+            <e p="Demo" t="Include">
+              <e p="DestroyEvent_HeroKnight.cs" t="Include" />
+              <e p="HeroKnight.cs" t="Include" />
+              <e p="Sensor_HeroKnight.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Internal Assets" t="Include">
+          <e p="AttackRangeSwrd.cs" t="Include" />
+          <e p="Core" t="Include">
+            <e p="Controller.cs" t="Include" />
+            <e p="Item.cs" t="Include" />
+            <e p="Sensor_Entity.cs" t="Include" />
+            <e p="UEntity.cs" t="Include" />
+          </e>
+          <e p="DataStorge" t="Include">
+            <e p="DataLoader.cs" t="Include" />
+            <e p="PlayerStats.cs" t="Include" />
+            <e p="UnifiedStorage.cs" t="Include" />
+          </e>
+          <e p="Enemies" t="Include">
+            <e p="Chicken" t="Include">
+              <e p="Chicken.cs" t="Include" />
+              <e p="chickenController.cs" t="Include" />
+            </e>
+            <e p="DarkJason.cs" t="Include" />
+            <e p="UEnemyFST.cs" t="Include" />
+          </e>
+          <e p="Items" t="Include">
+            <e p="Bullet" t="Include">
+              <e p="Bullet.cs" t="Include" />
+              <e p="ProjectileController.cs" t="Include" />
+            </e>
+            <e p="Coal (collectible)" t="Include">
+              <e p="Coal.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Players" t="Include">
+            <e p="Knight" t="Include">
+              <e p="Player.cs" t="Include" />
+              <e p="playerController.cs" t="Include" />
+            </e>
+            <e p="UJason" t="Include">
+              <e p="Jason.cs" t="Include" />
+              <e p="UJasonController.cs" t="Include" />
+            </e>
+          </e>
+          <e p="UI" t="Include">
+            <e p="CoalDisplay.cs" t="Include" />
+            <e p="DisplayHP.cs" t="Include" />
+            <e p="follower.cs" t="Include" />
+            <e p="HealthBar.cs" t="Include" />
+            <e p="Text" t="Include">
+              <e p="text.txt" t="Include" />
+              <e p="TextBoxManager.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

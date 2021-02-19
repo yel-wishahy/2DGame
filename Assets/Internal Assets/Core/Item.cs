@@ -7,7 +7,7 @@
  * improve this definition later). An item should not have
  * health or take damage etc...
  * 
- * Author: Yousif El-Wishahy
+ * Author: Yousif El-Wishahy (gh: yel-wishahy)
  * (2021/02/19)
  */
 public class Item : MonoBehaviour
