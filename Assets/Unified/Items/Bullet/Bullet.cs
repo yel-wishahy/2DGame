@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : UEntity
+public class Bullet : Item
 {
+    //controller
     private Controller bulletController;
+    
+    //can edit in inspector
+    [SerializeField] 
+    public float attackDamage;
+    public float speed;
+    
 
     private void Awake()
     {

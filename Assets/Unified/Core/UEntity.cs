@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//An Entity class that is the base class for all entities.
-//The defined behaviour for an entity is as follows:
-//*An entity has health, speed, jumoForce, and AttackDamage
-//
-//To implement a new entity simply extend this class.
-//All entities have the potential for a userController
-//and an alternative AI controller. Defined by the 
-//Alternative Control boolean.
-//
-//The Update() behaviour is defined by the controller class.
-//
-//The start behaviour initializes the controller class
+/*
+Description: 
+    An Entity class that is the base class for all entities.
+    The defined behaviour for an entity is as follows:
+    An entity has health, speed, jumoForce, and AttackDamage
+
+How to Use:
+    To implement a new entity simply extend this class.
+    All entities have the potential for a userController
+    and an alternative AI controller. Defined by the 
+    Alternative Control boolean.
+
+Notes:
+    The Update() behaviour is defined by the controller class.
+    The start behaviour initializes the controller class
+
+Authors: Yousif El-Wishahy and Kenny Zhang
+Date: (2020/12/31)
+*/
 public class UEntity : MonoBehaviour
 {
     //abstract properties that all entities have (override when extending this abstract class)

@@ -5,21 +5,21 @@ using UnityEngine;
 public class ProjectileController : Controller
 {
     private Rigidbody2D body;
-    private UEntity entity;
+    private Bullet self;
     private float dir = 0;
     private SpriteRenderer render;
 
-    public ProjectileController(UEntity entity)
+    public ProjectileController(Bullet self)
     {
-        this.entity = entity;
+        this.self = self;
         Init();
     }
 
     public void Init()
     {
         Debug.Log("init");
-        body = entity.GetComponent<Rigidbody2D>();
-        render = entity.GetComponent<SpriteRenderer>();
+        body = self.GetComponent<Rigidbody2D>();
+        render = self.GetComponent<SpriteRenderer>();
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (mousePos.x >= body.position.x)
@@ -37,23 +37,30 @@ public class ProjectileController : Controller
     {
         // when bullet hits something
         UEntity enemy = object2D.GetComponent<UEntity>();
-        if (enemy != null && enemy.tag != "Player" && entity.isAlive())
+        if (enemy != null && enemy.tag != "Player" && self.isAlive())
         {
             //hurts enemy
-            enemy.takeDamage(entity.getAttackDamage());
+            enemy.takeDamage(self.attackDamage);
 
             //destroys this bullet
-            entity.Die();
-            entity.GetComponent<SpriteRenderer>().enabled = false;
+            self.Die();
+            self.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        if (object2D.GetComponent<Collider2D>().tag == "Ground")
+        {
+            //destroys this bullet if it hits ground
+            self.Die();
+            self.GetComponent<SpriteRenderer>().enabled = false;
             
         }
     }
 
     public void Update()
     {
-        if (entity.isAlive())
+        if (self.isAlive())
         {
-            body.velocity = new Vector2(dir * entity.getSpeed(), 0);
+            body.velocity = new Vector2(dir * self.speed, 0);
 
         }
     }
