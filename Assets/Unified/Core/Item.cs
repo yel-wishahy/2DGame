@@ -18,7 +18,6 @@ public class Item : MonoBehaviour
     
     //controllers that are specieifed as properties.
     public virtual Controller AltController { get; }
-    public virtual Controller UserController { get; }
 
     //All common item functions for the game engine to use
     
@@ -29,10 +28,6 @@ public class Item : MonoBehaviour
         {
             AltController.Update();
         }
-        else
-        {
-            UserController.Update();
-        }
 
     }
 
@@ -42,10 +37,6 @@ public class Item : MonoBehaviour
         {
             AltController.OnCollisionStay2D(object2D);
         }
-        else
-        {
-            UserController.OnCollisionStay2D(object2D);
-        }
     }
 
     void OnCollisionEnter2D(Collision2D object2D)
@@ -53,10 +44,6 @@ public class Item : MonoBehaviour
         if (AlterativeControl)
         {
             AltController.OnCollisionEnter2D(object2D);
-        }
-        else
-        {
-            UserController.OnCollisionEnter2D(object2D);
         }
     }
 
@@ -66,10 +53,6 @@ public class Item : MonoBehaviour
         {
             AltController.OnCollisionExit2D(object2D);
         }
-        else
-        {
-            UserController.OnCollisionExit2D(object2D);
-        }
     }
 
     void OnTriggerStay2D(Collider2D object2D)
@@ -77,10 +60,6 @@ public class Item : MonoBehaviour
         if (AlterativeControl)
         {
             AltController.OnTriggerStay2D(object2D);
-        }
-        else
-        {
-            UserController.OnTriggerStay2D(object2D);
         }
     }
 
@@ -90,10 +69,6 @@ public class Item : MonoBehaviour
         {
             AltController.OnTriggerEnter2D(object2D);
         }
-        else
-        {
-            UserController.OnTriggerEnter2D(object2D);
-        }
     }
 
     void OnTriggerExit2D(Collider2D object2D)
@@ -101,10 +76,6 @@ public class Item : MonoBehaviour
         if (AlterativeControl)
         {
             AltController.OnTriggerExit2D(object2D);
-        }
-        else
-        {
-            UserController.OnTriggerExit2D(object2D);
         }
     }
 
