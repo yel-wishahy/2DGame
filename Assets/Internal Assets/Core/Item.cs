@@ -87,13 +87,13 @@ public class Item : MonoBehaviour
     public void Die()
     {
         Destroy(this);
-        this.enabled = false;
+        enabled = false;
     }
     
     //Returns life state of entity
     public bool isAlive()
     {
-        return this.enabled;
+        return enabled;
     }
     
     

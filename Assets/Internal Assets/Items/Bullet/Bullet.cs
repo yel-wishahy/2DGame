@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : Item
 {
     //controller
-    private Controller bulletController;
+    public Controller bulletController;
     
     //can edit in inspector
     [SerializeField] 

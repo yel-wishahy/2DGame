@@ -9,9 +9,9 @@ public class ProjectileController : Controller
     private float dir = 0;
     private SpriteRenderer render;
 
-    public ProjectileController(Bullet self)
+    public ProjectileController(Bullet projectile)
     {
-        this.self = self;
+        self = projectile;
         Init();
     }
 
