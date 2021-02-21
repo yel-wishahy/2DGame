@@ -14,6 +14,7 @@ public class Chicken :UEntity
     public float turnTime = 3;
     public float jumpTime = 6;
     public float stunTime = 1.5f;
+    public float hurtTime = 0.45f;
     private Controller AIController;
 
     private void Awake()

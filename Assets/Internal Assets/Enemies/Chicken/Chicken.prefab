@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 4332317350382470742}
   - component: {fileID: 4332317350382470740}
   - component: {fileID: 4332317350382470741}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chicken
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4524021017494068008, guid: b62f8b923645fc5419518078b1398665,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -164,7 +164,7 @@ MonoBehaviour:
   attackTime: 1
   turnTime: 3
   jumpTime: 6
-  stunTime: 1.5
+  stunTime: 2
 --- !u!50 &4332317350382470740
 Rigidbody2D:
   serializedVersion: 4
@@ -209,10 +209,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4332317350382470745}
     m_Modifications:
+    - target: {fileID: 452894573120143895, guid: b1dcef5f744215c46b08b03bc2eb9cfc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1724407126391121966, guid: b1dcef5f744215c46b08b03bc2eb9cfc,
         type: 3}
       propertyPath: m_Name
       value: HealthBarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724407126391121966, guid: b1dcef5f744215c46b08b03bc2eb9cfc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2859368465961495110, guid: b1dcef5f744215c46b08b03bc2eb9cfc,
         type: 3}
@@ -334,6 +344,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3131708112901744860, guid: b1dcef5f744215c46b08b03bc2eb9cfc,
+        type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 4332317350382470742}
+    - target: {fileID: 3671568286765791725, guid: b1dcef5f744215c46b08b03bc2eb9cfc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7455498123446790109, guid: b1dcef5f744215c46b08b03bc2eb9cfc,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -343,6 +363,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747395608389752546, guid: b1dcef5f744215c46b08b03bc2eb9cfc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1dcef5f744215c46b08b03bc2eb9cfc, type: 3}

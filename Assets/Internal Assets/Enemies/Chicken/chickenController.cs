@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class chickenController : Controller
@@ -8,7 +9,7 @@ public class chickenController : Controller
     //state enum
     private enum chickenState
     {
-        moving, charge, charging, attack, idle, stunned
+        moving, charge, charging, attack, idle, stunned, hurt
     }
 
     //private stuff
@@ -19,7 +20,7 @@ public class chickenController : Controller
     private chickenState state;
 
     //counters and directions
-    private float attackTimer, turnTimer, jumpTimer, stunTimer, dir;
+    private float attackTimer, turnTimer, jumpTimer, stunTimer, hurtTimer, dir;
     
     private float fallDistance = 2;
 
@@ -42,6 +43,7 @@ public class chickenController : Controller
         jumpTimer = entity.getTime() + entity.jumpTime;
         turnTimer = entity.getTime() + entity.turnTime;
         stunTimer = 0;
+        hurtTimer = 0;
 
         state = chickenState.moving;
 
@@ -53,7 +55,7 @@ public class chickenController : Controller
     {
         updateHurt();
 
-        if (state != chickenState.stunned)
+        if (state != chickenState.stunned && state != chickenState.hurt)
         {
             if (state != chickenState.charging) changeDir();
             Move();
@@ -61,7 +63,7 @@ public class chickenController : Controller
             Attack();
             CheckEdge();
             renderDirection();
-        }
+        } 
     }
 
     private void renderDirection()
@@ -94,27 +96,34 @@ public class chickenController : Controller
     public bool Hurt(bool Damaged)
     {
         if (Damaged)
+        {
             anim.SetBool("Hurt", true);
+            hurtTimer = entity.getTime() + entity.hurtTime;
+            state = chickenState.hurt;
+        }
+
 
         updateHurt();
 
         return anim.GetBool("Hurt");
-
     }
 
     void updateHurt()
     {
-        if (anim.GetBool("Hurt") && stunTimer == 0)
+        if (hurtTimer != 0 && entity.getTime() > hurtTimer)
         {
-            state = chickenState.stunned;
+            hurtTimer = 0;
+            anim.SetBool("Hurt", false);
+            anim.SetBool("Stunned", true);
             stunTimer = entity.getTime() + entity.stunTime;
+            state = chickenState.stunned;
         }
 
-        if (anim.GetBool("Hurt") && entity.getTime() > stunTimer)
+        if (stunTimer != 0 && entity.getTime() > stunTimer)
         {
             stunTimer = 0;
             state = chickenState.moving;
-            anim.SetBool("Hurt", false);
+            anim.SetBool("Stunned", false);
         }
     }
 
