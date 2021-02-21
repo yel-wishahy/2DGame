@@ -101,7 +101,6 @@ public class playerController : Controller
                     anim.SetBool("WallSlide", true);
                     anim.SetFloat("AirSpeedY", body.velocity.y);
                     anim.SetBool("Run", false);
-                    anim.SetBool("Grounded", false);
                     Debug.Log("SLIDING!");
                 }
                 else
@@ -119,7 +118,6 @@ public class playerController : Controller
         {
             sliding = false;
             anim.SetBool("WallSlide", false);
-            anim.SetBool("Grounded", true);
 
         }
     }
@@ -140,8 +138,6 @@ public class playerController : Controller
         if (body.velocity.x < 0) render.flipX = true;
         else render.flipX = false;
 
-        anim.SetFloat("AirSpeedY", body.velocity.y);
-
         if (body.velocity.x != 0) anim.SetBool("Run", true);
         else anim.SetBool("Run", false);
     }
@@ -158,18 +154,14 @@ public class playerController : Controller
                 anim.SetBool("Jump", true);
                 anim.SetBool("Grounded", false);
             }
+            else
+            {
+                anim.SetBool("Grounded", true);
+            }
 
         }
 
-        if (bottomCollide == null)
-        {
-            anim.SetBool("Grounded", false);
-        } else
-        {
-            anim.SetBool("Grounded", true);
-        }
-
-
+        anim.SetFloat("AirSpeedY", body.velocity.y);
     }
 
     public void Hurt()

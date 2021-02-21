@@ -21,6 +21,7 @@ public class chickenController : Controller
     //counters and directions
     private float attackTimer, turnTimer, jumpTimer, stunTimer, dir;
     
+    private float fallDistance = 2;
 
 
 
@@ -58,6 +59,7 @@ public class chickenController : Controller
             Move();
             Jump();
             Attack();
+            CheckEdge();
             renderDirection();
         }
     }
@@ -68,10 +70,29 @@ public class chickenController : Controller
         else image.flipX = true;
     }
 
+    //make sure chicken doesn't fall
+    private void CheckEdge()
+    {
+        RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(body.position.x - 1, body.position.y), new Vector2(0, -1));
+        RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(body.position.x + 1, body.position.y), new Vector2(0, -1));
+
+        if (leftHit.distance > fallDistance)
+        {
+            dir = 1;
+
+        }
+        
+        if (rightHit.distance > fallDistance)
+        {
+            dir = -1;
+
+        }
+        
+    }
+
     //check
     public bool Hurt(bool Damaged)
     {
-        Debug.Log("Hurt");
         if (Damaged)
             anim.SetBool("Hurt", true);
 

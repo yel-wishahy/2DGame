@@ -2,15 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e7c3aec-1c02-4cfc-bd00-0dd8cd71815f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Internal Assets/Players/PlayerJason/Jason.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/ProjectileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/ProjectileController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/WallSlide.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/WallSlide.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Hero Knight - Pixel Art/Animations/HeroKnight_AnimController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Hero Knight - Pixel Art/Animations/HeroKnight_AnimController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.controller.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.controller.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenRun.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenRun.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenStunned.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenStunned.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/DarkJason.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UDarkJason/DarkJason.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/DarkJason.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UDarkJason/DarkJason.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/PossessedFarmer/RiceFarmer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/PossessedFarmer/RiceFarmer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UEnemyFST.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UDarkJason/UEnemyFST.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UEnemyFST.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UDarkJason/UEnemyFST.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Jason.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Players/PlayerJason/Jason.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Jason.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/playerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/playerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/Sample Map.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/Sample Map.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/Scenebkf.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/Scenebkf.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/TestBullet.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/TestBullet.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/WallSlide.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/WallSlide.unity.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +45,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scenes/follower.cs" />
@@ -37,6 +65,8 @@
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/ProjectileController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/playerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oifMQrq9osdTdscNJbFmaRonqu" />
@@ -82,6 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1613774285654</updated>
       <workItem from="1613774290512" duration="3282000" />
+      <workItem from="1613855675516" duration="4363000" />
     </task>
     <servers />
   </component>
@@ -100,6 +131,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

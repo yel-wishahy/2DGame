@@ -38,8 +38,10 @@
               <e p="Chicken.cs" t="Include" />
               <e p="chickenController.cs" t="Include" />
             </e>
-            <e p="DarkJason.cs" t="Include" />
-            <e p="UEnemyFST.cs" t="Include" />
+            <e p="UDarkJason" t="Include">
+              <e p="DarkJason.cs" t="Include" />
+              <e p="UEnemyFST.cs" t="Include" />
+            </e>
           </e>
           <e p="Items" t="Include">
             <e p="Bullet" t="Include">
