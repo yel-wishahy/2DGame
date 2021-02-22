@@ -11,7 +11,7 @@ public class Coal : Item
         if (collision.GetComponent<Player>() != null)
         {
             Player collector = collision.GetComponent<Player>();
-            collector.collectCoal();
+            collector.pickupItem(this);
             Destroy(this);
             GetComponent<SpriteRenderer>().enabled = false;
         }

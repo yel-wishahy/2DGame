@@ -11,9 +11,9 @@ public class Player : UEntity
     public LayerMask groundLayer, enemyLayer;
     public Controller userController;
     public GameObject projectilePrefab;
-
-    [HideInInspector]
-    private int coalsCollected;
+    
+    [HideInInspector] public List<StorableItem> inventory;
+    [HideInInspector] private int coalsCollected;
 
     private void Awake()
     {
@@ -32,17 +32,25 @@ public class Player : UEntity
         Gizmos.DrawWireSphere(attack.position, attackRadius);
     }
 
-    public void collectCoal()
+    public void pickupItem(Item item)
     {
-        coalsCollected++;
+        inventory.Add(new StorableItem(item, item.name, 1));
     }
 
-    public int getCoalsCollected()
+    public int getItemQuantity(string name)
     {
-        return coalsCollected;
+        foreach (StorableItem item in inventory)
+        {
+            if (item.Name == name)
+            {
+                return item.Quantity;
+            }
+        }
+
+        return 0;
     }
 
-    
+
 
 
 }

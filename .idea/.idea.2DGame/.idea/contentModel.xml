@@ -26,6 +26,7 @@
             <e p="Controller.cs" t="Include" />
             <e p="Item.cs" t="Include" />
             <e p="Sensor_Entity.cs" t="Include" />
+            <e p="StorableItem.cs" t="Include" />
             <e p="UEntity.cs" t="Include" />
           </e>
           <e p="DataStorge" t="Include">

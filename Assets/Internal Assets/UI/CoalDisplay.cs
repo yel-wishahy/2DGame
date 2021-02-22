@@ -11,6 +11,6 @@ public class CoalDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Coal Collected: " + player.getCoalsCollected();
+        text.text = "Coal Collected: " + player.getItemQuantity("Coal");
     }
 }
