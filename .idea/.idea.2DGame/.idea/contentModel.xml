@@ -52,6 +52,11 @@
               <e p="Coal.cs" t="Include" />
             </e>
           </e>
+          <e p="Particles ad Effects" t="Include">
+            <e p="Smoke Effect" t="Include">
+              <e p="selfDestruct.cs" t="Include" />
+            </e>
+          </e>
           <e p="Players" t="Include">
             <e p="Knight" t="Include">
               <e p="Player.cs" t="Include" />
