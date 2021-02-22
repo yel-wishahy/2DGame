@@ -44,15 +44,13 @@ public class ProjectileController : Controller
 
             //destroys this bullet
             self.Die();
-            self.GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if (object2D.GetComponent<Collider2D>().tag == "Ground")
         {
             //destroys this bullet if it hits ground
             self.Die();
-            self.GetComponent<SpriteRenderer>().enabled = false;
-            
+
         }
     }
 

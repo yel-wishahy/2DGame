@@ -202,9 +202,12 @@ public class UEntity : MonoBehaviour
 
     public void Die()
     {
-        Destroy(this);
-        this.enabled = false;
+        enabled = false;
         Health = 0;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponentInChildren<Canvas>().enabled = false;
+        Destroy(this);
     }
 }
 

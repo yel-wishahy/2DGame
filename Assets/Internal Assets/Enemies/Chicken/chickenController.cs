@@ -18,14 +18,12 @@ public class chickenController : Controller
     private SpriteRenderer image;
     private Animator anim;
     private chickenState state;
+    private GameObject instantiatedEffect;
 
     //counters and directions
     private float attackTimer, turnTimer, jumpTimer, stunTimer, hurtTimer, dir;
     
     private float fallDistance = 2;
-
-
-
     public chickenController(Chicken entity)
     {
         this.entity = entity;
@@ -53,17 +51,25 @@ public class chickenController : Controller
     // Update is called once per frame
     public void Update()
     {
-        updateHurt();
+        //check and update stunned or hurt animations and states 
+        updateHurtAnimations();
 
+        //only do these if not stunned or hurt
         if (state != chickenState.stunned && state != chickenState.hurt)
         {
-            if (state != chickenState.charging) changeDir();
             Move();
             Jump();
             Attack();
+            
+            //change directions if need be
+            //based on timer
+            if (state != chickenState.charging) changeDir(); 
+            //check for edges to prevent falling when moving
             CheckEdge();
-            renderDirection();
-        } 
+        }
+        
+        //render direction of sprite
+        renderDirection();
     }
 
     private void renderDirection()
@@ -91,24 +97,33 @@ public class chickenController : Controller
         }
         
     }
-
-    //check
+    
+    //called by the game engine when entity is damaged by another entity
     public bool Hurt(bool Damaged)
     {
+        //check if alive
+        if (!entity.isAlive())
+        {
+            instantiatedEffect = Chicken.Instantiate(entity.smokeDeathEffect, body.position, entity.transform.rotation);
+            Chicken.Destroy(entity.healthBar);
+            entity.Die();
+        }
+        
+        //update hurt states when damaged
         if (Damaged)
         {
             anim.SetBool("Hurt", true);
             hurtTimer = entity.getTime() + entity.hurtTime;
             state = chickenState.hurt;
         }
-
-
-        updateHurt();
+        
+        updateHurtAnimations();
+        
 
         return anim.GetBool("Hurt");
     }
 
-    void updateHurt()
+    void updateHurtAnimations()
     {
         if (hurtTimer != 0 && entity.getTime() > hurtTimer)
         {

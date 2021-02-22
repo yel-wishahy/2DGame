@@ -165,6 +165,9 @@ MonoBehaviour:
   turnTime: 3
   jumpTime: 6
   stunTime: 2
+  hurtTime: 0.45
+  smokeDeathEffect: {fileID: 4805299691247639846, guid: 61656c44c278d3a4198519b90e4e49bf,
+    type: 3}
 --- !u!50 &4332317350382470740
 Rigidbody2D:
   serializedVersion: 4

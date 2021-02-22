@@ -86,8 +86,9 @@ public class Item : MonoBehaviour
 
     public void Die()
     {
-        Destroy(this);
+        GetComponent<SpriteRenderer>().enabled = false;
         enabled = false;
+        Destroy(this);
     }
     
     //Returns life state of entity
