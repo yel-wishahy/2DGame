@@ -45,12 +45,15 @@
             </e>
           </e>
           <e p="Items" t="Include">
-            <e p="Bullet" t="Include">
+            <e p="Bullets" t="Include">
               <e p="Bullet.cs" t="Include" />
               <e p="ProjectileController.cs" t="Include" />
             </e>
-            <e p="Coal (collectible)" t="Include">
+            <e p="Coal" t="Include">
               <e p="Coal.cs" t="Include" />
+            </e>
+            <e p="KFC" t="Include">
+              <e p="KFC.cs" t="Include" />
             </e>
           </e>
           <e p="Particles ad Effects" t="Include">
