@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5961892003660266183}
   - component: {fileID: 2115393799726869988}
   m_Layer: 0
-  m_Name: Coal 1
+  m_Name: Coal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,6 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215e218d211829745986aa31da109998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AlterativeControl: 0
+  name: Coal
+  stackLimit: 12
 --- !u!50 &2115393799726869988
 Rigidbody2D:
   serializedVersion: 4

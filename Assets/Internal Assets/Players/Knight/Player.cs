@@ -18,7 +18,7 @@ public class Player : UEntity
     private void Awake()
     {
          userController = new playerController(this);
-         coalsCollected = 0;
+         inventory = new List<StorableItem>();
     }
     
 
@@ -34,7 +34,23 @@ public class Player : UEntity
 
     public void pickupItem(Item item)
     {
-        inventory.Add(new StorableItem(item, item.name, 1));
+        if (inventory.Count > 0)
+        {
+            foreach (StorableItem i in inventory)
+            {
+                if (i.Name == item.name)
+                {
+                    if (i.Quantity < item.stackLimit)
+                    {
+                        i.Quantity += 1;
+                    }
+                }
+            }
+        }
+        else
+        {
+            inventory.Add(new StorableItem(item, item.name, 1));
+        }
     }
 
     public int getItemQuantity(string name)

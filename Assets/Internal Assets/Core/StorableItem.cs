@@ -20,8 +20,9 @@ public class StorableItem
     public int Quantity
     {
         get => quantity;
+        set => quantity = value;
     }
-    
+
     public string Name
     {
         get => name;

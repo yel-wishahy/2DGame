@@ -15,6 +15,7 @@ public class Item : MonoBehaviour
     //variables that are common to all items go below here
     [SerializeField] public bool AlterativeControl;
     [SerializeField] public string name;
+    [SerializeField] public int stackLimit;
 
     
     //controllers that are specieifed as properties.
