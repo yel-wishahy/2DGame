@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e7c3aec-1c02-4cfc-bd00-0dd8cd71815f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/720a68da1dde545.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/720a68da1dde545.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet 1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/Bullet.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/ProjectileController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullet/ProjectileController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal (collectible).meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal (collectible)/Coal.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal (collectible)/Coal.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal (collectible)/Coal.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal (collectible)/Coal.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/Test Scenes/TestPlatformerMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/Test Scenes/TestPlatformerMap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
