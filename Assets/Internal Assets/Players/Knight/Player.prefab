@@ -118,6 +118,7 @@ MonoBehaviour:
     m_Bits: 1024
   projectilePrefab: {fileID: 5765044810424246497, guid: 319ec8134e12fdf4b8cf573301e2da5b,
     type: 3}
+  inventoryCapacity: 5
 --- !u!222 &26653064369025378
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e7c3aec-1c02-4cfc-bd00-0dd8cd71815f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Brackeys/2D Mega Pack/UI/Panel.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Brackeys/2D Mega Pack/UI/Panel.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/StorableItem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/StorableItem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UDarkJason/UEnemyFST.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UDarkJason/UEnemyFST.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal/Coal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal/Coal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/Test Scenes/TestPlatformerMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/Test Scenes/TestPlatformerMap.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +38,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Particles ad Effects/Smoke Effect/selfDestruct.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/Inventory.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -51,11 +60,15 @@
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/l.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/UI/CoalDisplay.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal (collectible)/Coal.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/StorableItem.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/StorableItem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/StorableItem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UDarkJason/UEnemyFST.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal/Coal.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/Inventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/ItemSlot.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oifMQrq9osdTdscNJbFmaRonqu" />
@@ -104,6 +117,7 @@
       <workItem from="1613774290512" duration="3282000" />
       <workItem from="1613855675516" duration="4363000" />
       <workItem from="1613898660790" duration="1093000" />
+      <workItem from="1614038737352" duration="7447000" />
     </task>
     <servers />
   </component>

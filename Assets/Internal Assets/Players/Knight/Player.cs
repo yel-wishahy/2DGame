@@ -11,6 +11,7 @@ public class Player : UEntity
     public LayerMask groundLayer, enemyLayer;
     public Controller userController;
     public GameObject projectilePrefab;
+    public int inventoryCapacity;
     
     [HideInInspector] public List<StorableItem> inventory;
     [HideInInspector] private int coalsCollected;
@@ -32,8 +33,10 @@ public class Player : UEntity
         Gizmos.DrawWireSphere(attack.position, attackRadius);
     }
 
-    public void pickupItem(Item item)
+    public bool pickupItem(Item item)
     {
+        //Debug.Log("Attempting to pick up: " + item.name + " " + inventoryCapacity);
+        
         if (inventory.Count > 0)
         {
             foreach (StorableItem i in inventory)
@@ -43,14 +46,20 @@ public class Player : UEntity
                     if (i.Quantity < item.stackLimit)
                     {
                         i.Quantity += 1;
+                        return true;
                     }
                 }
             }
         }
-        else
+        
+        if (inventory.Count < inventoryCapacity)
         {
+            
             inventory.Add(new StorableItem(item, item.name, 1));
+            return true;
         }
+
+        return false;
     }
 
     public int getItemQuantity(string name)

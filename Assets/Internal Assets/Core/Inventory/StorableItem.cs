@@ -9,6 +9,7 @@ public class StorableItem
     private int quantity;
     private string name;
     private Item item;
+    
 
     public StorableItem(Item item, string name, int quantity)
     {

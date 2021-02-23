@@ -11,9 +11,13 @@ public class KFC : Item
         if (collision.GetComponent<Player>() != null)
         {
             Player collector = collision.GetComponent<Player>();
-            collector.pickupItem(this);
-            Destroy(this);
-            GetComponent<SpriteRenderer>().enabled = false;
+            if (collector.pickupItem(this))
+            {
+                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<Collider>().enabled = false;
+                enabled = false;
+
+            }
         }
         
     }

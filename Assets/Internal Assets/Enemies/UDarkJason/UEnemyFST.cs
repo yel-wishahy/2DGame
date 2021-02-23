@@ -53,7 +53,7 @@ public class UEnemyFST : Controller
             if (enemy.tag == "Player" && enemy.GetComponent<Jason>() != null)
             {
                 enemyEntity = enemy.GetComponent<Jason>();
-                MonoBehaviour.print("ENEMY: " + enemy);
+                //MonoBehaviour.print("ENEMY: " + enemy);
 
                 if (enemyEntity != null && enemyEntity.getHealth() > 0)
                 {
@@ -68,7 +68,7 @@ public class UEnemyFST : Controller
             }
         }
 
-        MonoBehaviour.print("SZ: " + size);
+        //MonoBehaviour.print("SZ: " + size);
         if (size <= 0 && CurrentState == States.Attack)
         {
             ResetControls();
