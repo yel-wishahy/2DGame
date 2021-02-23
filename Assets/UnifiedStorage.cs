@@ -14,6 +14,7 @@ public static class UnifiedStorage
             {GenerateHash("Player = nullptr;"), "Player = nullptr;"}
         };
     public static Queue<KeyValuePair<int, string>> PendingAchievements = new Queue<KeyValuePair<int, string>>();
+    public static StoryManager CurrentStoryProgress = new StoryManager();
 
     public static int ControlFormat = 0;
     public static float Sensitivity = 0.75f;

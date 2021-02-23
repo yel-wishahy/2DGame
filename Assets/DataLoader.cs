@@ -301,6 +301,22 @@ public class DataLoader : MonoBehaviour
         }
 
     }
+
+    void LoadStoryData()
+    {
+        StoryManager manager = UnifiedStorage.CurrentStoryProgress;
+
+        manager.AddStoryElement("Welcome to Shallow World! My name is THE CORRUPTOR! My goal is to capitalize the whole kingdom and you shall be my servant,");
+        manager.AddStoryElement("JASON!");
+        manager.AddStoryElement("So what do you say?");
+        manager.AddStoryElement("JASON: No! We will not allow you to monopolize our Kingdom! YOU have no idea how much our RICE FARM means to US!");
+        manager.AddStoryElement("ADA: Yeah! You evil meanie!");
+        manager.AddStoryElement("Shut up ADA. These people don't understand the meaning of our RICE! Especially the RICE BALLS that exist on our TREES.");
+        manager.AddStoryElement("CORRUPTOR: This is your final warning!");
+        manager.AddStoryElement("JASON throws ADA with RICE BALL in hand.");
+        manager.AddStoryElement("CORRUPTOR: Ugh! YOU asked for it! Mutant zombie chickens, DAA! CWAY!! (Attack!)");
+        manager.AddStoryElement("The game starts here.");
+    }
     void Start()
     {
         persistPath = Application.persistentDataPath;
@@ -309,6 +325,8 @@ public class DataLoader : MonoBehaviour
 
         if (LoadData)
             Loader();
+
+        LoadStoryData();
     }
 
     /*
