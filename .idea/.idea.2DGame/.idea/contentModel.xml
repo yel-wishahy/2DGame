@@ -29,7 +29,9 @@
               <e p="ItemSlot.cs" t="Include" />
               <e p="StorableItem.cs" t="Include" />
             </e>
-            <e p="Item.cs" t="Include" />
+            <e p="Items" t="Include">
+              <e p="Item.cs" t="Include" />
+            </e>
             <e p="Sensor_Entity.cs" t="Include" />
             <e p="UEntity.cs" t="Include" />
           </e>

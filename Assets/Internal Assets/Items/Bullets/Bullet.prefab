@@ -96,11 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7c459458039bd4d8b293a405397a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
-  Speed: 15
-  JumpForce: 0
-  AttackDamage: 25
   AlterativeControl: 1
+  name: RifleBullet
+  stackLimit: 0
+  itemType: projectile
+  inStorage: 0
+  attackDamage: 100
+  speed: 25
 --- !u!50 &6562038056175194625
 Rigidbody2D:
   serializedVersion: 4

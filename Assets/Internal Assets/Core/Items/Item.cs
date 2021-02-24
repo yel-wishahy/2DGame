@@ -16,13 +16,17 @@ public class Item : MonoBehaviour
     [SerializeField] public bool AlterativeControl;
     [SerializeField] public string name;
     [SerializeField] public int stackLimit;
+    [SerializeField] public string itemType = "default";
 
-    
+    //false by default
+    [HideInInspector] public bool inStorage = false;
+
+
     //controllers that are specieifed as properties.
     public virtual Controller AltController { get; }
 
     //All common item functions for the game engine to use
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -30,7 +34,6 @@ public class Item : MonoBehaviour
         {
             AltController.Update();
         }
-
     }
 
     void OnCollisionStay2D(Collision2D object2D)
@@ -92,13 +95,34 @@ public class Item : MonoBehaviour
         enabled = false;
         Destroy(this);
     }
-    
+
     //Returns life state of entity
     public bool isAlive()
     {
         return enabled;
     }
-    
-    
-    
+
+    //this is limited to only player class for now
+    public void PickupSelfItem(Collider2D entity)
+    {
+        if (entity.GetComponent<Player>() != null)
+        {
+            Player collector = entity.GetComponent<Player>();
+            Debug.Log(inStorage);
+            if (collector.pickupItem(this))
+            {
+                inStorage = true;
+                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<Collider>().enabled = false;
+            }
+        }
+    }
+
+    public void IgnoreCollisions(Collider2D selfCollider, Collider2D collider)
+    {
+        if (collider.gameObject.tag != "Ground")
+        {
+            Physics2D.IgnoreCollision(selfCollider, collider);
+        }
+    }
 }

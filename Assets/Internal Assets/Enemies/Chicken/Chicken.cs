@@ -17,6 +17,7 @@ public class Chicken :UEntity
     public float hurtTime = 0.45f;
     public GameObject smokeDeathEffect;
     public GameObject healthBar;
+    public GameObject foodDrop;
     private Controller AIController;
 
     private void Awake()

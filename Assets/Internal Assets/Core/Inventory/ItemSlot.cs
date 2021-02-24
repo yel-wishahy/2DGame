@@ -7,6 +7,8 @@ public class ItemSlot : MonoBehaviour
 {
     public int itemSlotID;
     [SerializeField] public StorableItem item;
+    [SerializeField] public Image itemImage;
+    [SerializeField] public Text quantityDisplay;
     [HideInInspector] public bool empty = false;
 
     // Start is called before the first frame update
@@ -20,12 +22,15 @@ public class ItemSlot : MonoBehaviour
     {
         if (!empty)
         {
-            GetComponent<Image>().sprite = item.Item.GetComponent<SpriteRenderer>().sprite;
-            GetComponent<Image>().enabled = true;
+            itemImage.sprite = item.Item.GetComponent<SpriteRenderer>().sprite;
+            quantityDisplay.text = item.Quantity.ToString();
+            quantityDisplay.enabled = true;
+            itemImage.enabled = true;
         }
         else
         {
-            //GetComponent<Image>().enabled = false;
+            itemImage.enabled = false;
+            quantityDisplay.enabled = false;
         }
     }
 }

@@ -106,6 +106,7 @@ public class chickenController : Controller
         {
             instantiatedEffect = Chicken.Instantiate(entity.smokeDeathEffect, body.position, entity.transform.rotation);
             Chicken.Destroy(entity.healthBar);
+            Chicken.Instantiate(entity.foodDrop, body.position, entity.transform.rotation);
             entity.Die();
         }
         

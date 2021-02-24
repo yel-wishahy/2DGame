@@ -35,7 +35,10 @@ public class Player : UEntity
 
     public bool pickupItem(Item item)
     {
-        //Debug.Log("Attempting to pick up: " + item.name + " " + inventoryCapacity);
+        if (item.inStorage)
+        {
+            return false;
+        }
         
         if (inventory.Count > 0)
         {
@@ -54,7 +57,6 @@ public class Player : UEntity
         
         if (inventory.Count < inventoryCapacity)
         {
-            
             inventory.Add(new StorableItem(item, item.name, 1));
             return true;
         }

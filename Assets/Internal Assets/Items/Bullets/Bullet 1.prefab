@@ -144,5 +144,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AlterativeControl: 1
+  name: magicBullet
+  stackLimit: 0
+  itemType: projectile
+  inStorage: 0
   attackDamage: 25
   speed: 15

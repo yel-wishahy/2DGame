@@ -6,19 +6,15 @@ using UnityEngine;
 
 public class Coal : Item
 {
+    [SerializeField] private Collider2D worldCollider;
+    
     private void  OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Player>() != null)
-        {
-            Player collector = collision.GetComponent<Player>();
-            if (collector.pickupItem(this))
-            {
-                GetComponent<SpriteRenderer>().enabled = false;
-                GetComponent<Collider>().enabled = false;
-                enabled = false;
-
-            }
-        }
-        
+        PickupSelfItem(collision);
+    }
+    
+    private void OnCollisionEnter2D(Collision2D object2D)
+    {
+        IgnoreCollisions(worldCollider, object2D.gameObject.GetComponent<Collider2D>());
     }
 }

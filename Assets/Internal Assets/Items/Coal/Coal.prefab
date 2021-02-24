@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1245328760153282937}
   - component: {fileID: 5961892003660266183}
   - component: {fileID: 2115393799726869988}
+  - component: {fileID: 561266469447423659}
   m_Layer: 0
   m_Name: Coal
   m_TagString: Untagged
@@ -115,6 +116,9 @@ MonoBehaviour:
   AlterativeControl: 0
   name: Coal
   stackLimit: 12
+  itemType: default
+  inStorage: 0
+  worldCollider: {fileID: 561266469447423659}
 --- !u!50 &2115393799726869988
 Rigidbody2D:
   serializedVersion: 4
@@ -123,7 +127,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657453503452454473}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -135,4 +139,35 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
+--- !u!60 &561266469447423659
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657453503452454473}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.6}
+    newSize: {x: 1.6, y: 1.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.4, y: 0.8}
+      - {x: -0.8, y: 0.5}
+      - {x: -0.8, y: -0.8}
+      - {x: 0.8, y: -0.8}
+      - {x: 0.8, y: 0.4}
+      - {x: 0.6, y: 0.8}

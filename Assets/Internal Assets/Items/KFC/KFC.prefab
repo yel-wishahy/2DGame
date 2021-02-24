@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4771063963096194207}
   - component: {fileID: 7230615192948336851}
   - component: {fileID: 1203737359720746669}
+  - component: {fileID: 7375420417998518666}
+  - component: {fileID: 1771438149753033063}
   m_Layer: 0
   m_Name: KFC
   m_TagString: Untagged
@@ -114,4 +116,63 @@ MonoBehaviour:
   AlterativeControl: 0
   name: KFC
   stackLimit: 10
+  itemType: default
+  inStorage: 0
+  worldCollider: {fileID: 7375420417998518666}
   healthBuff: -10
+--- !u!60 &7375420417998518666
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94803413319138304}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.53, y: 0.57}
+    newSize: {x: 0.53, y: 0.57}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.125, y: 0.185}
+      - {x: -0.255, y: 0.055}
+      - {x: -0.255, y: -0.074999996}
+      - {x: -0.24499999, y: -0.105}
+      - {x: -0.195, y: -0.24499999}
+      - {x: -0.175, y: -0.285}
+      - {x: 0.205, y: -0.285}
+      - {x: 0.265, y: -0.095}
+      - {x: 0.265, y: 0.024999999}
+      - {x: 0.035, y: 0.185}
+--- !u!50 &1771438149753033063
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94803413319138304}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.204
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5

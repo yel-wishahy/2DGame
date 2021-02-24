@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < itemSlots.Count; i++)
         {
             itemSlots[i].itemSlotID = i;
-            itemSlots[i].transform.parent = this.transform;
+            itemSlots[i].transform.parent = transform;
             itemSlots[i].empty = true;
         }
     }
@@ -43,7 +43,6 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < player.inventory.Count; i++)
         {
-            Debug.Log("Item name to be added to inventory slot " + i + " : " + player.inventory[i].Name);
             itemSlots[i].item = player.inventory[i];
             itemSlots[i].empty = false;
         }

@@ -168,6 +168,8 @@ MonoBehaviour:
   hurtTime: 0.45
   smokeDeathEffect: {fileID: 4805299691247639846, guid: 61656c44c278d3a4198519b90e4e49bf,
     type: 3}
+  healthBar: {fileID: 1075089594644907619}
+  foodDrop: {fileID: 94803413319138304, guid: ce3797dbf7ec2de43b6239ad762d9911, type: 3}
 --- !u!50 &4332317350382470740
 Rigidbody2D:
   serializedVersion: 4
@@ -377,6 +379,12 @@ PrefabInstance:
 --- !u!224 &1995657402280728008 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2859368465961495110, guid: b1dcef5f744215c46b08b03bc2eb9cfc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4332317350113378190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1075089594644907619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3671568286765791725, guid: b1dcef5f744215c46b08b03bc2eb9cfc,
     type: 3}
   m_PrefabInstance: {fileID: 4332317350113378190}
   m_PrefabAsset: {fileID: 0}
