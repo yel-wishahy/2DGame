@@ -29,9 +29,7 @@
               <e p="ItemSlot.cs" t="Include" />
               <e p="StorableItem.cs" t="Include" />
             </e>
-            <e p="Items" t="Include">
-              <e p="Item.cs" t="Include" />
-            </e>
+            <e p="Item.cs" t="Include" />
             <e p="Sensor_Entity.cs" t="Include" />
             <e p="UEntity.cs" t="Include" />
           </e>
@@ -68,10 +66,8 @@
             </e>
           </e>
           <e p="Players" t="Include">
-            <e p="Knight" t="Include">
-              <e p="Player.cs" t="Include" />
-              <e p="playerController.cs" t="Include" />
-            </e>
+            <e p="Player.cs" t="Include" />
+            <e p="playerController.cs" t="Include" />
             <e p="UJason" t="Include">
               <e p="Jason.cs" t="Include" />
               <e p="UJasonController.cs" t="Include" />

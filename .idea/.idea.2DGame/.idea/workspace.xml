@@ -7,17 +7,20 @@
       <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/Inventory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/InventorySlot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/InventorySlot.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/ItemSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/ItemSlot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullets/Bullet 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullets/Bullet 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullets/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullets/Bullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/StorableItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/StorableItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Items.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Items/Item.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Items/Item.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal/Coal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal/Coal.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal/Coal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal/Coal.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/playerController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/playerController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/PlayerJason/Jason.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Players/PlayerJason/Jason.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/Test Scenes/TestPlatformerMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Scenes/Test Scenes/TestPlatformerMap.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +48,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Particles ad Effects/Smoke Effect/selfDestruct.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/Inventory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Players/playerController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -65,19 +69,20 @@
       <option value="$PROJECT_DIR$/Assets/Internal Assets/UI/CoalDisplay.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal (collectible)/Coal.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/StorableItem.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/StorableItem.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UDarkJason/UEnemyFST.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/ItemSlot.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/Inventory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/Chicken.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Items/CollectibleItemController.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Items/DefaultItemController.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Items/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal/Coal.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/StorableItem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Players/Knight/Player.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/Inventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/ItemSlot.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Players/playerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oifMQrq9osdTdscNJbFmaRonqu" />
@@ -127,7 +132,9 @@
       <workItem from="1613855675516" duration="4363000" />
       <workItem from="1613898660790" duration="1093000" />
       <workItem from="1614038737352" duration="8800000" />
-      <workItem from="1614121780297" duration="4165000" />
+      <workItem from="1614121780297" duration="5044000" />
+      <workItem from="1614286470562" duration="5451000" />
+      <workItem from="1614301712474" duration="4713000" />
     </task>
     <servers />
   </component>

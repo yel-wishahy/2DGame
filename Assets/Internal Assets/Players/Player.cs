@@ -57,11 +57,17 @@ public class Player : UEntity
         
         if (inventory.Count < inventoryCapacity)
         {
-            inventory.Add(new StorableItem(item, item.name, 1));
+            inventory.Add(new StorableItem(item, item.name, 1, this));
             return true;
         }
 
         return false;
+    }
+
+    public void RemoveItem(StorableItem storableItem)
+    {
+        inventory.Remove(storableItem);
+        storableItem.RemoveItem();
     }
 
     public int getItemQuantity(string name)

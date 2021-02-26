@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using System.Collections;
+using UnityEditor.SceneManagement;
 using UnityEngine.Experimental.AI;
 
 //Item Wrapper to store items in an inventory
@@ -11,7 +13,7 @@ public class StorableItem
     private Item item;
     
 
-    public StorableItem(Item item, string name, int quantity)
+    public StorableItem(Item item, string name, int quantity, Player parent)
     {
         this.item = item;
         this.name = name;
@@ -32,5 +34,10 @@ public class StorableItem
     public Item Item
     {
         get => item;
+    }
+
+    public void RemoveItem()
+    {
+        item.Die();
     }
 }

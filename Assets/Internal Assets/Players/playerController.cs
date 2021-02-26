@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class playerController : Controller
 {
@@ -144,24 +145,30 @@ public class playerController : Controller
 
     void checkJumpCollision()
     {
-        Collider2D bottomCollide = Physics2D.OverlapBox(entity.groundCheck.position, entity.range, 0, entity.groundLayer);
-
-        if (bottomCollide != null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-          
-            if (bottomCollide.gameObject.tag == "Ground" && Input.GetKeyDown(KeyCode.Space)){
-                body.velocity = new Vector2(body.velocity.x, entity.getJumpForce());
-                anim.SetBool("Jump", true);
-                anim.SetBool("Grounded", false);
-            }
-            else
+            Debug.Log("jump 1");
+            RaycastHit2D rayCastDown = Physics2D.Raycast(entity.groundCheck.position, new Vector2(0, -1));
+            Collider2D bottomCollide = rayCastDown.collider;
+            
+            if (bottomCollide != null && rayCastDown.distance < 1)
             {
-                anim.SetBool("Grounded", true);
+                Debug.Log(bottomCollide.gameObject.tag);
+                if (bottomCollide.gameObject.tag == "Ground"){
+                    Debug.Log("jump 3");
+                    body.velocity = new Vector2(body.velocity.x, entity.getJumpForce());
+                    anim.SetBool("Jump", true);
+                    anim.SetBool("Grounded", false);
+                }
+                else
+                {
+                    anim.SetBool("Grounded", true);
+                }
             }
-
         }
-
+        
         anim.SetFloat("AirSpeedY", body.velocity.y);
+        
     }
 
     public void Hurt()

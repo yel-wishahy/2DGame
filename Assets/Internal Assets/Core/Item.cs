@@ -17,6 +17,7 @@ public class Item : MonoBehaviour
     [SerializeField] public string name;
     [SerializeField] public int stackLimit;
     [SerializeField] public string itemType = "default";
+    [SerializeField] public int itemID;
 
     //false by default
     [HideInInspector] public bool inStorage = false;
@@ -89,7 +90,7 @@ public class Item : MonoBehaviour
         return Time.time;
     }
 
-    public void Die()
+    public virtual void Die()
     {
         GetComponent<SpriteRenderer>().enabled = false;
         enabled = false;
@@ -118,11 +119,17 @@ public class Item : MonoBehaviour
         }
     }
 
-    public void IgnoreCollisions(Collider2D selfCollider, Collider2D collider)
+    public virtual void IgnoreCollisions(Collider2D selfCollider, Collider2D collider)
     {
         if (collider.gameObject.tag != "Ground")
         {
             Physics2D.IgnoreCollision(selfCollider, collider);
         }
+    }
+
+    public virtual bool Use(Player user)
+    {
+        Debug.Log("not implemented yet");
+        return false;
     }
 }

@@ -35,6 +35,7 @@ public class Inventory : MonoBehaviour
             itemSlots[i].itemSlotID = i;
             itemSlots[i].transform.parent = transform;
             itemSlots[i].empty = true;
+            itemSlots[i].player = player;
         }
     }
 
@@ -46,5 +47,6 @@ public class Inventory : MonoBehaviour
             itemSlots[i].item = player.inventory[i];
             itemSlots[i].empty = false;
         }
+
     }
 }
