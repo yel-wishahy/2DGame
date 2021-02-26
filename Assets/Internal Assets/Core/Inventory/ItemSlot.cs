@@ -9,7 +9,8 @@ public class ItemSlot : MonoBehaviour
     public int itemSlotID;
     [SerializeField] public StorableItem item;
     [SerializeField] public Image itemImage;
-    [SerializeField] public Text quantityDisplay;
+    [SerializeField] private Text quantityDisplay;
+    [SerializeField] private Button trashButton;
     [HideInInspector] public bool empty = false;
     [HideInInspector] public Player player;
 
@@ -27,30 +28,47 @@ public class ItemSlot : MonoBehaviour
             quantityDisplay.text = item.Quantity.ToString();
             quantityDisplay.enabled = true;
             itemImage.enabled = true;
+            trashButton.enabled = true;
+            trashButton.image.enabled = true;
 
             if (item.Quantity < 1)
-            {
-                quantityDisplay.enabled = false;
-                itemImage.enabled = false;
-                empty = true;
-                item = null;
-                player.RemoveItem(item);
-            }
+                RemoveItem();
         }
         else
         {
+            trashButton.enabled = false;
+            trashButton.image.enabled = false;
             quantityDisplay.enabled = false;
             itemImage.enabled = false;
 
         }
     }
 
-    public void OnClick()
+    private void RemoveItem()
+    {
+        trashButton.enabled = false;
+        trashButton.image.enabled = false;
+        quantityDisplay.enabled = false;
+        itemImage.enabled = false;
+        empty = true;
+        item = null;
+        player.RemoveItem(item);
+    }
+
+    public void OnClickUse()
     {
         if (!empty)
         {
             if(item.Item.Use(player))
                 item.Quantity -= 1;
+        }
+    }
+    
+    public void OnClickTrash()
+    {
+        if (!empty && item.Quantity > 0)
+        {
+            item.Quantity -= 1;
         }
     }
 }

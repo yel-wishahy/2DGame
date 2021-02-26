@@ -91,7 +91,6 @@ public class playerController : Controller
             {
                 Debug.Log(bottomCollide.gameObject.tag);
                 if (bottomCollide.gameObject.tag == "Ground"){
-                    Debug.Log("jump 3");
                     body.velocity = new Vector2(body.velocity.x, entity.getJumpForce());
                     anim.SetBool("Jump", true);
                     anim.SetBool("Grounded", false);
