@@ -69,7 +69,7 @@ public class playerController : Controller
 
     void projectileAttack()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire3"))
         Player.Instantiate(entity.projectilePrefab, entity.attack.position, entity.attack.rotation);
     }
 

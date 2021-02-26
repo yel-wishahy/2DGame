@@ -57,7 +57,7 @@ public class ItemSlot : MonoBehaviour
 
     public void OnClickUse()
     {
-        if (!empty)
+        if (!empty&& item.Quantity > 0)
         {
             if(item.Item.Use(player))
                 item.Quantity -= 1;
@@ -69,6 +69,9 @@ public class ItemSlot : MonoBehaviour
         if (!empty && item.Quantity > 0)
         {
             item.Quantity -= 1;
+            
         }
     }
+    
+    
 }
