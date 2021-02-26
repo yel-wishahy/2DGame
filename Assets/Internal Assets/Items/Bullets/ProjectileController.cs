@@ -8,6 +8,7 @@ public class ProjectileController : Controller
     private Bullet self;
     private float dir = 0;
     private SpriteRenderer render;
+    private Vector2 fireVector;
 
     public ProjectileController(Bullet projectile)
     {
@@ -22,12 +23,10 @@ public class ProjectileController : Controller
         render = self.GetComponent<SpriteRenderer>();
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (mousePos.x >= body.position.x)
-            dir = 1;
-        else
-            dir = -1;
+        fireVector = new Vector2(mousePos.x - body.position.x, mousePos.y - body.position.y);
+        fireVector /= fireVector.magnitude;
 
-        if (dir < 0)
+        if (fireVector.x < 0)
             render.flipX = true;
 
 
@@ -58,7 +57,7 @@ public class ProjectileController : Controller
     {
         if (self.isAlive())
         {
-            body.velocity = new Vector2(dir * self.speed, 0);
+            body.velocity = fireVector * self.speed;
 
         }
     }

@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 4
 --- !u!61 &5151975627757653440
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   name: magicBullet
   stackLimit: 0
   itemType: projectile
+  itemID: 0
   inStorage: 0
   attackDamage: 25
   speed: 15

@@ -31,6 +31,7 @@ public class playerController : Controller
         body = entity.GetComponent<Rigidbody2D>();
         anim = entity.GetComponent<Animator>();
         render = entity.GetComponent<SpriteRenderer>();
+        Physics2D.queriesStartInColliders = false;
     }
 
     public bool Hurt(bool Damaged)
@@ -45,7 +46,7 @@ public class playerController : Controller
         Attack();
         projectileAttack();
         Move();
-        checkJumpCollision();
+        Jump();
         WallSlide();
     }
 
@@ -73,9 +74,37 @@ public class playerController : Controller
     }
 
 
-
-    //do nothing
-    public void Jump() { }
+    
+    public void Jump()
+    {
+        if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
+        {
+            body.velocity = new Vector2(body.velocity.x, body.velocity.y * jumpHeight);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RaycastHit2D rayCastDown = Physics2D.Raycast(entity.groundCheck.position, new Vector2(0, -1));
+            Collider2D bottomCollide = rayCastDown.collider;
+            
+            if (bottomCollide != null && rayCastDown.distance < 1)
+            {
+                Debug.Log(bottomCollide.gameObject.tag);
+                if (bottomCollide.gameObject.tag == "Ground"){
+                    Debug.Log("jump 3");
+                    body.velocity = new Vector2(body.velocity.x, entity.getJumpForce());
+                    anim.SetBool("Jump", true);
+                    anim.SetBool("Grounded", false);
+                }
+                else
+                {
+                    anim.SetBool("Grounded", true);
+                }
+            }
+        }
+        
+        anim.SetFloat("AirSpeedY", body.velocity.y);
+    }
     
     public void WallSlide()
     {
@@ -129,46 +158,12 @@ public class playerController : Controller
        
         float movementX = Input.GetAxisRaw("Horizontal") * entity.getSpeed();
         body.velocity = new Vector2(movementX, body.velocity.y);
-        
-
-        if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
-        {
-            body.velocity = new Vector2(body.velocity.x, body.velocity.y * jumpHeight);
-        }
 
         if (body.velocity.x < 0) render.flipX = true;
         else render.flipX = false;
 
         if (body.velocity.x != 0) anim.SetBool("Run", true);
         else anim.SetBool("Run", false);
-    }
-
-    void checkJumpCollision()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("jump 1");
-            RaycastHit2D rayCastDown = Physics2D.Raycast(entity.groundCheck.position, new Vector2(0, -1));
-            Collider2D bottomCollide = rayCastDown.collider;
-            
-            if (bottomCollide != null && rayCastDown.distance < 1)
-            {
-                Debug.Log(bottomCollide.gameObject.tag);
-                if (bottomCollide.gameObject.tag == "Ground"){
-                    Debug.Log("jump 3");
-                    body.velocity = new Vector2(body.velocity.x, entity.getJumpForce());
-                    anim.SetBool("Jump", true);
-                    anim.SetBool("Grounded", false);
-                }
-                else
-                {
-                    anim.SetBool("Grounded", true);
-                }
-            }
-        }
-        
-        anim.SetFloat("AirSpeedY", body.velocity.y);
-        
     }
 
     public void Hurt()

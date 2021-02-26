@@ -30,6 +30,8 @@ public class ItemSlot : MonoBehaviour
 
             if (item.Quantity < 1)
             {
+                quantityDisplay.enabled = false;
+                itemImage.enabled = false;
                 empty = true;
                 item = null;
                 player.RemoveItem(item);
@@ -37,15 +39,14 @@ public class ItemSlot : MonoBehaviour
         }
         else
         {
-            itemImage.enabled = false;
             quantityDisplay.enabled = false;
+            itemImage.enabled = false;
 
         }
     }
 
     public void OnClick()
     {
-        Debug.Log("button was clicked");
         if (!empty)
         {
             if(item.Item.Use(player))
