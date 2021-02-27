@@ -1,14 +1,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+/*
+ * An inventory class for the player
+ * Internal representation:
+ *      The inventory is a list of items (List<Item>)
+ *
+ * This class has helper functions that calculate stacks,
+ * and quantaties based on raw inventory. This class also
+ * sorts the UI into stacks.
+ *
+ * Author: Yousif El-Wishahy (GH: yel-wishahy)
+ * Date: (26/02/2021)
+ */
 public class Inventory
 {
+    //inventory
     private List<Item> inventory;
+    
+    //helper logs that give details about items in inventory
     private Dictionary<string, int> invLog;
     private Dictionary<string, int> stackLimLog;
+    
+    //player
     private Player player;
 
+    
+    //constructor
     public Inventory(Player parent)
     {
         player = parent;
@@ -17,6 +35,14 @@ public class Inventory
         stackLimLog = new Dictionary<string, int>();
     }
 
+    /**
+     * Add an item to the inventory, and updated logs
+     *
+     * 
+     * Returns: true if item added
+     * Returns: false if there is no room for item in inventory
+     * (calculated based on slot capacity of player and item stack size capacities)
+     */
     public bool AddItem(Item item)
     {
         if (CheckSpace(item.name))
@@ -30,6 +56,13 @@ public class Inventory
         return false;
     }
 
+    /**
+     * Remove an item for the inventory, and update logs
+     *
+     * 
+     * Returns: true if item removed
+     * Returns: false if item did not exist in inventory
+     */
     public bool RemoveItem(Item item)
     {
         if (inventory.Contains(item))
@@ -43,6 +76,10 @@ public class Inventory
         return false;
     }
 
+    /**
+     * Updates the logs from inventory list that store item quanities and stack limits
+     * for easy access
+     */
     private void UpdateLogs()
     {
         invLog = new Dictionary<string, int>();
@@ -58,6 +95,12 @@ public class Inventory
         }
     }
 
+    /**
+     * Update logs to remove an item from invLog
+     *
+     * Decrements quantity value is quantity > 1,
+     * removes from dictionary if quantity = 1
+     */
     private void UpdateLogsRemove(string itemName)
     {
         if (invLog[itemName] == 1)
@@ -68,6 +111,10 @@ public class Inventory
     
     
 
+    /**
+     * Returns the quantity of an item in inventory based on item name
+     * Returns 0 if none found
+     */
     public int CountQuantityItem(string itemName)
     {
         if (invLog.Keys.Contains(itemName))
@@ -105,6 +152,9 @@ public class Inventory
         return null;
     }
 
+    /**
+     * Counts how many stacks of an item there are in the inventory
+     */
     public int CountStackItem(string itemName)
     {
         int numStack = 0;
@@ -123,6 +173,9 @@ public class Inventory
         return numStack;
     }
 
+    /**
+     * Counts how many stacks of all items there are in inventory
+     */
     public int CountStackAll()
     {
         int stackCount = 0;
@@ -135,6 +188,9 @@ public class Inventory
         return stackCount;
     }
 
+    /**
+     * Checks if inventory has enough space to add item of name : itemName
+     */
     public bool CheckSpace(string itemName)
     {
         if (invLog.Keys.Contains(itemName) && stackLimLog.Keys.Contains(itemName))
@@ -156,6 +212,10 @@ public class Inventory
         return false;
     }
 
+    /**
+     * Counts incomplete stacks of an item
+     * Returns 0 if there are no items or stacks are all complete
+     */
     public int CountIncompleteStack(string itemName)
     {
         int num = 0;
@@ -170,34 +230,10 @@ public class Inventory
         return num;
     }
 
-    // public void UpdateUISlots(List<ItemSlot> itemSlots)
-    // {
-    //     int i = 0;
-    //     
-    //     foreach (Item item in inventory)
-    //     {
-    //         if (i < itemSlots.Count)
-    //         {
-    //             ItemSlot itemSlot = itemSlots[i];
-    //
-    //             if (itemSlot.empty)
-    //             {
-    //                 itemSlot.empty = false;
-    //                 itemSlot.quantity = 1;
-    //                 itemSlot.itemName = item.name;
-    //                 itemSlot.itemImage.sprite =
-    //                     player.inventory.GetAny(item.name).GetComponent<SpriteRenderer>().sprite;
-    //                 
-    //             } else if (itemSlot.name == item.name)
-    //             {
-    //                 itemSlot.quantity += 1;
-    //             } else
-    //                 i++;
-    //         }
-    //         
-    //     }
-    // }
-    
+    /**
+     * Organizes the UI slots based on stacks of items
+     * needs the UI slots to be passed to it as a list.
+     */
     public void UpdateUISlots(List<ItemSlot> itemSlots)
     {
         int slotNum = 0;
@@ -248,10 +284,11 @@ public class Inventory
         get => new List<Item>(inventory);
     }
     
+    /**
+     * Status of inventory
+     */
     public bool Empty
     {
         get => inventory.Count < 1;
     }
-    
-    
 }
