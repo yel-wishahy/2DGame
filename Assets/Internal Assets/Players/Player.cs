@@ -13,13 +13,12 @@ public class Player : UEntity
     public GameObject projectilePrefab;
     public int inventoryCapacity;
     
-    [HideInInspector] public List<StorableItem> inventory;
-    [HideInInspector] private int coalsCollected;
+    [HideInInspector] public Inventory inventory;
 
     private void Awake()
     {
          userController = new playerController(this);
-         inventory = new List<StorableItem>();
+         inventory = new Inventory(this);
     }
     
 
@@ -32,58 +31,5 @@ public class Player : UEntity
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(attack.position, attackRadius);
     }
-
-    public bool pickupItem(Item item)
-    {
-        if (item.inStorage)
-        {
-            return false;
-        }
-        
-        if (inventory.Count > 0)
-        {
-            foreach (StorableItem i in inventory)
-            {
-                if (i.Name == item.name)
-                {
-                    if (i.Quantity < item.stackLimit)
-                    {
-                        i.Quantity += 1;
-                        return true;
-                    }
-                }
-            }
-        }
-        
-        if (inventory.Count < inventoryCapacity)
-        {
-            inventory.Add(new StorableItem(item, item.name, 1, this));
-            return true;
-        }
-
-        return false;
-    }
-
-    public void RemoveItem(StorableItem storableItem)
-    {
-        inventory.Remove(storableItem);
-        storableItem.RemoveItem();
-    }
-
-    public int getItemQuantity(string name)
-    {
-        foreach (StorableItem item in inventory)
-        {
-            if (item.Name == name)
-            {
-                return item.Quantity;
-            }
-        }
-
-        return 0;
-    }
-
-
-
 
 }

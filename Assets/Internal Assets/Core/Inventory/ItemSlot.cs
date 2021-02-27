@@ -7,12 +7,13 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     public int itemSlotID;
-    [SerializeField] public StorableItem item;
+    [SerializeField] public string itemName;
     [SerializeField] public Image itemImage;
     [SerializeField] private Text quantityDisplay;
     [SerializeField] private Button trashButton;
-    [HideInInspector] public bool empty = false;
+    [HideInInspector] public bool empty = true;
     [HideInInspector] public Player player;
+    [HideInInspector] public int quantity;
 
     // Start is called before the first frame update
     void Start()
@@ -24,15 +25,14 @@ public class ItemSlot : MonoBehaviour
     {
         if (!empty)
         {
-            itemImage.sprite = item.Item.GetComponent<SpriteRenderer>().sprite;
-            quantityDisplay.text = item.Quantity.ToString();
+            quantityDisplay.text = quantity.ToString();
             quantityDisplay.enabled = true;
             itemImage.enabled = true;
             trashButton.enabled = true;
             trashButton.image.enabled = true;
 
-            if (item.Quantity < 1)
-                RemoveItem();
+            if (quantity < 1)
+                empty = true;
         }
         else
         {
@@ -44,32 +44,23 @@ public class ItemSlot : MonoBehaviour
         }
     }
 
-    private void RemoveItem()
-    {
-        trashButton.enabled = false;
-        trashButton.image.enabled = false;
-        quantityDisplay.enabled = false;
-        itemImage.enabled = false;
-        empty = true;
-        item = null;
-        player.RemoveItem(item);
-    }
-
     public void OnClickUse()
     {
-        if (!empty&& item.Quantity > 0)
+        if (!empty && quantity > 0)
         {
-            if(item.Item.Use(player))
-                item.Quantity -= 1;
+            Item item = player.inventory.GetAnyAndRemove(itemName);
+            if (item != null && item.Use(player))
+                quantity -= 1;
         }
     }
     
     public void OnClickTrash()
     {
-        if (!empty && item.Quantity > 0)
+        if (!empty && quantity > 0)
         {
-            item.Quantity -= 1;
-            
+            Item item = player.inventory.GetAnyAndRemove(itemName);
+            if (item != null && Item.DropItem(item, player.transform.position))
+                quantity -= 1;
         }
     }
     

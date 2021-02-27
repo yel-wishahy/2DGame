@@ -109,11 +109,11 @@ public class Item : MonoBehaviour
     //this is limited to only player class for now
     public void PickupSelfItem(Collider2D entity)
     {
-        if (entity.GetComponent<Player>() != null)
+        Debug.Log("picking up");
+        if (!inStorage && entity.GetComponent<Player>() != null)
         {
             Player collector = entity.GetComponent<Player>();
-            Debug.Log(inStorage);
-            if (collector.pickupItem(this))
+            if (collector.inventory.AddItem(this))
             {
                 inStorage = true;
                 GetComponent<SpriteRenderer>().enabled = false;
@@ -133,6 +133,29 @@ public class Item : MonoBehaviour
     public virtual bool Use(Player user)
     {
         Debug.Log("not implemented yet");
+        return false;
+    }
+    
+    public static bool DropItem(Item item, Vector3 location)
+    {
+        if (!item.inStorage)
+            return false;
+        
+        Item[] finds = Resources.FindObjectsOfTypeAll<Item>();
+
+        foreach (Item i in finds)
+        {
+            if (i.inStorage && i.name == item.name)
+            {
+                i.transform.position = new Vector3(location.x + 2, location.y, location.z);
+                i.inStorage = false;
+                i.GetComponent<SpriteRenderer>().enabled = true;
+                i.GetComponent<Collider>().enabled = true;
+                return true;
+            }
+            
+        }
+
         return false;
     }
 }
