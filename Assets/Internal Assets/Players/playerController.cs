@@ -56,7 +56,7 @@ public class playerController : Controller
 
         foreach (Collider2D hit in possibleHits)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(entity.settings.GetSetting("Primary")))
             {
                 anim.SetBool("Attack1", true);
                 hit.GetComponent<UEntity>().takeDamage(entity.getAttackDamage());
@@ -69,7 +69,7 @@ public class playerController : Controller
 
     void projectileAttack()
     {
-        if (Input.GetButtonDown("Fire3"))
+        if (Input.GetKeyDown(entity.settings.GetSetting("Ranged")))
         Player.Instantiate(entity.projectilePrefab, entity.attack.position, entity.attack.rotation);
     }
 
@@ -77,12 +77,12 @@ public class playerController : Controller
     
     public void Jump()
     {
-        if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
+        if (Input.GetKeyDown(entity.settings.GetSetting("Jump")) && body.velocity.y > 0)
         {
             body.velocity = new Vector2(body.velocity.x, body.velocity.y * jumpHeight);
         }
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(entity.settings.GetSetting("Jump")))
         {
             RaycastHit2D rayCastDown = Physics2D.Raycast(entity.groundCheck.position, new Vector2(0, -1));
             Collider2D bottomCollide = rayCastDown.collider;
@@ -115,7 +115,7 @@ public class playerController : Controller
         //how much slower should a player fall if theyre against the wall
         float fallSpeed = -0.5f;
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetKeyDown(entity.settings.GetSetting("Secondary")))
         {
             RaycastHit2D hitSide = Physics2D.Raycast(body.position, new Vector2(body.velocity.x, 0));
             RaycastHit2D hitBottom = Physics2D.Raycast(body.position, new Vector2(0, -1));

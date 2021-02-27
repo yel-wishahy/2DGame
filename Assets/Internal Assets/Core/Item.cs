@@ -21,6 +21,7 @@ public class Item : MonoBehaviour
     [SerializeField] public int stackLimit;
     [SerializeField] public string itemType = "default";
     [SerializeField] public int itemID;
+    [SerializeField] private Collider2D worldCollider;
 
     //false by default
     [HideInInspector] public bool inStorage = false;
@@ -54,6 +55,9 @@ public class Item : MonoBehaviour
         {
             AltController.OnCollisionEnter2D(object2D);
         }
+        
+        if(itemType == "default")
+            IgnoreCollisions(worldCollider, object2D.gameObject.GetComponent<Collider2D>());
     }
 
     void OnCollisionExit2D(Collision2D object2D)
@@ -78,6 +82,9 @@ public class Item : MonoBehaviour
         {
             AltController.OnTriggerEnter2D(object2D);
         }
+        
+        if(itemType == "default")
+            PickupSelfItem(object2D);
     }
 
     void OnTriggerExit2D(Collider2D object2D)
@@ -109,7 +116,6 @@ public class Item : MonoBehaviour
     //this is limited to only player class for now
     public void PickupSelfItem(Collider2D entity)
     {
-        Debug.Log("picking up");
         if (!inStorage && entity.GetComponent<Player>() != null)
         {
             Player collector = entity.GetComponent<Player>();
@@ -118,13 +124,14 @@ public class Item : MonoBehaviour
                 inStorage = true;
                 GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<Collider>().enabled = false;
+                worldCollider.enabled = false;
             }
         }
     }
 
     public virtual void IgnoreCollisions(Collider2D selfCollider, Collider2D collider)
     {
-        if (collider.gameObject.tag != "Ground")
+        if (collider.gameObject.tag != "Ground" && collider.gameObject.tag != "Item" )
         {
             Physics2D.IgnoreCollision(selfCollider, collider);
         }
@@ -135,25 +142,17 @@ public class Item : MonoBehaviour
         Debug.Log("not implemented yet");
         return false;
     }
-    
+
     public static bool DropItem(Item item, Vector3 location)
     {
-        if (!item.inStorage)
-            return false;
-        
-        Item[] finds = Resources.FindObjectsOfTypeAll<Item>();
-
-        foreach (Item i in finds)
+        if (item.inStorage)
         {
-            if (i.inStorage && i.name == item.name)
-            {
-                i.transform.position = new Vector3(location.x + 2, location.y, location.z);
-                i.inStorage = false;
-                i.GetComponent<SpriteRenderer>().enabled = true;
-                i.GetComponent<Collider>().enabled = true;
-                return true;
-            }
-            
+            item.transform.position = new Vector3(location.x + 2, location.y, location.z);
+            item.inStorage = false;
+            item.GetComponent<SpriteRenderer>().enabled = true;
+            item.GetComponent<Collider>().enabled = true;
+            item.worldCollider.enabled = true;
+            return true;
         }
 
         return false;

@@ -23,6 +23,9 @@ public class ItemSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (quantity < 1)
+            empty = true;
+        
         if (!empty)
         {
             quantityDisplay.text = quantity.ToString();
@@ -30,9 +33,6 @@ public class ItemSlot : MonoBehaviour
             itemImage.enabled = true;
             trashButton.enabled = true;
             trashButton.image.enabled = true;
-
-            if (quantity < 1)
-                empty = true;
         }
         else
         {
@@ -40,7 +40,6 @@ public class ItemSlot : MonoBehaviour
             trashButton.image.enabled = false;
             quantityDisplay.enabled = false;
             itemImage.enabled = false;
-
         }
     }
 

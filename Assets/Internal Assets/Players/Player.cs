@@ -14,11 +14,22 @@ public class Player : UEntity
     public int inventoryCapacity;
     
     [HideInInspector] public Inventory inventory;
+    [HideInInspector] public PlayerSettings settings;
 
     private void Awake()
     {
          userController = new playerController(this);
          inventory = new Inventory(this);
+         settings = new PlayerSettings();
+         InitSettings();
+    }
+
+    private void InitSettings()
+    {
+        settings.AddorUpdateSetting("Primary", KeyCode.Mouse0);
+        settings.AddorUpdateSetting("Secondary", KeyCode.Mouse1);
+        settings.AddorUpdateSetting("Ranged", KeyCode.Mouse2);
+        settings.AddorUpdateSetting("Jump", KeyCode.Space);
     }
     
 
