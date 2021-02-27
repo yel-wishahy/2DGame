@@ -162,8 +162,7 @@ public class Inventory
         if (invLog.Keys.Contains(itemName) && stackLimLog.Keys.Contains(itemName))
         {
             numStack = invLog[itemName] / stackLimLog[itemName];
-            if (numStack < 1) numStack = 1;
-            int remainder = invLog[itemName] % numStack;
+            int remainder = invLog[itemName] - numStack * stackLimLog[itemName];
 
             if (remainder > 0)
                 numStack += 1;
@@ -199,15 +198,15 @@ public class Inventory
                 return true;
             
             int numStack = invLog[itemName] / stackLimLog[itemName];
-            if (numStack < 1) numStack = 1;
-            int remainder = invLog[itemName] % numStack;
+            int remainder = invLog[itemName] - numStack * stackLimLog[itemName];
 
             if (remainder > 0)
-            {
                 return true;
-            }
-        } else if (CountStackAll() < player.inventoryCapacity)
-            return true;
+            
+        } 
+        
+        if (CountStackAll() < player.inventoryCapacity)
+             return true;
 
         return false;
     }
@@ -250,7 +249,7 @@ public class Inventory
                 itemSlot.empty = false;
                 
                 itemSlot.quantity = stackLimit;
-                if (i == numSlots - 1)
+                if (i == numSlots - 1 && lastSlot > 0)
                     itemSlot.quantity = lastSlot;
                 
                 itemSlot.itemName = itemName;
