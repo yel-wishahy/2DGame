@@ -11,6 +11,7 @@ public class Player : UEntity
     public LayerMask groundLayer, enemyLayer;
     public GameObject projectilePrefab;
     public int inventoryCapacity;
+    public int stamina;
     
     [HideInInspector] public Controller userController;
     [HideInInspector] public Inventory inventory;
