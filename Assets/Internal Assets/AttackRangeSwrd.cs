@@ -13,13 +13,13 @@ public class AttackRangeSwrd : MonoBehaviour
         {
             UEntity enemyEntity = enemy.GetComponent<UEntity>();
             print(enemyEntity + "EE");
-            if (enemyEntity != null && enemyEntity.getHealth() > 0 && currentEntity.getHealth() > 0)
+            if (enemyEntity != null && enemyEntity.Health > 0 && currentEntity.Health > 0)
             {
                 if (currentEntity.AddDamage)
                 {
                    // UnifiedStorage.WriteToDisk();
                     print(UnifiedStorage.Sensitivity);
-                    enemyEntity.takeDamage(currentEntity.getAttackDamage());
+                    enemyEntity.takeDamage(currentEntity.AttackDamage);
                 }
             }
         }

@@ -11,14 +11,14 @@ public class HealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        slider.maxValue = entity.getHealth();
+        slider.maxValue = entity.Health;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        slider.value = entity.getHealth();
+        slider.value = entity.Health;
         
         if (text != null)
         {

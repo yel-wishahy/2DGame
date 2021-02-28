@@ -155,14 +155,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd209bec70ccebb4cbe254523a8b5c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 450
-  Speed: 10
-  JumpForce: 6
-  AttackDamage: 5
+  health: 1500
+  speed: 8
+  jumpForce: 8
+  attackDamage: 40
   AlterativeControl: 1
   GroundSensor: {fileID: 415532828065835937}
   EnemySenseRange: {x: 10, y: 5}
-  AttackInterval: 0
+  AttackInterval: 0.5
   alternativeX: 0
   alternativeY: 0
   AttackMode: 0

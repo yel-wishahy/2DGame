@@ -55,7 +55,7 @@ public class UEnemyFST : Controller
                 enemyEntity = enemy.GetComponent<Jason>();
                 //MonoBehaviour.print("ENEMY: " + enemy);
 
-                if (enemyEntity != null && enemyEntity.getHealth() > 0)
+                if (enemyEntity != null && enemyEntity.Health > 0)
                 {
 
                    CurrentState = States.Attack;
@@ -96,7 +96,7 @@ public class UEnemyFST : Controller
     public void Update()
     {
         Move();
-        if (entity.getHealth() > 0)
+        if (entity.Health > 0)
         {
             searchSurroundings();
 
@@ -138,8 +138,8 @@ public class UEnemyFST : Controller
 
                     if (entity.AddDamage)
                     {
-                        if (enemyEntity.getHealth() > 0)
-                            enemyEntity.takeDamage(entity.getAttackDamage());
+                        if (enemyEntity.Health > 0)
+                            enemyEntity.takeDamage(entity.AttackDamage);
                         else
                             enemyEntity.setHealth(0);
 
@@ -172,7 +172,7 @@ public class UEnemyFST : Controller
 
         inputX = entity.alternativeX;
 
-        if (entity.getHealth() > 0 && !ContactNotGround)
+        if (entity.Health > 0 && !ContactNotGround)
         {
             // Swap direction of sprite depending on walk direction
             if (inputX > 0)
@@ -181,7 +181,7 @@ public class UEnemyFST : Controller
                 entity.transform.localScale = new Vector3(Mathf.Abs(entity.transform.localScale.x), entity.transform.localScale.y, entity.transform.localScale.z);
 
             // Move
-            m_body2d.velocity = new Vector2(inputX * entity.getSpeed(), m_body2d.velocity.y);
+            m_body2d.velocity = new Vector2(inputX * entity.Speed, m_body2d.velocity.y);
 
             //Set AirSpeed in animator
             m_animator.SetFloat("AirSpeed", m_body2d.velocity.y);
@@ -204,7 +204,7 @@ public class UEnemyFST : Controller
 
         // -- Handle Animations --
         //Death
-        if (entity.getHealth() <= 0)
+        if (entity.Health <= 0)
         {
             if (!m_animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
             {
@@ -247,7 +247,7 @@ public class UEnemyFST : Controller
             m_animator.SetTrigger("Jump");
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
-            m_body2d.velocity = new Vector2(m_body2d.velocity.x, entity.getJumpForce());
+            m_body2d.velocity = new Vector2(m_body2d.velocity.x, entity.JumpForce);
             m_groundSensor.Disable(0.2f);
 
             entity.alternativeY = 0;

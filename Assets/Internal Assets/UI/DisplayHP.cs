@@ -16,19 +16,19 @@ public class DisplayHP : MonoBehaviour
     {
         text = GetComponent<Text>();
         slider = GetComponent<Slider>();
-        slider.maxValue = MainEntity.getHealth();
+        slider.maxValue = MainEntity.Health;
     }
     // Update is called once per frame
     void Update()
     {
-        text.text = "HP: " + MainEntity.getHealth();
+        text.text = "HP: " + MainEntity.Health;
 
         if (MainEntity.transform.localScale.x < 0)
             text.rectTransform.localScale = new Vector3(-1,1,1);
         else
             text.rectTransform.localScale = new Vector3(1,1,1);
 
-        slider.value = MainEntity.getHealth();
+        slider.value = MainEntity.Health;
 
 
 

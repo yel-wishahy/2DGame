@@ -73,7 +73,7 @@ public class UJasonController : Controller
         
 
 
-        if (entity.getHealth() > 0 && !entity.ContactNotGround)
+        if (entity.Health > 0 && !entity.ContactNotGround)
         {
             // Swap direction of sprite depending on walk direction
             if (inputX > 0)
@@ -82,7 +82,7 @@ public class UJasonController : Controller
                 entity.transform.localScale = new Vector3(Mathf.Abs(entity.transform.localScale.x), entity.transform.localScale.y, entity.transform.localScale.z);
 
             // Move
-            m_body2d.velocity = new Vector2(inputX * entity.getSpeed(), m_body2d.velocity.y);
+            m_body2d.velocity = new Vector2(inputX * entity.Speed, m_body2d.velocity.y);
 
             //Set AirSpeed in animator
             m_animator.SetFloat("AirSpeed", m_body2d.velocity.y);
@@ -105,7 +105,7 @@ public class UJasonController : Controller
 
         // -- Handle Animations --
         //Death
-        if (entity.getHealth() <= 0)
+        if (entity.Health <= 0)
         {
             if (!m_animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
             {
@@ -149,7 +149,7 @@ public class UJasonController : Controller
             m_animator.SetTrigger("Jump");
             entity.m_grounded = false;
             m_animator.SetBool("Grounded", entity.m_grounded);
-            m_body2d.velocity = new Vector2(m_body2d.velocity.x, entity.getJumpForce());
+            m_body2d.velocity = new Vector2(m_body2d.velocity.x, entity.JumpForce);
             m_groundSensor.Disable(0.2f);
 
             entity.alternativeY = 0;

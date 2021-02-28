@@ -149,10 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b326542fb646849809745c1b9fac20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 50
-  Speed: 1.5
-  JumpForce: 3
-  AttackDamage: 5
+  health: 100
+  speed: 1.5
+  jumpForce: 4
+  attackDamage: 10
   AlterativeControl: 1
   playerLayer:
     serializedVersion: 2

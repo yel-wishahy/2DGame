@@ -59,7 +59,7 @@ public class playerController : Controller
             if (Input.GetKeyDown(entity.settings.GetSetting("Primary")))
             {
                 anim.SetBool("Attack1", true);
-                hit.GetComponent<UEntity>().takeDamage(entity.getAttackDamage());
+                hit.GetComponent<UEntity>().takeDamage(entity.AttackDamage);
             }
 
         }
@@ -87,11 +87,11 @@ public class playerController : Controller
             RaycastHit2D rayCastDown = Physics2D.Raycast(entity.groundCheck.position, new Vector2(0, -1));
             Collider2D bottomCollide = rayCastDown.collider;
             
-            if (bottomCollide != null && rayCastDown.distance < 1)
+            if (bottomCollide != null && rayCastDown.distance < 0.5)
             {
                 Debug.Log(bottomCollide.gameObject.tag);
                 if (bottomCollide.gameObject.tag == "Ground"){
-                    body.velocity = new Vector2(body.velocity.x, entity.getJumpForce());
+                    body.velocity = new Vector2(body.velocity.x, entity.JumpForce);
                     anim.SetBool("Jump", true);
                     anim.SetBool("Grounded", false);
                 }
@@ -155,7 +155,7 @@ public class playerController : Controller
     public void Move()
     {
        
-        float movementX = Input.GetAxisRaw("Horizontal") * entity.getSpeed();
+        float movementX = Input.GetAxisRaw("Horizontal") * entity.Speed;
         body.velocity = new Vector2(movementX, body.velocity.y);
 
         if (body.velocity.x < 0) render.flipX = true;

@@ -9,10 +9,10 @@ public class Player : UEntity
     public Vector3 range = new Vector3(1, 0.2f, 0);
     public Transform groundCheck, attack;
     public LayerMask groundLayer, enemyLayer;
-    public Controller userController;
     public GameObject projectilePrefab;
     public int inventoryCapacity;
     
+    [HideInInspector] public Controller userController;
     [HideInInspector] public Inventory inventory;
     [HideInInspector] public PlayerSettings settings;
 

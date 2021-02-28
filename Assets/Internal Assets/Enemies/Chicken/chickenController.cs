@@ -37,9 +37,9 @@ public class chickenController : Controller
         image = entity.GetComponent<SpriteRenderer>();
         anim = entity.GetComponent<Animator>();
 
-        attackTimer = entity.getTime() + entity.attackTime;
-        jumpTimer = entity.getTime() + entity.jumpTime;
-        turnTimer = entity.getTime() + entity.turnTime;
+        attackTimer = entity.time + entity.attackTime;
+        jumpTimer = entity.time + entity.jumpTime;
+        turnTimer = entity.time + entity.turnTime;
         stunTimer = 0;
         hurtTimer = 0;
 
@@ -114,7 +114,7 @@ public class chickenController : Controller
         if (Damaged)
         {
             anim.SetBool("Hurt", true);
-            hurtTimer = entity.getTime() + entity.hurtTime;
+            hurtTimer = entity.time + entity.hurtTime;
             state = chickenState.hurt;
         }
         
@@ -126,16 +126,16 @@ public class chickenController : Controller
 
     void updateHurtAnimations()
     {
-        if (hurtTimer != 0 && entity.getTime() > hurtTimer)
+        if (hurtTimer != 0 && entity.time > hurtTimer)
         {
             hurtTimer = 0;
             anim.SetBool("Hurt", false);
             anim.SetBool("Stunned", true);
-            stunTimer = entity.getTime() + entity.stunTime;
+            stunTimer = entity.time + entity.stunTime;
             state = chickenState.stunned;
         }
 
-        if (stunTimer != 0 && entity.getTime() > stunTimer)
+        if (stunTimer != 0 && entity.time > stunTimer)
         {
             stunTimer = 0;
             state = chickenState.moving;
@@ -147,9 +147,9 @@ public class chickenController : Controller
     private void changeDir()
     {
 
-        if (entity.getTime() > turnTimer)
+        if (entity.time > turnTimer)
         {
-            turnTimer = entity.getTime() + entity.turnTime;
+            turnTimer = entity.time + entity.turnTime;
             dir *= -1;
         }
     }
@@ -180,10 +180,10 @@ public class chickenController : Controller
 
         if (state == chickenState.attack)
         {
-            if (entity.getTime() > attackTimer)
+            if (entity.time > attackTimer)
             {
-                enemy.GetComponent<UEntity>().takeDamage(entity.getAttackDamage());
-                attackTimer = entity.getTime() + entity.attackTime;
+                enemy.GetComponent<UEntity>().takeDamage(entity.AttackDamage);
+                attackTimer = entity.time + entity.attackTime;
             }
 
             state = chickenState.moving;
@@ -225,17 +225,17 @@ public class chickenController : Controller
     //jumps the chicken
     public void Jump()
     {
-        if (entity.getTime() > jumpTimer && body.velocity.y == 0)
+        if (entity.time > jumpTimer && body.velocity.y == 0)
         {
-            jumpTimer = entity.getTime() + entity.jumpTime;
-            body.velocity = new Vector2(body.velocity.x, entity.getJumpForce());
+            jumpTimer = entity.time + entity.jumpTime;
+            body.velocity = new Vector2(body.velocity.x, entity.JumpForce);
         }
     }
 
     //moves the chicken
     public void Move()
     {
-        body.velocity = new Vector2(dir * entity.getSpeed(), body.velocity.y);
+        body.velocity = new Vector2(dir * entity.Speed, body.velocity.y);
     }
 
     public void OnTriggerStay2D(Collider2D object2D)

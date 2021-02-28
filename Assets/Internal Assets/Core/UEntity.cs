@@ -25,7 +25,7 @@ public class UEntity : MonoBehaviour
 {
     //abstract properties that all entities have (override when extending this abstract class)
     [SerializeField]
-    private float Health, Speed, JumpForce, AttackDamage;
+    private float health, speed, jumpForce, attackDamage;
     [SerializeField]
     public bool AlterativeControl;
 
@@ -122,7 +122,7 @@ public class UEntity : MonoBehaviour
     //Entity takes damage and health is reduced by dmg.
     public void takeDamage(float dmg)
     {
-        Health -= dmg;
+        health -= dmg;
 
         if (AlterativeControl)
         {
@@ -137,7 +137,7 @@ public class UEntity : MonoBehaviour
     //Returns life state of entity
     public bool isAlive()
     {
-        return (Health > 0);
+        return (health > 0);
     }
 
     public bool isHurt()
@@ -155,55 +155,54 @@ public class UEntity : MonoBehaviour
     //increments entity health by 1
     public void incrementHealth()
     {
-        Health++;
+        health++;
     }
 
     //decrements entity health by 1
     public void decrementHealth()
     {
-        Health--;
+        health--;
     }
 
     //Entity is healed and +hlth health is gained
     public void gainHealth(float hlth)
     {
-        Health += hlth;
+        health += hlth;
     }
 
-    public float getAttackDamage()
+    public float AttackDamage
     {
-        return AttackDamage;
+        get => attackDamage;
     }
 
-    public float getSpeed()
+    public float Speed
     {
-        return Speed;
+        get => speed;
     }
 
-    public float getJumpForce()
+    public float JumpForce
     {
-        return JumpForce;
+        get => jumpForce;
     }
 
-    public float getHealth()
+    public float Health
     {
-        return Health;
+        get => health;
     }
-
     public void setHealth(float hlth)
     {
-        Health = hlth;
+        health = hlth;
     }
 
-    public float getTime()
+    public float time
     {
-        return Time.time;
+        get => Time.time;
     }
 
     public void Die()
     {
         enabled = false;
-        Health = 0;
+        health = 0;
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponentInChildren<Canvas>().enabled = false;

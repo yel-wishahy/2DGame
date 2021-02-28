@@ -101,10 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42a7e4f68f7b954ba375bc23b39fad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
-  Speed: 5
-  JumpForce: 10
-  AttackDamage: 13
+  health: 500
+  speed: 7
+  jumpForce: 5
+  attackDamage: 25
   AlterativeControl: 0
   attackRadius: 0.8
   range: {x: 1.2, y: 0.2, z: 0}
