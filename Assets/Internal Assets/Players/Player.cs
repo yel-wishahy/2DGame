@@ -31,6 +31,7 @@ public class Player : UEntity
         settings.AddorUpdateSetting("Secondary", KeyCode.Mouse1);
         settings.AddorUpdateSetting("Ranged", KeyCode.Mouse2);
         settings.AddorUpdateSetting("Jump", KeyCode.Space);
+        settings.AddorUpdateSetting("Split Stack", KeyCode.Mouse1);
     }
     
 
