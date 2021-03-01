@@ -24,12 +24,9 @@
           <e p="AttackRangeSwrd.cs" t="Include" />
           <e p="Core" t="Include">
             <e p="Controller.cs" t="Include" />
-            <e p="Inventory" t="Include">
-              <e p="Inventory.cs" t="Include" />
-              <e p="ItemSlot.cs" t="Include" />
-              <e p="StorableItem.cs" t="Include" />
-            </e>
+            <e p="Inventory.cs" t="Include" />
             <e p="Item.cs" t="Include" />
+            <e p="PlayerSettings.cs" t="Include" />
             <e p="Sensor_Entity.cs" t="Include" />
             <e p="UEntity.cs" t="Include" />
           </e>
@@ -74,10 +71,18 @@
             </e>
           </e>
           <e p="UI" t="Include">
-            <e p="CoalDisplay.cs" t="Include" />
-            <e p="DisplayHP.cs" t="Include" />
-            <e p="follower.cs" t="Include" />
-            <e p="HealthBar.cs" t="Include" />
+            <e p="Camera" t="Include">
+              <e p="follower.cs" t="Include" />
+            </e>
+            <e p="HealthBar" t="Include">
+              <e p="DisplayHP.cs" t="Include" />
+              <e p="HealthBar.cs" t="Include" />
+            </e>
+            <e p="Inventory" t="Include">
+              <e p="DragDropHandler.cs" t="Include" />
+              <e p="InventoryUI.cs" t="Include" />
+              <e p="ItemSlot.cs" t="Include" />
+            </e>
             <e p="Text" t="Include">
               <e p="text.txt" t="Include" />
               <e p="TextBoxManager.cs" t="Include" />

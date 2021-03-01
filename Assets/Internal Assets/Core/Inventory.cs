@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
 /*
  * An inventory class for the player
  * Internal representation:
@@ -17,15 +18,15 @@ public class Inventory
 {
     //inventory
     private List<Item> inventory;
-    
+
     //helper logs that give details about items in inventory
     private Dictionary<string, int> invLog;
     private Dictionary<string, int> stackLimLog;
-    
+
     //player
     private Player player;
 
-    
+
     //constructor
     public Inventory(Player parent)
     {
@@ -48,7 +49,7 @@ public class Inventory
         if (CheckSpace(item.name))
         {
             inventory.Add(item);
-            inventory = inventory.OrderBy(go=>go.name).ToList();
+            inventory = inventory.OrderBy(go => go.name).ToList();
             UpdateLogs();
             return true;
         }
@@ -68,7 +69,7 @@ public class Inventory
         if (inventory.Contains(item))
         {
             inventory.Remove(item);
-            inventory = inventory.OrderBy(go=>go.name).ToList();
+            inventory = inventory.OrderBy(go => go.name).ToList();
             UpdateLogsRemove(item.name);
             return true;
         }
@@ -90,7 +91,7 @@ public class Inventory
             else
                 invLog.Add(item.name, 1);
 
-            if(!stackLimLog.Keys.Contains(item.name))
+            if (!stackLimLog.Keys.Contains(item.name))
                 stackLimLog.Add(item.name, item.stackLimit);
         }
     }
@@ -108,8 +109,7 @@ public class Inventory
         else
             invLog[itemName] -= 1;
     }
-    
-    
+
 
     /**
      * Returns the quantity of an item in inventory based on item name
@@ -129,13 +129,13 @@ public class Inventory
     {
         foreach (Item item in inventory)
         {
-            if (item.name == itemName) 
+            if (item.name == itemName)
                 return item;
         }
 
         return null;
     }
-    
+
     //returns first instance of item found in inventory AND REMOVES IT IN THE PROCESS,
     //or returns null if no such item is stored or name is wrong
     public Item GetAnyAndRemove(string itemName)
@@ -144,7 +144,7 @@ public class Inventory
         {
             if (item.name == itemName)
             {
-                if(RemoveItem(item))
+                if (RemoveItem(item))
                     return item;
             }
         }
@@ -158,7 +158,7 @@ public class Inventory
     public int CountStackItem(string itemName)
     {
         int numStack = 0;
-        
+
         if (invLog.Keys.Contains(itemName) && stackLimLog.Keys.Contains(itemName))
         {
             numStack = invLog[itemName] / stackLimLog[itemName];
@@ -166,7 +166,6 @@ public class Inventory
 
             if (remainder > 0)
                 numStack += 1;
-            
         }
 
         return numStack;
@@ -178,7 +177,7 @@ public class Inventory
     public int CountStackAll()
     {
         int stackCount = 0;
-        
+
         foreach (string itemKey in invLog.Keys)
         {
             stackCount += CountStackItem(itemKey);
@@ -196,17 +195,16 @@ public class Inventory
         {
             if (invLog[itemName] < stackLimLog[itemName])
                 return true;
-            
+
             int numStack = invLog[itemName] / stackLimLog[itemName];
             int remainder = invLog[itemName] - numStack * stackLimLog[itemName];
 
             if (remainder > 0)
                 return true;
-            
-        } 
-        
+        }
+
         if (CountStackAll() < player.inventoryCapacity)
-             return true;
+            return true;
 
         return false;
     }
@@ -229,60 +227,25 @@ public class Inventory
         return num;
     }
 
-    /**
-     * Organizes the UI slots based on stacks of items
-     * needs the UI slots to be passed to it as a list.
-     */
-    public void UpdateUISlots(List<ItemSlot> itemSlots)
-    {
-        int slotNum = 0;
-        foreach (string itemName in invLog.Keys)
-        {
-            int numSlots = CountStackItem(itemName);
-            int lastSlot = CountIncompleteStack(itemName);
-            int stackLimit = stackLimLog[itemName];
-            
-            for (int i = 0; i < numSlots; i++, slotNum++)
-            {
-                ItemSlot itemSlot = itemSlots[slotNum];
-                
-                itemSlot.empty = false;
-                
-                itemSlot.quantity = stackLimit;
-                if (i == numSlots - 1 && lastSlot > 0)
-                    itemSlot.quantity = lastSlot;
-                
-                itemSlot.itemName = itemName;
-                itemSlot.itemImage.sprite =
-                    player.inventory.GetAny(itemName).GetComponent<SpriteRenderer>().sprite;
-                
-
-            }
-
-        }
-    }
-    
-    
-
     //a copy instance of the log accessible to other classes
     public Dictionary<string, int> InventoryLog
     {
         get => new Dictionary<string, int>(invLog);
     }
-    
+
     //a copy instance of the stack log accessible to other classes
     public Dictionary<string, int> StackLimitLog
     {
         get => new Dictionary<string, int>(stackLimLog);
     }
-    
+
     //a copy instance of the full inventory accessible to other classes
     //unsure if it also creates new instance copies of the items...?
     public List<Item> InventoryList
     {
         get => new List<Item>(inventory);
     }
-    
+
     /**
      * Status of inventory
      */
