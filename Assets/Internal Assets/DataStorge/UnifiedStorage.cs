@@ -15,6 +15,7 @@ public static class UnifiedStorage
         };
     public static Queue<KeyValuePair<int, string>> PendingAchievements = new Queue<KeyValuePair<int, string>>();
 
+    public static List<GameObject> ListofItems = new List<GameObject>();
     public static int ControlFormat = 0;
     public static float Sensitivity = 0.75f;
 
