@@ -22,6 +22,7 @@ public class Item : MonoBehaviour
     [SerializeField] public string itemType = "default";
     [SerializeField] public int itemID;
     [SerializeField] private Collider2D worldCollider;
+    [SerializeField] private Collider2D triggerCollider;
 
     //false by default
     [HideInInspector] public bool inStorage = false;
@@ -123,7 +124,7 @@ public class Item : MonoBehaviour
             {
                 inStorage = true;
                 GetComponent<SpriteRenderer>().enabled = false;
-                GetComponent<Collider>().enabled = false;
+                triggerCollider.enabled = false;
                 worldCollider.enabled = false;
             }
         }
@@ -147,13 +148,29 @@ public class Item : MonoBehaviour
     {
         if (item.inStorage)
         {
-            item.transform.position = new Vector3(location.x + 2, location.y, location.z);
+            item.transform.position = new Vector3(location.x + 1, location.y + 1, location.z);
+            item.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             item.inStorage = false;
             item.GetComponent<SpriteRenderer>().enabled = true;
-            item.GetComponent<Collider>().enabled = true;
+            item.triggerCollider.enabled = true;
             item.worldCollider.enabled = true;
             return true;
         }
+
+        return false;
+    }
+
+    public static bool DropMultipleItems(List<Item> items, Vector3 location)
+    {
+        List<Item> itemsCopy = new List<Item>(items);
+        foreach (Item item in itemsCopy)
+        {
+            if (DropItem(item, location))
+                items.Remove(item);
+        }
+
+        if (items.Count < 1)
+            return true;
 
         return false;
     }

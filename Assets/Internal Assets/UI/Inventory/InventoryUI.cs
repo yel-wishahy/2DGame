@@ -6,21 +6,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-//manages inventory system UI sorting, updates from player, has itemslot children that display each item
+/**
+ * A class to manage the Inventory UI system, should be attacked to an inventory panel UI object under a canvas
+ *
+ * Pulls data from player inventory and update the UI accordingly, also remembers positions of items in slots,
+ * and handles sorting stacks with some help from the inventory class helper functions
+ *
+ * Author: Yousif El-Wishahy (GH: yel-wishahy)
+ * Date: 28/02/2021
+ */
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private GameObject itemSlotPrefab;
 
     private List<ItemSlot> itemSlots;
-
-
+    
     // Start is called before the first frame update
     void Awake()
     {
         InitItemSlots();
     }
-
+    
     void InitItemSlots()
     {
         itemSlots = new List<ItemSlot>();
@@ -58,11 +65,11 @@ public class InventoryUI : MonoBehaviour
         }
     }
     
-        /**
-     * Organizes the UI slots based on stacks of items
-     * needs the UI slots to be passed to it as a list.
+    /**
+     * Ignores previous item slot configuration and re-organizes it based on the
+     * order of itemNames in the inventory Log obtained from player
      */
-    public void CleanOrganizeUISlots(List<ItemSlot> itemSlots)
+    private void CleanOrganizeUISlots(List<ItemSlot> itemSlots)
     {
         int slotNum = 0;
         foreach (string itemName in player.inventory.InventoryLog.Keys)
@@ -88,7 +95,11 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void UpdateUISlots(Dictionary<string, int> invLog, Dictionary<string, int> stackLimLog)
+    /**
+     * Updates the UI slots keeping previous configuration in mind, as well as any changes
+     * made by drag and drop!
+     */
+    private void UpdateUISlots(Dictionary<string, int> invLog, Dictionary<string, int> stackLimLog)
     {
         Dictionary<string, int> itemSlotLogs = new Dictionary<string, int>();
         Dictionary<string, int> changes = new Dictionary<string, int>();
@@ -105,7 +116,11 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
-        foreach (var itemName in invLog.Keys)
+        //populate changes dictionary with any changes needed to be made to align with the players inventory logs
+        //changes are in the form of item name, (int) change
+        //the int is negative if the change is to remove items
+        //positive is vice verse
+        foreach (string itemName in invLog.Keys)
         {
             if (!itemSlotLogs.ContainsKey(itemName))
                 changes.Add(itemName, invLog[itemName]);
@@ -113,9 +128,22 @@ public class InventoryUI : MonoBehaviour
                 changes.Add(itemName, invLog[itemName] - itemSlotLogs[itemName] );
         }
 
+        //calls another helper function to update the UI based on changes calculated above
         UpdateUISlotsFromChanges(changes, stackLimLog);
     }
 
+    /*
+     * Function that takes a dictionary of changes to make and a stack limit log for each item
+     * and updates the item slot based on changes
+     *
+     * Logical process:
+     * Run through all item names in changes
+     * If the change is not 0, then attempt to make it
+     * Depending on the sign of changes, either add or remove item quantities
+     * If adding, and all slots containing itemName are full, starting adding to new slots
+     *
+     *Calls helper function to calculate and apply the change amount math
+     */
     private void UpdateUISlotsFromChanges(Dictionary<string, int> changes, Dictionary<string, int> stackLimLog)
     {
         foreach (string itemName in changes.Keys)
@@ -147,6 +175,13 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    /**
+     * Helper function to calculate and apply the change amount
+     * Goal: to add changes to the quantity in itemslot within the bounds of (0 <= item quantity <= item stack limit)
+     * If the above condition is met, the return value is 0
+     * If the change results in not meeting the contion of (0 <= item quantity <= item stack limit), then change is
+     * reduced appropraitely until it meets the condtion, the excess is returned.
+     */
     private int UpdateItemSlotQuantity(ItemSlot itemSlot, Dictionary<string, int> stackLimLog , int change)
     {
         int quantityResult = itemSlot.quantity + change;

@@ -118,8 +118,9 @@ MonoBehaviour:
   stackLimit: 10
   itemType: default
   itemID: 0
-  inStorage: 0
   worldCollider: {fileID: 7375420417998518666}
+  triggerCollider: {fileID: 7230615192948336851}
+  inStorage: 0
   healthBuff: -10
 --- !u!60 &7375420417998518666
 PolygonCollider2D:

@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Coal : Item
 {
-    [SerializeField] private Collider2D worldCollider;
     [SerializeField] private float healthBuff;
 
     public override bool Use(Player user)

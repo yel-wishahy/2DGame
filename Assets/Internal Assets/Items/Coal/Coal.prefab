@@ -118,6 +118,8 @@ MonoBehaviour:
   stackLimit: 12
   itemType: default
   itemID: 1
+  worldCollider: {fileID: 561266469447423659}
+  triggerCollider: {fileID: 1245328760153282937}
   inStorage: 0
   worldCollider: {fileID: 561266469447423659}
   healthBuff: 10

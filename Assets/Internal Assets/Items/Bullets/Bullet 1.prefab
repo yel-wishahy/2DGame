@@ -148,6 +148,8 @@ MonoBehaviour:
   stackLimit: 0
   itemType: projectile
   itemID: 0
+  worldCollider: {fileID: 0}
+  triggerCollider: {fileID: 5151975627757653440}
   inStorage: 0
   attackDamage: 25
   speed: 15
