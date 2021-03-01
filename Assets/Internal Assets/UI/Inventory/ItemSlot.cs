@@ -8,6 +8,12 @@ using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
 
+/**
+ * An item slot class that represents each individual itemslot in an inventory panel
+ *
+ * Author: Yousif El-Wishahy 9GH: yel-wishahy)
+ * Date: 28/02/2021
+ */
 public class ItemSlot : MonoBehaviour
 {
     public int itemSlotID;
@@ -18,8 +24,6 @@ public class ItemSlot : MonoBehaviour
     [HideInInspector] public bool empty = true;
     [HideInInspector] public Player player;
     [HideInInspector] public int quantity;
-
-    private Vector3 startPosition = Vector3.zero;
 
     // Update is called once per frame
     void Update()
@@ -33,6 +37,7 @@ public class ItemSlot : MonoBehaviour
             Clear();
     }
 
+    //fills the UI for the item slot by enabling everything and updating quantity
     public void Fill()
     {
         quantityDisplay.text = quantity.ToString();
@@ -42,6 +47,7 @@ public class ItemSlot : MonoBehaviour
         trashButton.image.enabled = true;
     }
 
+    //Clears slot by clearing name, quantity, and disabling graphics
     public void Clear()
     {
         itemName = "empty";
@@ -52,6 +58,7 @@ public class ItemSlot : MonoBehaviour
         itemImage.enabled = false;
     }
 
+    //When item image is clicked, use the item by calling its use command
     public void OnClickUse()
     {
         if (!empty && quantity > 0)
@@ -62,6 +69,7 @@ public class ItemSlot : MonoBehaviour
         }
     }
 
+    //When the x UI button is clicked, remove item from inventory and drop it
     public void OnClickTrash()
     {
         if (!empty && quantity > 0)
@@ -72,6 +80,8 @@ public class ItemSlot : MonoBehaviour
         }
     }
 
+    //When an item stack is dragged out of inventory, remove the whole stack from inventory
+    //and drop the whole stack into the world
     public void OnDropTrash()
     {
         List<Item> itemsRemoved = player.inventory.GetMultipleAndRemove(itemName, quantity);
@@ -80,6 +90,7 @@ public class ItemSlot : MonoBehaviour
             Clear();
     }
 
+    //Swap two slots
     public static void SwapSlots(ItemSlot itemSlot1, ItemSlot itemSlot2)
     {
         string itemName = itemSlot1.itemName;
@@ -98,6 +109,7 @@ public class ItemSlot : MonoBehaviour
         itemSlot2.quantity = quantity;
     }
 
+    //Split a slot in half, itemSlot2 has to be empty
     public static void SplitSlots(ItemSlot itemSlot1, ItemSlot itemSlot2)
     {
         Debug.Log("splitting");
@@ -122,6 +134,7 @@ public class ItemSlot : MonoBehaviour
         itemSlot2.quantity = quantity;
     }
 
+    //Add two slots, both slots have to contain the same item
     public static void SumSlots(ItemSlot itemSlot1, ItemSlot itemSlot2)
     {
         int quantity = itemSlot1.quantity + itemSlot2.quantity;
