@@ -72,14 +72,6 @@ public class ItemSlot : MonoBehaviour
         }
     }
 
-    public void OnDropTrash()
-    {
-        List<Item> itemsRemoved = player.inventory.GetMultipleAndRemove(itemName, quantity);
-
-        if (Item.DropMultipleItems(itemsRemoved, player.transform.position))
-            Clear();
-    }
-
     public static void SwapSlots(ItemSlot itemSlot1, ItemSlot itemSlot2)
     {
         string itemName = itemSlot1.itemName;

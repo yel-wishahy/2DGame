@@ -12,7 +12,7 @@ public class ItemIndex : MonoBehaviour
     {
         foreach (GameObject item in Items)
         {
-            UnifiedStorage.ListofItems.Add(item);
+            UnifiedStorage.AddItem(item);
         }
 
         SceneManager.LoadScene(SceneToLoad);
