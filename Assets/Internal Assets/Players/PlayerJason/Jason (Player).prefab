@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 500
   speed: 8
-  jumpForce: 8.5
+  jumpForce: 5
   attackDamage: 25
   AlterativeControl: 0
   attackRadius: 0.8
@@ -185,6 +185,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5765044810424246497, guid: 319ec8134e12fdf4b8cf573301e2da5b,
     type: 3}
   inventoryCapacity: 5
+  stamina: 0
 --- !u!95 &3047822298724471020
 Animator:
   serializedVersion: 3

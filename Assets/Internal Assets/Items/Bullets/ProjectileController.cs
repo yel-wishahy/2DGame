@@ -24,7 +24,7 @@ public class ProjectileController : Controller
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         fireVector = new Vector2(mousePos.x - body.position.x, mousePos.y - body.position.y);
-        fireVector /= fireVector.magnitude;
+        fireVector.Normalize();
 
         if (fireVector.x < 0)
             render.flipX = true;

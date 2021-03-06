@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -28,6 +29,11 @@ public class DragDropHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         if (IsPointerOverItemSlot())
         {
             startSlot = GetUIElementFromPointer("ItemSlot");
+            
+            if (Input.GetKey(startSlot.player.settings.GetSetting("Split Stack")))
+                splitting = true;
+            else
+                splitting = false;
         }
     }
 
@@ -36,12 +42,6 @@ public class DragDropHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
-        if (Input.GetKeyDown(startSlot.player.settings.GetSetting("Secondary")))
-            splitting = true;
-        else
-            splitting = false;
-        
-        Debug.Log("splitting is: " + splitting);
     }
 
     //When ending drag either drop item in a slot, or out of inventory depending

@@ -135,6 +135,20 @@ public class Inventory
 
         return null;
     }
+    
+    //Gets an int number of items from inventory based on item name and returns them in a list
+    //Can return less than specified number or none if none in inventory
+    public List<Item> GetMultiple(string itemName, int quantityRequired)
+    {
+        List<Item> items = new List<Item>();
+        foreach (Item item in inventory)
+        {
+            if (item.name == itemName && items.Count < quantityRequired)
+                items.Add(item);
+        }
+
+        return items;
+    }
 
     //returns first instance of item found in inventory AND REMOVES IT IN THE PROCESS,
     //or returns null if no such item is stored or name is wrong
@@ -150,6 +164,26 @@ public class Inventory
         }
 
         return null;
+    }
+    
+    //Gets an int number of items from inventory based on item name and returns them in a list
+    //NOTE: REMOVES ITEM FROM INVENTORY IN THE PROCESS
+    //Can return less than specified number or none if none in inventory
+    public List<Item> GetMultipleAndRemove(string itemName, int quantityRequired)
+    {
+        List<Item> items = new List<Item>();
+        List<Item> inventoryCopy = new List<Item>(inventory);
+        
+        foreach (Item item in inventoryCopy)
+        {
+            if (item.name == itemName && items.Count < quantityRequired)
+            {
+                if (RemoveItem(item))
+                    items.Add(item);
+            }
+        }
+
+        return items;
     }
 
     /**
