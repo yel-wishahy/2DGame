@@ -119,18 +119,11 @@ public class ItemSlot : MonoBehaviour
         if (itemSlot1.quantity % 2 != 0)
             remainder = 1;
         
-        string itemName = itemSlot1.itemName;
-        Sprite itemSprite = itemSlot1.itemImage.sprite;
-        bool empty = itemSlot1.empty;
-
-        itemSlot1.itemName = itemSlot2.itemName;
-        itemSlot1.itemImage.sprite = itemSlot2.itemImage.sprite;
-        itemSlot1.empty = itemSlot2.empty;
         itemSlot1.quantity = quantity + remainder;
 
-        itemSlot2.itemName = itemName;
-        itemSlot2.itemImage.sprite = itemSprite;
-        itemSlot2.empty = empty;
+        itemSlot2.itemName = itemSlot1.itemName;
+        itemSlot2.itemImage.sprite = itemSlot1.itemImage.sprite;
+        itemSlot2.empty = false;
         itemSlot2.quantity = quantity;
     }
 

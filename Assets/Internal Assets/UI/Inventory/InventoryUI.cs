@@ -46,7 +46,7 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < itemSlots.Count; i++)
         {
             itemSlots[i].itemSlotID = i;
-            itemSlots[i].transform.parent = transform;
+            itemSlots[i].transform.SetParent(transform);
             itemSlots[i].empty = true;
             itemSlots[i].player = player;
         }

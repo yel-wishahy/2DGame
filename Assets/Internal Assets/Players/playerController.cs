@@ -14,7 +14,12 @@ public class playerController : Controller
 
     private bool sliding = false;
 
-
+    private enum JumpState
+    {
+        Jumping,
+        Grounded
+    }
+    ;
 
 
     public playerController(Player entity)
@@ -22,8 +27,8 @@ public class playerController : Controller
         this.entity = entity;
         Init();
     }
-  
-  
+
+
     // Start is called before the first frame update
     public void Init()
     {
@@ -52,7 +57,8 @@ public class playerController : Controller
 
     public void Attack()
     {
-        Collider2D[] possibleHits = Physics2D.OverlapCircleAll(entity.attack.position, entity.attackRadius, entity.enemyLayer);
+        Collider2D[] possibleHits =
+            Physics2D.OverlapCircleAll(entity.attack.position, entity.attackRadius, entity.enemyLayer);
 
         foreach (Collider2D hit in possibleHits)
         {
@@ -61,50 +67,56 @@ public class playerController : Controller
                 anim.SetBool("Attack1", true);
                 hit.GetComponent<UEntity>().takeDamage(entity.AttackDamage);
             }
-
         }
-        
-        
     }
 
     void projectileAttack()
     {
         if (Input.GetKeyDown(entity.settings.GetSetting("Ranged")))
-        Player.Instantiate(entity.projectilePrefab, entity.attack.position, entity.attack.rotation);
+            Player.Instantiate(entity.projectilePrefab, entity.attack.position, entity.attack.rotation);
     }
 
 
-    
     public void Jump()
     {
-        if (Input.GetKeyDown(entity.settings.GetSetting("Jump")) && body.velocity.y > 0)
+        if (Input.GetKeyDown(entity.settings.GetSetting("Jump")) && IsGrounded)
+        {
+            body.AddForce(Vector2.up.normalized * entity.JumpForce);
+            // anim.SetBool("Jump", true);
+            // anim.SetBool("Grounded", false);
+        }
+        else
+        {
+            // anim.SetBool("Grounded", true);
+            // anim.SetBool("Jump", false);
+        }
+
+
+        if (Input.GetKeyUp(entity.settings.GetSetting("Jump")) && body.velocity.y > 0 && !IsGrounded)
         {
             body.velocity = new Vector2(body.velocity.x, body.velocity.y * jumpHeight);
         }
-        
-        if (Input.GetKeyDown(entity.settings.GetSetting("Jump")))
-        {
-            RaycastHit2D rayCastDown = Physics2D.Raycast(entity.groundCheck.position, new Vector2(0, -1));
-            Collider2D bottomCollide = rayCastDown.collider;
-            
-            if (bottomCollide != null && rayCastDown.distance < 0.5)
-            {
-                Debug.Log(bottomCollide.gameObject.tag);
-                if (bottomCollide.gameObject.tag == "Ground"){
-                    body.velocity = new Vector2(body.velocity.x, entity.JumpForce);
-                    anim.SetBool("Jump", true);
-                    anim.SetBool("Grounded", false);
-                }
-                else
-                {
-                    anim.SetBool("Grounded", true);
-                }
-            }
-        }
-        
-        anim.SetFloat("AirSpeedY", body.velocity.y);
+
+        // anim.SetFloat("AirSpeedY", body.velocity.y);
     }
-    
+
+    public bool IsGrounded
+    {
+        get => getGrounded();
+    }
+
+    private bool getGrounded()
+    {
+        RaycastHit2D rayCastDown = Physics2D.Raycast(entity.groundCheck.position, new Vector2(0, -1));
+        Collider2D bottomCollide = rayCastDown.collider;
+
+        if (bottomCollide != null && rayCastDown.distance < 0.5f && bottomCollide.gameObject.tag == "Ground")
+            return true;
+
+        return false;
+    }
+
+
     public void WallSlide()
     {
         if (sliding)
@@ -137,24 +149,22 @@ public class playerController : Controller
                     sliding = false;
                     anim.SetBool("WallSlide", false);
                     anim.SetBool("Grounded", true);
-
                 }
             }
-            {
 
+            {
             }
-        } else
+        }
+        else
         {
             sliding = false;
             anim.SetBool("WallSlide", false);
-
         }
     }
 
 
     public void Move()
     {
-       
         float movementX = Input.GetAxisRaw("Horizontal") * entity.Speed;
         body.velocity = new Vector2(movementX, body.velocity.y);
 
@@ -167,36 +177,29 @@ public class playerController : Controller
 
     public void Hurt()
     {
-        
     }
 
     public void OnTriggerStay2D(Collider2D object2D)
     {
-        
     }
 
     public void OnTriggerEnter2D(Collider2D object2D)
     {
-        
     }
 
     public void OnCollisionStay2D(Collision2D object2D)
     {
-        
     }
 
     public void OnTriggerExit2D(Collider2D object2D)
     {
-        
     }
 
     public void OnCollisionExit2D(Collision2D object2D)
     {
-        
     }
 
     public void OnCollisionEnter2D(Collision2D object2D)
     {
-        
     }
 }
