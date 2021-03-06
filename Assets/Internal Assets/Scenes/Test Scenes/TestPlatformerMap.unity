@@ -1826,6 +1826,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce3797dbf7ec2de43b6239ad762d9911, type: 3}
+--- !u!1 &963408100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4332317350382470743, guid: 9d785984e583da44b80dc335c10c8b87,
+    type: 3}
+  m_PrefabInstance: {fileID: 1729384898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &963408102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963408100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d689769f0a6e6f4ebc174d61d3ab80f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InfectInterval: 2.5
+  MinimumHealth: 25
+  InfectDmg: 5
+  InfectTag:
+  - NPC
+  - Player
+  - MainCharacter
+  DefaultLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  SeekRadius: 2
 --- !u!1 &974883009 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5967519492509662370, guid: 02d9a7895e91f7141ad9ff99c565082e,
@@ -3022,6 +3051,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008e3efa8b1bb614e9eaefaf53df3a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Items: []
+  SceneToLoad: Main
 --- !u!4 &1691750691
 Transform:
   m_ObjectHideFlags: 0
@@ -3108,6 +3139,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332317350382470746, guid: 9d785984e583da44b80dc335c10c8b87,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332317350382470746, guid: 9d785984e583da44b80dc335c10c8b87,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332317350382470746, guid: 9d785984e583da44b80dc335c10c8b87,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6586580047575373907, guid: 9d785984e583da44b80dc335c10c8b87,
         type: 3}
