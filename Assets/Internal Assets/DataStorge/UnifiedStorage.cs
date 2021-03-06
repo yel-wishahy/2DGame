@@ -21,7 +21,23 @@ public static class UnifiedStorage
     
     public static GameObject GetItembyId(int item)
     {
-        return ListofItems[item];
+        if (ListofItems.Count > 0)
+        {
+            try
+            {
+                return ListofItems[item];
+            }
+            catch
+            {
+                Debug.LogError("Item index out of range. Check index value.");
+                return null;
+            }
+        }
+        else
+        {
+            Debug.LogError("Item list not loaded. Ensure that ItemIndex is active on at least one GameObject at some point in the game.");
+            return null;
+        }
     }
 
     public static void AddItem(GameObject item)
