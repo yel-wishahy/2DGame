@@ -4,10 +4,9 @@
     <list default="true" id="2e7c3aec-1c02-4cfc-bd00-0dd8cd71815f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2DGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/UI/Inventory/InventorySlot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/UI/Inventory/InventorySlot.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/UI/Inventory/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/UI/Inventory/InventoryUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/UI/Inventory/ItemSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/UI/Inventory/ItemSlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ItemIndex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/DataStorge/ItemIndex.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ItemIndex.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Internal Assets/DataStorge/ItemIndex.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="variable-fixes-feature" />
+        <entry key="$PROJECT_DIR$" value="UnifiedStorage-Extension" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,17 +30,19 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Particles ad Effects/Smoke Effect/selfDestruct.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/UI/Inventory/DragDropHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/20/6f3a823d/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Apps/Unity/2019.4.17f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Layout/CanvasScaler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Apps/Unity/2019.4.17f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://G:/GitHub/2DGame/Assets/Internal Assets/UI/Inventory/ItemSlot.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Particles ad Effects/Smoke Effect/selfDestruct.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Players/playerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Apps/Unity/2019.4.17f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Slider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Apps/Unity/2019.4.17f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/85/78a67988/NullReferenceException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0847A0FA-F944-44CC-BAF1-958021B27F54/be/bb579d6f/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Apps/Unity/2019.4.17f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://G:/GitHub/2DGame/Assets/Internal Assets/UI/Inventory/ItemSlot.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -72,8 +73,6 @@
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory/ItemSlot.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/PlayerSettings.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/KFC/KFC.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal/Coal.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/UEntity.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Enemies/Chicken/chickenController.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Enemies/UDarkJason/UEnemyFST.cs" />
@@ -81,12 +80,15 @@
       <option value="$PROJECT_DIR$/Assets/Internal Assets/AttackRangeSwrd.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/UI/HealthBar.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/UI/DisplayHP.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Players/playerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/Coal/Coal.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/Players/Player.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/UI/Inventory/DragDropHandler.cs" />
-      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Inventory.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/UI/Inventory/InventoryUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Items/Bullets/ProjectileController.cs" />
       <option value="$PROJECT_DIR$/Assets/Internal Assets/UI/Inventory/ItemSlot.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Players/playerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Internal Assets/Core/Item.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oifMQrq9osdTdscNJbFmaRonqu" />
@@ -96,7 +98,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34963325" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34946677" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
@@ -116,10 +118,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="33740">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16780">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="33740" />
+      <option name="pid" value="16780" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -143,7 +145,12 @@
       <workItem from="1614301712474" duration="4713000" />
       <workItem from="1614462578327" duration="4222000" />
       <workItem from="1614478394856" duration="12942000" />
-      <workItem from="1614566486355" duration="1324000" />
+      <workItem from="1614566486355" duration="9242000" />
+      <workItem from="1614580632710" duration="3736000" />
+      <workItem from="1614629430131" duration="436000" />
+      <workItem from="1614731678286" duration="623000" />
+      <workItem from="1614917798310" duration="1899000" />
+      <workItem from="1615002451242" duration="4656000" />
     </task>
     <servers />
   </component>

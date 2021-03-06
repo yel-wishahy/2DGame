@@ -18,9 +18,9 @@ public class Item : MonoBehaviour
     //variables that are common to all items go below here
     [SerializeField] public bool AlterativeControl;
     [SerializeField] public string name;
+    [SerializeField] public int ID;
     [SerializeField] public int stackLimit;
     [SerializeField] public string itemType = "default";
-    [SerializeField] public int itemID;
     [SerializeField] private Collider2D worldCollider;
     [SerializeField] private Collider2D triggerCollider;
 
