@@ -15,8 +15,24 @@ public static class UnifiedStorage
         };
     public static Queue<KeyValuePair<int, string>> PendingAchievements = new Queue<KeyValuePair<int, string>>();
 
+    static List<GameObject> ListofItems = new List<GameObject>();
     public static int ControlFormat = 0;
     public static float Sensitivity = 0.75f;
+    
+    public static GameObject GetItembyId(int item)
+    {
+        return ListofItems[item];
+    }
+
+    public static void AddItem(GameObject item)
+    {
+        ListofItems.Add(item);
+    }
+
+    public static void RemoveItem()
+    {
+        ListofItems.RemoveAt(ListofItems.Count - 1);
+    }
 
     public static int GenerateHash(string Description)
     {
