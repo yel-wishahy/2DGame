@@ -2880,6 +2880,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008e3efa8b1bb614e9eaefaf53df3a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Items:
+  - {fileID: 657453503452454473, guid: 67ca3be07b8f3e445bf588c94e69207c, type: 3}
+  - {fileID: 94803413319138304, guid: ce3797dbf7ec2de43b6239ad762d9911, type: 3}
+  - {fileID: 5765044810424246497, guid: 319ec8134e12fdf4b8cf573301e2da5b, type: 3}
+  SceneToLoad: Main
 --- !u!4 &1691750691
 Transform:
   m_ObjectHideFlags: 0
@@ -2892,7 +2897,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1714096147 stripped
 Transform:
@@ -3324,10 +3329,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6829400738420230436, guid: 5d35ec4903f8091468b4dcb902b813b4,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1.3230318
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829400738420230436, guid: 5d35ec4903f8091468b4dcb902b813b4,
+        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829400738420230438, guid: 5d35ec4903f8091468b4dcb902b813b4,
+        type: 3}
+      propertyPath: jumpForce
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 6829400738420230438, guid: 5d35ec4903f8091468b4dcb902b813b4,
         type: 3}
       propertyPath: inventoryCapacity
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6829400738420230439, guid: 5d35ec4903f8091468b4dcb902b813b4,
         type: 3}

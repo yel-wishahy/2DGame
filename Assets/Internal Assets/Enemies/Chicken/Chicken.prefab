@@ -169,7 +169,7 @@ MonoBehaviour:
   smokeDeathEffect: {fileID: 4805299691247639846, guid: 61656c44c278d3a4198519b90e4e49bf,
     type: 3}
   healthBar: {fileID: 1075089594644907619}
-  foodDrop: {fileID: 94803413319138304, guid: ce3797dbf7ec2de43b6239ad762d9911, type: 3}
+  FoodDrop: 1
 --- !u!50 &4332317350382470740
 Rigidbody2D:
   serializedVersion: 4

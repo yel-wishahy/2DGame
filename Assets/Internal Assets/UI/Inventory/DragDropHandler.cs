@@ -73,7 +73,7 @@ public class DragDropHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         }
         else if (!IsPointerOverInventory())
         {
-
+            startSlot.OnDropTrash();
         }
     }
     

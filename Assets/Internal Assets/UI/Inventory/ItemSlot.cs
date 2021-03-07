@@ -133,10 +133,10 @@ public class ItemSlot : MonoBehaviour
         int quantity = itemSlot1.quantity + itemSlot2.quantity;
         int remainder = 0;
 
-        if (quantity > itemSlot1.player.inventory.StackLimitLog[itemSlot1.itemName])
+        if (quantity > UnifiedStorage.StackLimitLog[itemSlot1.itemName])
         {
-            remainder = quantity - itemSlot1.player.inventory.StackLimitLog[itemSlot1.itemName];
-            quantity = itemSlot1.player.inventory.StackLimitLog[itemSlot1.itemName];
+            remainder = quantity - UnifiedStorage.StackLimitLog[itemSlot1.itemName];
+            quantity = UnifiedStorage.StackLimitLog[itemSlot1.itemName];
         }
         
 

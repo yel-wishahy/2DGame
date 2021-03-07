@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -21,7 +22,6 @@ public class Inventory
 
     //helper logs that give details about items in inventory
     private Dictionary<string, int> invLog;
-    private Dictionary<string, int> stackLimLog;
 
     //player
     private Player player;
@@ -33,7 +33,6 @@ public class Inventory
         player = parent;
         inventory = new List<Item>();
         invLog = new Dictionary<string, int>();
-        stackLimLog = new Dictionary<string, int>();
     }
 
     /**
@@ -90,9 +89,6 @@ public class Inventory
                 invLog[item.name] += 1;
             else
                 invLog.Add(item.name, 1);
-
-            if (!stackLimLog.Keys.Contains(item.name))
-                stackLimLog.Add(item.name, item.stackLimit);
         }
     }
 
@@ -136,6 +132,19 @@ public class Inventory
         return null;
     }
     
+    //returns first instance of item found in inventor based on ID,
+    //or returns null if no such item is stored or ID is wrong
+    public Item GetAny(int itemID)
+    {
+        foreach (Item item in inventory)
+        {
+            if (item.ID == itemID)
+                return item;
+        }
+
+        return null;
+    }
+    
     //Gets an int number of items from inventory based on item name and returns them in a list
     //Can return less than specified number or none if none in inventory
     public List<Item> GetMultiple(string itemName, int quantityRequired)
@@ -166,6 +175,22 @@ public class Inventory
         return null;
     }
     
+    //returns first instance of item found based on ID in inventory AND REMOVES IT IN THE PROCESS,
+    //or returns null if no such item is stored or ID is wrong
+    public Item GetAnyAndRemove(int itemID)
+    {
+        foreach (Item item in inventory)
+        {
+            if (item.ID == itemID)
+            {
+                if (RemoveItem(item))
+                    return item;
+            }
+        }
+
+        return null;
+    }
+    
     //Gets an int number of items from inventory based on item name and returns them in a list
     //NOTE: REMOVES ITEM FROM INVENTORY IN THE PROCESS
     //Can return less than specified number or none if none in inventory
@@ -185,6 +210,26 @@ public class Inventory
 
         return items;
     }
+    
+    //Gets an int number of items from inventory based on item ID and returns them in a list
+    //NOTE: REMOVES ITEM FROM INVENTORY IN THE PROCESS
+    //Can return less than specified number or none if none in inventory
+    public List<Item> GetMultipleAndRemove(int itemID, int quantityRequired)
+    {
+        List<Item> items = new List<Item>();
+        List<Item> inventoryCopy = new List<Item>(inventory);
+        
+        foreach (Item item in inventoryCopy)
+        {
+            if (item.ID == itemID && items.Count < quantityRequired)
+            {
+                if (RemoveItem(item))
+                    items.Add(item);
+            }
+        }
+
+        return items;
+    }
 
     /**
      * Counts how many stacks of an item there are in the inventory
@@ -193,10 +238,10 @@ public class Inventory
     {
         int numStack = 0;
 
-        if (invLog.Keys.Contains(itemName) && stackLimLog.Keys.Contains(itemName))
+        if (invLog.Keys.Contains(itemName) && UnifiedStorage.StackLimitLog.Keys.Contains(itemName))
         {
-            numStack = invLog[itemName] / stackLimLog[itemName];
-            int remainder = invLog[itemName] - numStack * stackLimLog[itemName];
+            numStack = invLog[itemName] / UnifiedStorage.StackLimitLog[itemName];
+            int remainder = invLog[itemName] - numStack * UnifiedStorage.StackLimitLog[itemName];
 
             if (remainder > 0)
                 numStack += 1;
@@ -225,13 +270,13 @@ public class Inventory
      */
     public bool CheckSpace(string itemName)
     {
-        if (invLog.Keys.Contains(itemName) && stackLimLog.Keys.Contains(itemName))
+        if (invLog.Keys.Contains(itemName) && UnifiedStorage.StackLimitLog.Keys.Contains(itemName))
         {
-            if (invLog[itemName] < stackLimLog[itemName])
+            if (invLog[itemName] < UnifiedStorage.StackLimitLog[itemName])
                 return true;
 
-            int numStack = invLog[itemName] / stackLimLog[itemName];
-            int remainder = invLog[itemName] - numStack * stackLimLog[itemName];
+            int numStack = invLog[itemName] / UnifiedStorage.StackLimitLog[itemName];
+            int remainder = invLog[itemName] - numStack * UnifiedStorage.StackLimitLog[itemName];
 
             if (remainder > 0)
                 return true;
@@ -251,11 +296,11 @@ public class Inventory
     {
         int num = 0;
 
-        if (invLog.Keys.Contains(itemName) && stackLimLog.Keys.Contains(itemName))
+        if (invLog.Keys.Contains(itemName) && UnifiedStorage.StackLimitLog.Keys.Contains(itemName))
         {
-            int numStack = invLog[itemName] / stackLimLog[itemName];
+            int numStack = invLog[itemName] / UnifiedStorage.StackLimitLog[itemName];
 
-            num = invLog[itemName] - numStack * stackLimLog[itemName];
+            num = invLog[itemName] - numStack * UnifiedStorage.StackLimitLog[itemName];
         }
 
         return num;
@@ -265,12 +310,6 @@ public class Inventory
     public Dictionary<string, int> InventoryLog
     {
         get => new Dictionary<string, int>(invLog);
-    }
-
-    //a copy instance of the stack log accessible to other classes
-    public Dictionary<string, int> StackLimitLog
-    {
-        get => new Dictionary<string, int>(stackLimLog);
     }
 
     //a copy instance of the full inventory accessible to other classes

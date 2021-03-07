@@ -57,7 +57,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (!player.inventory.Empty)
         {
-            UpdateUISlots(player.inventory.InventoryLog, player.inventory.StackLimitLog);
+            UpdateUISlots(player.inventory.InventoryLog, UnifiedStorage.StackLimitLog);
         }
         else
         {
@@ -76,7 +76,7 @@ public class InventoryUI : MonoBehaviour
         {
             int numSlots = player.inventory.CountStackItem(itemName);
             int lastSlot = player.inventory.CountIncompleteStack(itemName);
-            int stackLimit = player.inventory.StackLimitLog[itemName];
+            int stackLimit = UnifiedStorage.StackLimitLog[itemName];
 
             for (int i = 0; i < numSlots; i++, slotNum++)
             {
