@@ -3347,7 +3347,7 @@ PrefabInstance:
     - target: {fileID: 6829400738420230438, guid: 5d35ec4903f8091468b4dcb902b813b4,
         type: 3}
       propertyPath: inventoryCapacity
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6829400738420230439, guid: 5d35ec4903f8091468b4dcb902b813b4,
         type: 3}
