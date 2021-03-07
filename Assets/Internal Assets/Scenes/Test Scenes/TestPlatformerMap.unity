@@ -3281,6 +3281,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6829400738420230436, guid: 5d35ec4903f8091468b4dcb902b813b4,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1.3230318
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829400738420230436, guid: 5d35ec4903f8091468b4dcb902b813b4,
+        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6829400738420230438, guid: 5d35ec4903f8091468b4dcb902b813b4,
         type: 3}
       propertyPath: inventoryCapacity

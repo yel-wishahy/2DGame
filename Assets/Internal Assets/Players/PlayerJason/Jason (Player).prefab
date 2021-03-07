@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 500
-  speed: 8
+  speed: 5
   jumpForce: 5
   attackDamage: 25
   AlterativeControl: 0

@@ -171,7 +171,11 @@ public class playerController : Controller
         if (body.velocity.x < 0) render.flipX = true;
         else render.flipX = false;
 
-        if (body.velocity.x != 0) anim.SetBool("Run", true);
+        if (body.velocity.x != 0)
+        {
+            anim.SetBool("Run", true);
+            Debug.Log("set run to true");
+        }
         else anim.SetBool("Run", false);
     }
 
