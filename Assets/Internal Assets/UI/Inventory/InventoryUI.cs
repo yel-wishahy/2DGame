@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,13 +20,25 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private GameObject itemSlotPrefab;
+    [SerializeField] private float openScale = 2.5f;
 
     private List<ItemSlot> itemSlots;
-    
+    private bool isOpen = false;
+    private RectTransform _rectTransform;
+    private Vector2 normalSize;
+    private Vector2 openSize;
+    private float normalY;
+    private float openY;
+
     // Start is called before the first frame update
     void Awake()
     {
         InitItemSlots();
+        _rectTransform = GetComponent<RectTransform>();
+        normalSize = _rectTransform.sizeDelta;
+        normalY = _rectTransform.position.y;
+        openY = _rectTransform.position.y - normalSize.y * openScale;
+        openSize = new Vector2(normalSize.x, normalSize.y * openScale);
     }
     
     void InitItemSlots()
@@ -56,12 +69,46 @@ public class InventoryUI : MonoBehaviour
     void Update()
     {
         if (!player.inventory.Empty)
-        {
             UpdateUISlots(player.inventory.InventoryLog, UnifiedStorage.StackLimitLog);
+        else 
+            ResetSlots();
+
+        if (Input.GetKeyDown(player.settings.GetSetting("Open Inventory")))
+            isOpen = !isOpen;
+
+        if (isOpen)
+        {
+            _rectTransform.sizeDelta = openSize;
+            _rectTransform.position = new Vector3(_rectTransform.position.x, openY);
+            OpenInventoryUI();
         }
         else
         {
-            ResetSlots();
+            _rectTransform.sizeDelta = normalSize;
+            _rectTransform.position = new Vector3(_rectTransform.position.x, normalY);
+            CloseInventoryUI();
+        }
+    }
+    
+    private void OpenInventoryUI()
+    {
+        foreach (ItemSlot itemSlot in itemSlots)
+        {
+            if (itemSlot.itemSlotID > 5)
+            {
+                itemSlot.Open();
+            }
+        }
+    }
+    
+    private void CloseInventoryUI()
+    {
+        foreach (ItemSlot itemSlot in itemSlots)
+        {
+            if (itemSlot.itemSlotID > 5)
+            {
+                itemSlot.Close();
+            }
         }
     }
     

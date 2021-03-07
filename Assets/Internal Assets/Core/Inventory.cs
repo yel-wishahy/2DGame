@@ -22,15 +22,15 @@ public class Inventory
 
     //helper logs that give details about items in inventory
     private Dictionary<string, int> invLog;
-
-    //player
-    private Player player;
+    
+    //capacity
+    private int capacity;
 
 
     //constructor
-    public Inventory(Player parent)
+    public Inventory(int capacity)
     {
-        player = parent;
+        this.capacity = capacity;
         inventory = new List<Item>();
         invLog = new Dictionary<string, int>();
     }
@@ -282,7 +282,7 @@ public class Inventory
                 return true;
         }
 
-        if (CountStackAll() < player.inventoryCapacity)
+        if (CountStackAll() < capacity)
             return true;
 
         return false;

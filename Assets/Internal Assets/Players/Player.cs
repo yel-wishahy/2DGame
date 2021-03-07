@@ -20,7 +20,7 @@ public class Player : UEntity
     private void Awake()
     {
          userController = new playerController(this);
-         inventory = new Inventory(this);
+         inventory = new Inventory(inventoryCapacity);
          settings = new PlayerSettings();
          InitSettings();
     }
@@ -32,6 +32,7 @@ public class Player : UEntity
         settings.AddorUpdateSetting("Ranged", KeyCode.Mouse2);
         settings.AddorUpdateSetting("Jump", KeyCode.Space);
         settings.AddorUpdateSetting("Split Stack", KeyCode.Mouse1);
+        settings.AddorUpdateSetting("Open Inventory", KeyCode.Tab);
     }
     
 

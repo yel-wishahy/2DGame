@@ -19,6 +19,7 @@ public class ItemSlot : MonoBehaviour
     public int itemSlotID;
     [SerializeField] public string itemName = "empty";
     [SerializeField] public Image itemImage;
+    [SerializeField] public Image frameImage;
     [SerializeField] private Text quantityDisplay;
     [SerializeField] private Button trashButton;
     [HideInInspector] public bool empty = true;
@@ -38,7 +39,7 @@ public class ItemSlot : MonoBehaviour
     }
 
     //fills the UI for the item slot by enabling everything and updating quantity
-    public void Fill()
+    private void Fill()
     {
         quantityDisplay.text = quantity.ToString();
         quantityDisplay.enabled = true;
@@ -46,9 +47,9 @@ public class ItemSlot : MonoBehaviour
         trashButton.enabled = true;
         trashButton.image.enabled = true;
     }
-
+    
     //Clears slot by clearing name, quantity, and disabling graphics
-    public void Clear()
+    private void Clear()
     {
         itemName = "empty";
         quantity = 0;
@@ -56,6 +57,28 @@ public class ItemSlot : MonoBehaviour
         trashButton.image.enabled = false;
         quantityDisplay.enabled = false;
         itemImage.enabled = false;
+    }
+    
+    //opens the slot ui (when inv menu is open)
+    public void Open()
+    {
+        enabled = true;
+        quantityDisplay.enabled = true;
+        itemImage.enabled = true;
+        trashButton.enabled = true;
+        trashButton.image.enabled = true;
+        frameImage.enabled = true;
+    }
+    
+    //closes the slot UI (when inv menu is closed)
+    public void Close()
+    {
+        trashButton.enabled = false;
+        trashButton.image.enabled = false;
+        quantityDisplay.enabled = false;
+        itemImage.enabled = false;
+        frameImage.enabled = false;
+        enabled = false;
     }
 
     //When item image is clicked, use the item by calling its use command
