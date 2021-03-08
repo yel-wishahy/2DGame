@@ -64,7 +64,7 @@ public class DragDropHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
                 }
                 else
                 {
-                    if(startSlot.itemName == endSlot.itemName)
+                    if(startSlot.itemID == endSlot.itemID)
                         ItemSlot.SumSlots(startSlot, endSlot);
                     else 
                         ItemSlot.SwapSlots(startSlot, endSlot);

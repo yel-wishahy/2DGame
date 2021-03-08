@@ -16,11 +16,11 @@ public static class UnifiedStorage
     public static Queue<KeyValuePair<int, string>> PendingAchievements = new Queue<KeyValuePair<int, string>>();
 
     static List<GameObject> ListofItems = new List<GameObject>();
-    private static Dictionary<string, int> stackLimitLog = new Dictionary<string, int>();
+    private static Dictionary<int, int> stackLimitLog = new Dictionary<int, int>();
     public static int ControlFormat = 0;
     public static float Sensitivity = 0.75f;
 
-    public static Dictionary<string, int> StackLimitLog
+    public static Dictionary<int, int> StackLimitLog
     {
         get => stackLimitLog;
     }
@@ -45,27 +45,7 @@ public static class UnifiedStorage
             return null;
         }
     }
-    
-    //takes longer
-    public static GameObject GetItembyName(string name)
-    {
-        
-        if (ListofItems.Count > 0)
-        {
-            foreach (GameObject item in ListofItems)
-            {
-                if(item.name == name)
-                    return item;
-            }
 
-            Debug.LogError("Item of name: " + name + " not found in item index");
-            return null;
-        }
-
-        Debug.LogError("Item list not loaded. Ensure that ItemIndex is active on at least one GameObject at some point in the game.");
-        return null;
-    }
-    
     public static int GetItemStackLimit(int itemID)
     {
         GameObject item = GetItembyId(itemID);
@@ -77,22 +57,10 @@ public static class UnifiedStorage
         return -1;
     }
 
-    public static int GetItemStackLimit(string itemName)
-    {
-        GameObject item = GetItembyName(itemName);
-
-        if (item != null)
-            return item.GetComponent<Item>().stackLimit;
-
-        Debug.LogError("Could not retrieve stack limit: Item of name " + itemName + " not found.");
-        return -1;
-        
-    }
-
     public static void AddItem(GameObject item)
     {
         ListofItems.Add(item);
-        stackLimitLog.Add(item.name, item.GetComponent<Item>().stackLimit);
+        stackLimitLog.Add(item.GetComponent<Item>().ID, item.GetComponent<Item>().stackLimit);
     }
 
     public static void RemoveItem()

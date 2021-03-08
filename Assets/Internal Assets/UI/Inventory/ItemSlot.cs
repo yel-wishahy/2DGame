@@ -17,7 +17,7 @@ using Image = UnityEngine.UI.Image;
 public class ItemSlot : MonoBehaviour
 {
     public int itemSlotID;
-    [SerializeField] public string itemName = "empty";
+    [SerializeField] public int itemID = -1;
     [SerializeField] public Image itemImage;
     [SerializeField] public Image frameImage;
     [SerializeField] private Text quantityDisplay;
@@ -51,7 +51,7 @@ public class ItemSlot : MonoBehaviour
     //Clears slot by clearing name, quantity, and disabling graphics
     private void Clear()
     {
-        itemName = "empty";
+        itemID = -1;
         quantity = 0;
         trashButton.enabled = false;
         trashButton.image.enabled = false;
@@ -86,7 +86,7 @@ public class ItemSlot : MonoBehaviour
     {
         if (!empty && quantity > 0)
         {
-            Item item = player.inventory.GetAnyAndRemove(itemName);
+            Item item = player.inventory.GetAnyAndRemove(itemID);
             if (item != null && item.Use(player))
                 quantity -= 1;
         }
@@ -97,7 +97,7 @@ public class ItemSlot : MonoBehaviour
     {
         if (!empty && quantity > 0)
         {
-            Item item = player.inventory.GetAnyAndRemove(itemName);
+            Item item = player.inventory.GetAnyAndRemove(itemID);
             if (item != null && Item.DropItem(item, player.transform.position))
                 quantity -= 1;
         }
@@ -107,7 +107,7 @@ public class ItemSlot : MonoBehaviour
     //and drop the whole stack into the world
     public void OnDropTrash()
     {
-        List<Item> itemsRemoved = player.inventory.GetMultipleAndRemove(itemName, quantity);
+        List<Item> itemsRemoved = player.inventory.GetMultipleAndRemove(itemID, quantity);
 
         if (Item.DropMultipleItems(itemsRemoved, player.transform.position))
             Clear();
@@ -116,17 +116,17 @@ public class ItemSlot : MonoBehaviour
     //Swap two slots
     public static void SwapSlots(ItemSlot itemSlot1, ItemSlot itemSlot2)
     {
-        string itemName = itemSlot1.itemName;
+        int itemID = itemSlot1.itemID;
         Sprite itemSprite = itemSlot1.itemImage.sprite;
         bool empty = itemSlot1.empty;
         int quantity = itemSlot1.quantity;
 
-        itemSlot1.itemName = itemSlot2.itemName;
+        itemSlot1.itemID = itemSlot2.itemID;
         itemSlot1.itemImage.sprite = itemSlot2.itemImage.sprite;
         itemSlot1.empty = itemSlot2.empty;
         itemSlot1.quantity = itemSlot2.quantity;
 
-        itemSlot2.itemName = itemName;
+        itemSlot2.itemID = itemID;
         itemSlot2.itemImage.sprite = itemSprite;
         itemSlot2.empty = empty;
         itemSlot2.quantity = quantity;
@@ -144,7 +144,7 @@ public class ItemSlot : MonoBehaviour
         
         itemSlot1.quantity = quantity + remainder;
 
-        itemSlot2.itemName = itemSlot1.itemName;
+        itemSlot2.itemID = itemSlot1.itemID;
         itemSlot2.itemImage.sprite = itemSlot1.itemImage.sprite;
         itemSlot2.empty = false;
         itemSlot2.quantity = quantity;
@@ -156,10 +156,10 @@ public class ItemSlot : MonoBehaviour
         int quantity = itemSlot1.quantity + itemSlot2.quantity;
         int remainder = 0;
 
-        if (quantity > UnifiedStorage.StackLimitLog[itemSlot1.itemName])
+        if (quantity > UnifiedStorage.StackLimitLog[itemSlot1.itemID])
         {
-            remainder = quantity - UnifiedStorage.StackLimitLog[itemSlot1.itemName];
-            quantity = UnifiedStorage.StackLimitLog[itemSlot1.itemName];
+            remainder = quantity - UnifiedStorage.StackLimitLog[itemSlot1.itemID];
+            quantity = UnifiedStorage.StackLimitLog[itemSlot1.itemID];
         }
         
 

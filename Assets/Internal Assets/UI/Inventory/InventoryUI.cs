@@ -119,11 +119,11 @@ public class InventoryUI : MonoBehaviour
     private void CleanOrganizeUISlots(List<ItemSlot> itemSlots)
     {
         int slotNum = 0;
-        foreach (string itemName in player.inventory.InventoryLog.Keys)
+        foreach (int itemID in player.inventory.InventoryLog.Keys)
         {
-            int numSlots = player.inventory.CountStackItem(itemName);
-            int lastSlot = player.inventory.CountIncompleteStack(itemName);
-            int stackLimit = UnifiedStorage.StackLimitLog[itemName];
+            int numSlots = player.inventory.CountStackItem(itemID);
+            int lastSlot = player.inventory.CountIncompleteStack(itemID);
+            int stackLimit = UnifiedStorage.StackLimitLog[itemID];
 
             for (int i = 0; i < numSlots; i++, slotNum++)
             {
@@ -135,9 +135,9 @@ public class InventoryUI : MonoBehaviour
                 if (i == numSlots - 1 && lastSlot > 0)
                     itemSlot.quantity = lastSlot;
 
-                itemSlot.itemName = itemName;
+                itemSlot.itemID = itemID;
                 itemSlot.itemImage.sprite =
-                    player.inventory.GetAny(itemName).GetComponent<SpriteRenderer>().sprite;
+                    player.inventory.GetAny(itemID).GetComponent<SpriteRenderer>().sprite;
             }
         }
     }
@@ -146,20 +146,20 @@ public class InventoryUI : MonoBehaviour
      * Updates the UI slots keeping previous configuration in mind, as well as any changes
      * made by drag and drop!
      */
-    private void UpdateUISlots(Dictionary<string, int> invLog, Dictionary<string, int> stackLimLog)
+    private void UpdateUISlots(Dictionary<int, int> invLog, Dictionary<int, int> stackLimLog)
     {
-        Dictionary<string, int> itemSlotLogs = new Dictionary<string, int>();
-        Dictionary<string, int> changes = new Dictionary<string, int>();
+        Dictionary<int, int> itemSlotLogs = new Dictionary<int, int>();
+        Dictionary<int, int> changes = new Dictionary<int, int>();
 
         //populate itemslot log dictionary
         foreach (ItemSlot itemSlot in itemSlots)
         {
             if (!itemSlot.empty)
             {
-                if (itemSlotLogs.ContainsKey(itemSlot.itemName))
-                    itemSlotLogs[itemSlot.itemName] += itemSlot.quantity;
+                if (itemSlotLogs.ContainsKey(itemSlot.itemID))
+                    itemSlotLogs[itemSlot.itemID] += itemSlot.quantity;
                 else
-                    itemSlotLogs.Add(itemSlot.itemName, itemSlot.quantity);
+                    itemSlotLogs.Add(itemSlot.itemID, itemSlot.quantity);
             }
         }
 
@@ -167,12 +167,12 @@ public class InventoryUI : MonoBehaviour
         //changes are in the form of item name, (int) change
         //the int is negative if the change is to remove items
         //positive is vice verse
-        foreach (string itemName in invLog.Keys)
+        foreach (int itemID in invLog.Keys)
         {
-            if (!itemSlotLogs.ContainsKey(itemName))
-                changes.Add(itemName, invLog[itemName]);
-            else if (itemSlotLogs[itemName] != invLog[itemName])
-                changes.Add(itemName, invLog[itemName] - itemSlotLogs[itemName] );
+            if (!itemSlotLogs.ContainsKey(itemID))
+                changes.Add(itemID, invLog[itemID]);
+            else if (itemSlotLogs[itemID] != invLog[itemID])
+                changes.Add(itemID, invLog[itemID] - itemSlotLogs[itemID] );
         }
 
         //calls another helper function to update the UI based on changes calculated above
@@ -191,31 +191,31 @@ public class InventoryUI : MonoBehaviour
      *
      *Calls helper function to calculate and apply the change amount math
      */
-    private void UpdateUISlotsFromChanges(Dictionary<string, int> changes, Dictionary<string, int> stackLimLog)
+    private void UpdateUISlotsFromChanges(Dictionary<int, int> changes, Dictionary<int, int> stackLimLog)
     {
-        foreach (string itemName in changes.Keys)
+        foreach (int itemID in changes.Keys)
         {
-            if (changes[itemName] != 0)
+            if (changes[itemID] != 0)
             {
                 foreach (ItemSlot itemSlot in itemSlots)
                 {
-                    if(changes[itemName] == 0)
+                    if(changes[itemID] == 0)
                         break;
 
-                    if (!itemSlot.empty && itemSlot.itemName == itemName && itemSlot.quantity < stackLimLog[itemName])
+                    if (!itemSlot.empty && itemSlot.itemID == itemID && itemSlot.quantity < stackLimLog[itemID])
                     {
-                        int diff = UpdateItemSlotQuantity(itemSlot, stackLimLog, changes[itemName]);
-                        changes[itemName] = diff;
+                        int diff = UpdateItemSlotQuantity(itemSlot, stackLimLog, changes[itemID]);
+                        changes[itemID] = diff;
                     }
                     else if (itemSlot.empty)
                     {
                         itemSlot.empty = false;
-                        itemSlot.itemName = itemName;
+                        itemSlot.itemID = itemID;
                         itemSlot.itemImage.sprite =
-                            player.inventory.GetAny(itemName).GetComponent<SpriteRenderer>().sprite;
+                            player.inventory.GetAny(itemID).GetComponent<SpriteRenderer>().sprite;
 
-                        int diff = UpdateItemSlotQuantity(itemSlot, stackLimLog, changes[itemName]);
-                        changes[itemName] = diff;
+                        int diff = UpdateItemSlotQuantity(itemSlot, stackLimLog, changes[itemID]);
+                        changes[itemID] = diff;
                     }
                 }
             }
@@ -229,7 +229,7 @@ public class InventoryUI : MonoBehaviour
      * If the change results in not meeting the contion of (0 <= item quantity <= item stack limit), then change is
      * reduced appropraitely until it meets the condtion, the excess is returned.
      */
-    private int UpdateItemSlotQuantity(ItemSlot itemSlot, Dictionary<string, int> stackLimLog , int change)
+    private int UpdateItemSlotQuantity(ItemSlot itemSlot, Dictionary<int, int> stackLimLog , int change)
     {
         int quantityResult = itemSlot.quantity + change;
         int returnResult = 0;
@@ -240,10 +240,10 @@ public class InventoryUI : MonoBehaviour
             quantityResult = 0;
         }
 
-        if (quantityResult > stackLimLog[itemSlot.itemName])
+        if (quantityResult > stackLimLog[itemSlot.itemID])
         {
-            returnResult = quantityResult - stackLimLog[itemSlot.itemName];
-            quantityResult = stackLimLog[itemSlot.itemName];
+            returnResult = quantityResult - stackLimLog[itemSlot.itemID];
+            quantityResult = stackLimLog[itemSlot.itemID];
         }
 
         itemSlot.quantity = quantityResult;

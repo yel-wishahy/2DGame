@@ -145,9 +145,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AlterativeControl: 1
   name: magicBullet
-  stackLimit: 0
+  ID: 2
+  stackLimit: 1
   itemType: projectile
-  itemID: 0
   worldCollider: {fileID: 0}
   triggerCollider: {fileID: 5151975627757653440}
   inStorage: 0
