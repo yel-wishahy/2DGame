@@ -194,7 +194,7 @@ RectTransform:
   m_GameObject: {fileID: 3401722829166213070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3401722828094921262}
   - {fileID: 1618897227037204161}
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSlotID: 0
-  itemName: 
+  itemID: -1
   itemImage: {fileID: 3401722828094921265}
   frameImage: {fileID: 3401722829166213072}
   quantityDisplay: {fileID: 6140986950629354408}
