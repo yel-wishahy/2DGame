@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -80,8 +80,6 @@ public class ItemSlot : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-=======
     //When an item stack is dragged out of inventory, remove the whole stack from inventory
     //and drop the whole stack into the world
     public void OnDropTrash()
@@ -93,7 +91,6 @@ public class ItemSlot : MonoBehaviour
     }
 
     //Swap two slots
->>>>>>> f9988ae077e260d41f2be7e74950caf2f90bbdf5
     public static void SwapSlots(ItemSlot itemSlot1, ItemSlot itemSlot2)
     {
         string itemName = itemSlot1.itemName;
@@ -121,7 +118,7 @@ public class ItemSlot : MonoBehaviour
 
         if (itemSlot1.quantity % 2 != 0)
             remainder = 1;
-        
+
         itemSlot1.quantity = quantity + remainder;
 
         itemSlot2.itemName = itemSlot1.itemName;
@@ -141,7 +138,7 @@ public class ItemSlot : MonoBehaviour
             remainder = quantity - itemSlot1.player.inventory.StackLimitLog[itemSlot1.itemName];
             quantity = itemSlot1.player.inventory.StackLimitLog[itemSlot1.itemName];
         }
-        
+
 
         itemSlot1.quantity = remainder;
         itemSlot2.quantity = quantity;
